@@ -1,0 +1,14 @@
+ipdb
+neovim
+pynvim
+powerline-status
+gpustat
+termcolor
+isort
+black
+pyls
+mypy
+pydantic
+nvidia-ml-py3
+py3nvml
+autoimport

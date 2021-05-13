@@ -1,0 +1,19 @@
+* ;q "python ~/.dotfiles/tools/queuer.py "
+* ;pi "pip install -r ~/.dotfiles/scripts/requirements.txt
+"
+* ;m " main.py "
+* ;e "export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`
+clear
+ls
+
+
+"
+* ;d "python -m ipdb -c continue "
+* ;cb "CUDA_LAUNCH_BLOCKING="
+* ;c3 "CUDA_VISIBLE_DEVICES=3 "
+* ;c2 "CUDA_VISIBLE_DEVICES=2 "
+* ;c1 "CUDA_VISIBLE_DEVICES=1 "
+* ;c0 "CUDA_VISIBLE_DEVICES=0 "
+* ;; "{clipboard}"
+* ;1 "{clipboard:1}"
+* ;2 "{clipboard:2}"

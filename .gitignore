@@ -1,0 +1,5 @@
+ssh/*
+!ssh/config
+autojump/
+nvim/nvim.appimage
+nvim/.netrwhist

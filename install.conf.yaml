@@ -1,0 +1,95 @@
+- defaults:
+    clean:
+      force: true
+    link:
+      create: true
+      relink: true
+      force: true
+
+- clean:
+    ~/:
+      - 
+    ~/.config:
+      recursive: true
+
+- create:
+    - ~/Github
+    - ~/Trash_Bin
+    - ~/Archived_Projects
+    - ~/Data
+
+- link:
+    ~/.tmux.conf:
+      path: tmux.conf
+    ~/.vimrc:
+      path: vimrc
+    ~/.bash_common:
+      path: bash_common
+    ~/.bashrc:
+      if: '[ `uname` = Linux ]'
+      path: bashrc
+    ~/.bash_profile:
+      if: '[ `uname` = Darwin ]'
+      path: bash_profile
+    ~/.zshrc:
+      if: '[ `uname` = Darwin ]'
+      path: zshrc
+    ~/.profile:
+      path: profile
+    ~/.inputrc:
+      path: inputrc
+    ~/.gitignore_global:
+      path: gitignore_global
+    ~/.gitattributes_global:
+      path: gitattributes_global
+    ~/.gitconfig:
+      path: gitconfig
+    ~/.ssh:
+      path: ssh
+    ~/.config/nvim:
+      path: nvim
+
+- shell:
+    - git submodule update --remote dotbot
+    - bind -f  ~/.inputrc
+    - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    - 
+      command: 
+        - git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+      stdin: true
+      stdout: true
+      stderr: true
+
+      command: 
+        - touch ~/.bash_local 
+          && echo 'cd ~/Github' >> ~/.bash_local
+          && echo 'act "$env"' >> ~/.bash_local 
+          && echo 'cd "$wdir"' >> ~/.bash_local
+    -
+      command:
+        - ./scripts/install_neovim.sh
+      description: Install Neovim
+      stdin: true
+      stdout: true
+      stderr: true
+    -
+      command:
+        - ./scripts/install_miniconda.sh
+      description: Install miniconda
+      stdin: true
+      stdout: true
+      stderr: true
+    - 
+      command:
+        - ./scripts/install_autojump.sh
+      description: Install autojump
+    - 
+      command: 
+        - ./scripts/install_npm.sh
+      stdin: true
+      stdout: true
+      stderr: true
+    - echo -e "\n\n"
+    - echo 'Main setup Complete!'
+    - echo 'Skip Sudo commands setups which is in makefile'
+
