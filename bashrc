@@ -40,7 +40,6 @@ else \
   echo "'$BIBlue$PathShort$Color_Off'\$ "; \
 fi)'
 
-unset color_prompt force_color_prompt
 
 case "$TERM" in
 xterm*|rxvt*)
@@ -58,6 +57,7 @@ bind "TAB:menu-complete"
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
 
+unset color_prompt force_color_prompt
 export VISUAL="vim"
 export EDITOR="vim"
 export TERM=xterm-256color
@@ -67,7 +67,6 @@ shopt -s histappend
 HISTSIZE=10000
 HISTFILESIZE=10000
 
-# Bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -76,28 +75,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set gpu device order as their number instead of the fastest
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
-
-a 'smi'="py3smi --left"
-a 'watchgpu'='watch -c gpustat -cp --color'
-
-# cuda version
-# nvcc --version
-a 'cuda-version'='cat /usr/local/cuda/version.txt'
-
-# cudnn version
-a 'cudnn-version'='cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2'
-
-# Libs
-a 'lab'='jupyter lab --no-browser --allow-root --port ' # run with port
-a 'rstart'='ray start --head --dashboard-port'
-a 'rstop'='ray stop'
-a 'tb'='tensorboard --logdir . --port' # run locally # Tensorboard Usage: tb <directory>
 
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

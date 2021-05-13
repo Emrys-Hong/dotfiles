@@ -22,12 +22,7 @@ let g:airline#extensions#ale#enabled = 1
 Plug 'dracula/vim', { 'name': 'dracula' }
 
 " Functional "
-Plug 'kalekundert/vim-coiled-snake'
-Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-let g:tagbar_foldlevel = 0
-Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 let g:NERDTreeWinPos = "right"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
@@ -48,21 +43,7 @@ augroup mydelimitMate
   au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
   au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
-" Tabnine::sem
-Plug 'zxqfl/tabnine-vim'
 Plug 'tpope/vim-commentary'
-Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle'}
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-Plug 'tpope/vim-surround'
-Plug 'dense-analysis/ale'
-let g:ale_fixers = {'python': ['black', 'isort', 'autoimport'], 'markdown': ['prettier'], 'sh': ['shfmt']}
-let g:ale_linters = {'python': ['pyright', 'mypy', 'pyls'], 'sh': ['shellcheck']}
-let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1
-let g:ale_set_highlights = 0 | let g:ale_set_signs = 0
-Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['python']
-let g:python_highlight_space_errors = 0
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattboehm/vim-unstack'
 let g:unstack_mapkey='<F11>'
 
