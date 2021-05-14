@@ -2,9 +2,6 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
 source ~/.dotfiles/nvim/monkey_terminal.vim
-set mouse=a
-set number relativenumber
-set foldcolumn=1 foldmethod=expr
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -26,7 +23,8 @@ Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-let g:tagbar_foldlevel = 0
+let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 0
+let g:tagbar_type_python = {'kinds': ['c:classes', 'f:functions', 'm:members']}
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 let g:NERDTreeWinPos = "right"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif

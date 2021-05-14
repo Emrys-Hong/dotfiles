@@ -15,8 +15,8 @@ unset __conda_setup
 # neovim settings
 if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
         alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
-        alias 'vi'="nvim"
-        alias 'vim'="nvim -u ~/.config/nvim/init_minimal.vim"
+        alias 'vi'="nvim -u ~/.config/nvim/init.vim"
+        alias 'vim'="nvim -u ~/.config/nvim/minimal.vim"
 fi
 
 # color
@@ -64,6 +64,7 @@ a '...'='cd ../..'
 a '....'='cd ../../..'
 a '.....'='cd ../../../..'
 a 'mkd'='mkdir -pv'
+a 'mkdir'='mkdir -pv'
 a 'cp'='cp -iv'
 a 'mv'='mv -iv'
 a 'rmi'='rm -vI'
@@ -77,7 +78,6 @@ a 'e'='export'
 a 'c'='conda'
 a 't'='tmux'
 a 'g'='git'
-a 'v'='vim'
 a 'p'='python'
 a 'py'='python'
 a 'G'='cd ~/Github'
@@ -90,11 +90,11 @@ a 'brc'='source ~/.bashrc'
 a 'zrc'='source ~/.zshrc'
 a 'bpf'='source ~/.bash_profile'
 
-a 'P'='python -m ipdb -c continue'
+a 'd'='python -m ipdb -c continue'
 a 'Q'='py ~/.dotfiles/tools/queuer.py'
 a 'pipin'='pip install -r ~/.dotfiles/scripts/requirements.txt'
-a 'm'='py main.py'
-a 'M'='P main.py'
+a 'pm'='p main.py'
+a 'dm'='d main.py'
 a 'smi'="py3smi --left"
 a 'watchgpu'='watch -c gpustat -cp --color'
 a 'cudnn-version'='cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2'

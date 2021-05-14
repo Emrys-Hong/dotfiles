@@ -2,9 +2,6 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
 source ~/.dotfiles/nvim/monkey_terminal.vim
-set mouse=a
-set number relativenumber
-set foldcolumn=1 foldmethod=expr
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -13,20 +10,16 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " UI "
-Plug 'vim-airline/vim-airline'
-let g:airline_detect_paste=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#ale#enabled = 1
 Plug 'dracula/vim', { 'name': 'dracula' }
 
 " Functional "
-Plug 'airblade/vim-gitgutter'
 let g:NERDTreeWinPos = "right"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Navigation "
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 0
+let g:tagbar_type_python = {'kinds': ['c:classes', 'f:functions', 'm:members']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'easymotion/vim-easymotion'

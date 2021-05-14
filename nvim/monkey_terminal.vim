@@ -27,19 +27,39 @@ function! MonkeyTerminalOpen()
     call feedkeys('A')
   endif
 endfunction
-
-function! MonkeyTerminalToggle()
-  if win_gotoid(s:monkey_terminal_window)
-    call MonkeyTerminalClose()
-  else
-    call MonkeyTerminalOpen()
-  endif
-endfunction
-
 function! MonkeyTerminalClose()
   if win_gotoid(s:monkey_terminal_window)
     let s:monkey_terminal_window_size = winheight(s:monkey_terminal_window) 
     hide
+  endif
+endfunction
+
+
+function! MonkeyTerminalOpenSpace()
+  if !bufexists(s:monkey_terminal_buffer)
+    new monkey_terminal
+    wincmd J
+    resize 15
+    let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
+     silent file Terminal\ 1
+     let s:monkey_terminal_window = win_getid()
+     let s:monkey_terminal_buffer = bufnr('%')
+    set nobuflisted
+  else
+    if !win_gotoid(s:monkey_terminal_window)
+    sp
+    wincmd J   
+    execute "resize " . s:monkey_terminal_window_size 
+    buffer Terminal\ 1
+     let s:monkey_terminal_window = win_getid()
+    endif
+  endif
+endfunction
+function! MonkeyTerminalToggleSpace()
+  if win_gotoid(s:monkey_terminal_window)
+    call MonkeyTerminalClose()
+  else
+    call MonkeyTerminalOpenSpace()
   endif
 endfunction
 
@@ -53,8 +73,9 @@ function! MonkeyTerminalExec(cmd)
   wincmd J
 endfunction
 
-nnoremap <silent> <S-M> :call MonkeyTerminalToggle()<CR>
-tnoremap <silent> <S-M> <C-\><C-n>:call MonkeyTerminalToggle()<CR>
+nnoremap          <S-M>   :call MonkeyTerminalToggle()<CR>
+nnoremap          <Space> :call MonkeyTerminalToggleSpace()<CR>
+tnoremap          <S-M>   <C-\><C-n>:call MonkeyTerminalToggle()<CR>
 
 augroup py
     autocmd!

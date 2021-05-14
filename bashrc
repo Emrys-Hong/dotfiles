@@ -25,7 +25,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-export PS1=$Color_Off'$(git branch &>/dev/null;\
+export PS1=$Color_Off'$([ -z "${CUDA_VISIBLE_DEVICES}" ] || echo "|$CUDA_VISIBLE_DEVICES|")$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "'$BIBlue$PathShort'$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
@@ -75,10 +75,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export CUDA_DEVICE_ORDER=PCI_BUS_ID
-
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export CUDA_DEVICE_ORDER=PCI_BUS_ID
+export PATH="/usr/local/cuda/bin":$PATH
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
+
