@@ -12,3 +12,4 @@ pydantic
 nvidia-ml-py3
 py3nvml
 autoimport
+jupyterlab

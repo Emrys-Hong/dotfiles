@@ -3,18 +3,9 @@ let &packpath=&runtimepath
 source ~/.vimrc
 source ~/.dotfiles/nvim/monkey_terminal.vim
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
 call plug#begin('~/.vim/plugged')
-
-" UI "
-Plug 'dracula/vim', { 'name': 'dracula' }
-
-" Functional "
-let g:NERDTreeWinPos = "right"
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Functional
+Plug 'airblade/vim-gitgutter'
 
 " Navigation "
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
@@ -41,4 +32,3 @@ Plug 'mattboehm/vim-unstack'
 let g:unstack_mapkey='<F11>'
 
 call plug#end()
-colorscheme dracula

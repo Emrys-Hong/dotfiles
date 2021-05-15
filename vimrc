@@ -21,56 +21,41 @@ set linebreak
 set mouse=a
 set number relativenumber
 set foldcolumn=1 foldmethod=expr
+set statusline+=%F
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-function! CJ()
-  if winnr('$') > 1
-    wincmd j
-  else
-    normal! Lzz
-  endif
-endfunction
-
-function! CK()
-  if winnr('$') > 1
-    wincmd k
-  else
-    normal! Hzz
-  endif
-endfunction
-
 function! CopyModeToggle()
-  set number!
-  set relativenumber!
-  set foldcolumn=0
-  if &mouse == 'a'
-    set mouse=
-  else
-    set mouse=a
-  endif
+  set number! | set relativenumber! | set foldcolumn=0
+  if &mouse == 'a' | set mouse= | else | set mouse=a | endif
+  GitGutterToggle
 endfunction
 
 let mapleader = '\'
 nmap                      ,               <Leader>
 map                       f               <Plug>(easymotion-bd-f)
-map                       w               <Plug>(easymotion-bd-w)
+map                       gw              <Plug>(easymotion-bd-w)
+map                       gj              <Plug>(easymotion-bd-jk)
 nmap                      f               <Plug>(easymotion-overwin-f)
-nmap                      w               <Plug>(easymotion-overwin-w)
+nmap                      gw              <Plug>(easymotion-overwin-w)
+nmap                      gj              <Plug>(easymotion-overwin-line)
 vnoremap                  x               "_d
 nnoremap                  x               "_x
 nnoremap                  ;               :
 nnoremap                  \_              :new<CR>
 nnoremap                  \|              :vnew<CR>
 nnoremap                  /               :Lines<CR>
+vnoremap                  /               gc
 nnoremap                  ?               :Helptags<CR>
 nnoremap                  qq              <Esc>:bd<CR>
 nnoremap                  qa              <Esc>:qa!<CR>
 nnoremap                  qw              <Esc>:wq<CR>
-nnoremap                  <C-J>           :call CJ()<CR>
-nnoremap                  <C-K>           :call CK()<CR>
+nnoremap                  <C-D>           L5kzz
+nnoremap                  <C-U>           H5jzz
+nnoremap                  <C-J>           <C-W><C-J>
+nnoremap                  <C-K>           <C-W><C-K>
 tnoremap                  <C-K>           <C-\><C-n><C-W><C-K>
 nnoremap                  <C-L>           <C-W><C-L>
 nnoremap                  <C-H>           <C-W><C-H>
@@ -97,6 +82,7 @@ nnoremap                  gf              $F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :ALEFindReferences<CR>
 nnoremap          <leader>x               :ALEFix<CR>
 nnoremap          <Leader>d               Oimport ipdb; ipdb.set_trace()<Esc>
+nnoremap                  `d              /pdb.set_trace()<CR>
 nnoremap          <leader>m               :Maps<CR>
 nnoremap          <leader>:               :Commands<CR>
 nnoremap          <leader>`               :Marks<CR>

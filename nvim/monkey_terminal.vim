@@ -27,6 +27,13 @@ function! MonkeyTerminalOpen()
     call feedkeys('A')
   endif
 endfunction
+function! MonkeyTerminalToggle()
+  if win_gotoid(s:monkey_terminal_window)
+    call MonkeyTerminalClose()
+  else
+    call MonkeyTerminalOpen()
+  endif
+endfunction
 function! MonkeyTerminalClose()
   if win_gotoid(s:monkey_terminal_window)
     let s:monkey_terminal_window_size = winheight(s:monkey_terminal_window) 
