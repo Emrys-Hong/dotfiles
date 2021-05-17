@@ -2,7 +2,7 @@ filetype plugin indent on
 syntax on
 set nocompatible
 set t_Co=256
-set autoread
+set autoread autowrite
 set encoding=utf-8
 set nobackup noswapfile noundofile
 set tags=./tags;
@@ -20,30 +20,40 @@ set splitright
 set linebreak
 set mouse=a
 set number relativenumber
-set foldcolumn=1 foldmethod=expr
-set statusline+=%F
+set foldcolumn=0 foldmethod=expr
 
+source ~/.dotfiles/nvim/monkey_terminal.vim
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-function! CopyModeToggle()
-  set number! | set relativenumber! | set foldcolumn=0
-  if &mouse == 'a' | set mouse= | else | set mouse=a | endif
-  GitGutterToggle
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+  if s:hidden_all == 0
+    let s:hidden_all = 1|set list listchars=
+    set noshowmode|set noruler|set laststatus=0|set noshowcmd|set mouse=
+    set number!|set relativenumber!|set foldcolumn=0|GitGutterToggle
+  else
+    let s:hidden_all = 0|set list listchars=tab:->,trail:.
+    set showmode|set ruler|set laststatus=2|set showcmd|set mouse=a
+    set number!|set relativenumber!|set foldcolumn=1|GitGutterToggle
+  endif
 endfunction
 
 let mapleader = '\'
-nmap                      ,               <Leader>
 map                       f               <Plug>(easymotion-bd-f)
 map                       gw              <Plug>(easymotion-bd-w)
 map                       gj              <Plug>(easymotion-bd-jk)
 nmap                      f               <Plug>(easymotion-overwin-f)
 nmap                      gw              <Plug>(easymotion-overwin-w)
 nmap                      gj              <Plug>(easymotion-overwin-line)
+nmap                      ;               za
+nmap                      ,               <Leader>
 vnoremap                  x               "_d
 nnoremap                  x               "_x
-nnoremap                  ;               :
 nnoremap                  \_              :new<CR>
 nnoremap                  \|              :vnew<CR>
 nnoremap                  /               :Lines<CR>
@@ -52,8 +62,8 @@ nnoremap                  ?               :Helptags<CR>
 nnoremap                  qq              <Esc>:bd<CR>
 nnoremap                  qa              <Esc>:qa!<CR>
 nnoremap                  qw              <Esc>:wq<CR>
-nnoremap                  <C-D>           L5kzz
-nnoremap                  <C-U>           H5jzz
+nnoremap                  <Down>          L5kzz
+nnoremap                  <Up>            H5jzz
 nnoremap                  <C-J>           <C-W><C-J>
 nnoremap                  <C-K>           <C-W><C-K>
 tnoremap                  <C-K>           <C-\><C-n><C-W><C-K>
@@ -69,12 +79,10 @@ nnoremap                  <C-C>           a<C-C>
 nnoremap                  <S-J>           :bprev<CR>
 nnoremap                  <S-K>           :bnext<CR>
 nnoremap                  <S-T>           :Tags<CR>
-nnoremap                  <TAB>           za
-nnoremap                  <CR>            :call CopyModeToggle()<CR>
 vnoremap                  <Tab>           >gv
 vnoremap                  <S-Tab>         <gv
-nnoremap                  <f12>           <Esc>:echo expand('%:p')<CR>
-nnoremap                  <f1>            :w<CR>:Files<CR>
+nnoremap                  <CR>            :call ToggleHiddenAll()<CR>
+nnoremap                  <f1>            :Files<CR>
 tnoremap                  <f1>            <C-\><C-n>:q<CR>
 tnoremap                  <Esc>           <C-\><C-n>
 nnoremap                  gd              :ALEGoToDefinition<CR>
@@ -93,7 +101,7 @@ nnoremap          <Leader>p               :pu<CR>
 nnoremap <silent> <leader>w               :w<CR>
 nnoremap          <leader>j               J
 nnoremap          <leader>pi              :PlugInstall<CR>
-nnoremap          <leader>t               :TagbarToggle<CR>
+nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
 nnoremap          <leader>n               :NERDTreeToggle<CR>
 nnoremap          <leader>ru              :IndentLinesToggle<CR>
 nnoremap          <leader>b               :Buffers<CR>

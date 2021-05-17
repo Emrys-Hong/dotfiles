@@ -1,0 +1,164 @@
+{
+    
+    "rules": [
+        {
+            "description": "Post Escape if Command_L is pressed alone.",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "left_command",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_command"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+         },
+        {
+            "description": "Change capslock to control if pressed with other keys, otherwise Escape",
+            "manipulators": [
+               {
+                  "from": {
+                     "key_code": "caps_lock",
+                     "modifiers": {
+                        "optional": [
+                           "any"
+                        ]
+                     }
+                  },
+                  "to": [
+                     {
+                       "key_code": "left_control"
+                     }
+                  ],
+                  "to_if_alone": [
+                     {
+                       "key_code": "escape"
+                     }
+                  ],
+                  "type": "basic"
+               }
+            ]
+        },
+        {
+          "description": "Right command to Caps Lock on single press, Right Command on press and hold.",
+          "manipulators": [
+            {
+              "type": "basic",
+              "from": {
+                "key_code": "right_command",
+                "modifiers": {
+                  "optional": [
+                    "any"
+                  ]
+                }
+              },
+              "to": [
+                {
+                  "key_code": "caps_lock"
+                }
+              ],
+              "to_if_held_down": [
+                {
+                  "key_code": "right_command"
+                }
+              ]
+            }
+          ]
+        },
+        {
+            "description": "Change left_command+hjkl to arrow keys",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ],
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow"
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ],
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow"
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ],
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow"
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ],
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        }
+    ]
+}
