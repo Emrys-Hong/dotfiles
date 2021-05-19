@@ -1,8 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 if [ -f ~/.bash_common ]; then
     source ~/.bash_common
 fi
@@ -13,7 +10,6 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
