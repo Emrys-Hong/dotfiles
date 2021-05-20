@@ -26,13 +26,10 @@
     ~/.bash_common:
       path: bash_common
     ~/.bashrc:
-      if: '[ `uname` = Linux ]'
       path: bashrc
     ~/.bash_profile:
-      if: '[ `uname` = Darwin ]'
       path: bash_profile
     ~/.zshrc:
-      if: '[ `uname` = Darwin ]'
       path: zshrc
     ~/.profile:
       path: profile
@@ -63,7 +60,7 @@
       command: 
         - touch ~/.bash_local 
           && echo 'cd ~/Github' >> ~/.bash_local
-          && echo 'act "$env"' >> ~/.bash_local 
+          && echo 'act "$env"' >> ~/.bash_local
           && echo 'cd "$wdir"' >> ~/.bash_local
     -
       command:
