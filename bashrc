@@ -79,7 +79,7 @@ if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf
 
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
 export PATH="/usr/local/cuda/bin":$PATH

@@ -2,9 +2,7 @@ suffix
 1 - {clipboard:1}
 2 - {clipboard:2}
 b - CUDA_LAUNCH_BLOCKING=
-c - export CUDA_VISIBLE_DEVICES=
-d - python -m ipdb -c continue main.py
-e - export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`\nls\n\n
-p - python main.py
-q - python ~/.dotfiles/tools/queuer.py 
-v - vi main.py
+d - python -m ipdb -c continue `realpath main.py`\n
+p - python `realpath main.py`\n
+q - python ~/.dotfiles/tools/queuer.py\n
+v - vi main.py\n

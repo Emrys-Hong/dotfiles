@@ -1,8 +1,33 @@
 {
-    
     "rules": [
-          {
-            "description": "Post Escape if Command_L is pressed alone.",
+        {
+            "description": "Post capslock if right_shift is pressed alone.",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "right_shift",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "caps_lock"
+                        }
+                    ],
+                   "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Post Tab if Command_L is pressed alone.",
             "manipulators": [
                 {
                     "from": {
@@ -20,15 +45,15 @@
                     ],
                     "to_if_alone": [
                         {
-                            "key_code": "escape"
+                            "key_code": "tab"
                         }
                     ],
-                   "type": "basic"
+                    "type": "basic"
                 }
             ]
-         },
+        },
         {
-            "description": "Change capslock to control if pressed with other keys, otherwise Escape",
+            "description": "Post Escape if caps_lock is pressed alone, otherwise Escape",
             "manipulators": [
                {
                   "from": {
@@ -54,7 +79,7 @@
             ]
         },
         {
-          "description": "Right command to Caps Lock on single press, Right Command on press and hold.",
+          "description": "Post enter if right_command is pressed alone, otherwise shift.",
           "manipulators": [
             {
               "type": "basic",
@@ -68,19 +93,19 @@
               },
               "to": [
                 {
-                  "key_code": "caps_lock"
+                  "key_code": "left_shift"
                 }
               ],
-              "to_if_held_down": [
+              "to_if_alone": [
                 {
-                  "key_code": "right_command"
+                  "key_code": "return_or_enter"
                 }
               ]
             }
           ]
         },
         {
-          "description": "Change Command_L + D to delete only if pressed at the same time.",
+          "description": "Change Command_L + d to delete only if pressed at the same time.",
           "manipulators": [
             {
               "type": "basic",
@@ -98,6 +123,31 @@
               "to": [
                 {
                   "key_code": "delete_or_backspace"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Change right option to command+control+option",
+          "manipulators": [
+            {
+              "type": "basic",
+              "from": {
+                "key_code": "right_option",
+                "modifiers": {
+                  "optional": [
+                    "any"
+                  ]
+                }
+              },
+              "to": [
+                {
+                  "key_code": "left_option",
+                  "modifiers": [
+                      "left_command",
+                      "left_control"
+                  ]
                 }
               ]
             }

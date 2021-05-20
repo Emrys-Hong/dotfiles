@@ -38,23 +38,21 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-
-if [ -f ~/.tmux.conf ]; then
-    tmux source-file ~/.tmux.conf
-fi
-
-
-if [ -f ~/.dotfiles/scripts/color.sh ]; then
-    source ~/.dotfiles/scripts/color.sh
-fi
-
+[ -f ~/.dotfiles/scripts/color.sh ] && source ~/.dotfiles/scripts/color.sh
 
 # daily commands
 rm_all(){
     find . -name "$1" -type f
     find . -name "$1" -type f -delete
 }
-
+cvd(){
+    export CUDA_VISIBLE_DEVICES="$1"
+    tmux rename-window "CUDA$1"
+}
+ee(){
+    export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`
+    echo "export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`"
+}
 alias a='alias'
 a ll='ls -FlaSh'
 a la='ls -A'
@@ -96,7 +94,7 @@ a 'Q'='py ~/.dotfiles/tools/queuer.py'
 a 'pipin'='pip install -r ~/.dotfiles/scripts/requirements.txt'
 a 'pm'='p main.py'
 a 'dm'='d main.py'
-a 'smi'="py3smi --left"
+a 'smi'="py3smi -w 100"
 a 'watchgpu'='watch -c gpustat -cp --color'
 a 'cudnn-version'='cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2'
 a 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888

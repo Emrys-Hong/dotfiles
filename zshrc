@@ -27,4 +27,4 @@ if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
 
-alias 'vi'='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+alias 'vi'='/Applications/MacVim.app/Contents/MacOS/Vim -g -u ~/.dotfiles/nvim/minimal.vim'
