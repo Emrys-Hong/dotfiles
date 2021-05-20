@@ -58,7 +58,6 @@ nnoremap                  \_              :new<CR>
 nnoremap                  \|              :vnew<CR>
 nnoremap                  /               :Lines<CR>
 vnoremap                  /               gc
-nnoremap                  ?               :Helptags<CR>
 nnoremap                  qq              <Esc>:bd<CR>
 nnoremap                  qa              <Esc>:qa!<CR>
 nnoremap                  qw              <Esc>:wq<CR>
@@ -85,9 +84,10 @@ nnoremap                  <CR>            :call ToggleHiddenAll()<CR>
 nnoremap                  <f1>            :Files<CR>
 tnoremap                  <f1>            <C-\><C-n>:q<CR>
 tnoremap                  <Esc>           <C-\><C-n>
-nnoremap                  gd              :ALEGoToDefinition<CR>
-nnoremap                  gf              $F( h:ALEGoToDefinition<CR>
-nnoremap                  gr              :ALEFindReferences<CR>
+nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
+nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
+nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
+nnoremap                  dW              vbd
 nnoremap          <leader>x               :ALEFix<CR>
 nnoremap          <Leader>d               Oimport ipdb; ipdb.set_trace()<Esc>
 nnoremap                  `d              /pdb.set_trace()<CR>
@@ -95,9 +95,10 @@ nnoremap          <leader>m               :Maps<CR>
 nnoremap          <leader>:               :Commands<CR>
 nnoremap          <leader>`               :Marks<CR>
 nnoremap          <leader>/               :Ag<CR>
+nnoremap          <leader>?               :Helptags<CR>
 nnoremap          <leader>rn              :ALERename<CR>
-nnoremap          <Leader>q               :q<CR>
-nnoremap          <Leader>p               :pu<CR>
+nnoremap          <leader>q               :q<CR>
+nnoremap          <leader>p               :pu<CR>
 nnoremap <silent> <leader>w               :w<CR>
 nnoremap          <leader>j               J
 nnoremap          <leader>pi              :PlugInstall<CR>

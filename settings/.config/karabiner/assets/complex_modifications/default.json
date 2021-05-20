@@ -1,7 +1,7 @@
 {
     
     "rules": [
-        {
+          {
             "description": "Post Escape if Command_L is pressed alone.",
             "manipulators": [
                 {
@@ -23,7 +23,7 @@
                             "key_code": "escape"
                         }
                     ],
-                    "type": "basic"
+                   "type": "basic"
                 }
             ]
          },
@@ -74,6 +74,30 @@
               "to_if_held_down": [
                 {
                   "key_code": "right_command"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Change Command_L + D to delete only if pressed at the same time.",
+          "manipulators": [
+            {
+              "type": "basic",
+              "from": {
+                "key_code": "d",
+                "modifiers": {
+                  "mandatory": [
+                    "left_command"
+                  ],
+                  "optional": [
+                    "any"
+                  ]
+                }
+              },
+              "to": [
+                {
+                  "key_code": "delete_or_backspace"
                 }
               ]
             }

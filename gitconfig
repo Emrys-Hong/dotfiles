@@ -17,7 +17,8 @@
         lod = log -p -1 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(cyan) <%an>%Creset' --abbrev-commit
         loq  = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
         p = "!git rev-parse --abbrev-ref HEAD | xargs git push origin"
-        pl = "!git rev-parse --abbrev-ref HEAD | xargs git pull --rebase origin"
+        ; pl = "!git rev-parse --abbrev-ref HEAD | xargs git pull --rebase origin"
+        pl = "!git rev-parse --abbrev-ref HEAD | xargs git pull origin"
         rmc = rm --cached 
         set-url = remote set-url origin
         url = remote -v
@@ -74,8 +75,8 @@
 [man]
         viewer = vim
 
-[rebase]
-        autoStash = true
+; [rebase]
+;         autoStash = true
 
 [init]
         defaultBranch = main
