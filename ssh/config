@@ -1,22 +1,22 @@
-Host 2080Ti_172.17.18.1
+Host 1
     User emrys
     HostName 172.17.18.1
     LocalForward 8888 127.0.0.1:8888
     LocalForward 8080 127.0.0.1:8080
 
-Host 8000_172.18.240.107
+Host 107
     User emrys
     HostName 172.18.240.107
     LocalForward 8888 127.0.0.1:8888
     LocalForward 8080 127.0.0.1:8080
 
-Host 8000_172.18.240.119
+Host 119
     User emrys
     HostName 172.18.240.119
     LocalForward 8888 127.0.0.1:8888
     LocalForward 8080 127.0.0.1:8080
 
-Host a6000_172.17.67.222
+Host 222
     User emrys
     HostName 172.17.67.222
     LocalForward 8888 127.0.0.1:8888
