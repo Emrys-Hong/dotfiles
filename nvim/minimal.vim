@@ -26,4 +26,3 @@ augroup END
 Plug 'tpope/vim-commentary'
 Plug 'mattboehm/vim-unstack' | let g:unstack_mapkey='<F12>'
 call plug#end()
-colorscheme peachpuff

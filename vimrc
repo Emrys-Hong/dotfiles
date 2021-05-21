@@ -21,6 +21,7 @@ set linebreak
 set mouse=a
 set number relativenumber
 set foldcolumn=0 foldmethod=expr
+colorscheme peachpuff
 
 source ~/.dotfiles/nvim/monkey_terminal.vim
 if empty(glob('~/.vim/autoload/plug.vim'))

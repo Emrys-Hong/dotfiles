@@ -45,6 +45,8 @@
       path: ssh
     ~/.config/nvim:
       path: nvim
+    ~/.config/karabiner/assets/complex_modifications/default.json:
+      path: settings/default.json
 
 - shell:
     - git submodule update --remote dotbot

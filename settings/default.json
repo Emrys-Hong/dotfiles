@@ -22,7 +22,7 @@
                             "key_code": "caps_lock"
                         }
                     ],
-                   "type": "basic"
+                    "type": "basic"
                 }
             ]
         },
@@ -79,12 +79,12 @@
             ]
         },
         {
-          "description": "Post enter if right_command is pressed alone, otherwise shift.",
+          "description": "Change right option to command+control+option",
           "manipulators": [
             {
               "type": "basic",
               "from": {
-                "key_code": "right_command",
+                "key_code": "right_option",
                 "modifiers": {
                   "optional": [
                     "any"
@@ -93,19 +93,18 @@
               },
               "to": [
                 {
-                  "key_code": "left_shift"
-                }
-              ],
-              "to_if_alone": [
-                {
-                  "key_code": "return_or_enter"
+                  "key_code": "left_option",
+                  "modifiers": [
+                      "left_command",
+                      "left_control"
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "description": "Change Command_L + d to delete only if pressed at the same time.",
+          "description": "Change left_command + d to delete only if pressed at the same time.",
           "manipulators": [
             {
               "type": "basic",
@@ -129,13 +128,16 @@
           ]
         },
         {
-          "description": "Change right option to command+control+option",
+          "description": "Change left_command + [ to delete only if pressed at the same time.",
           "manipulators": [
             {
               "type": "basic",
               "from": {
-                "key_code": "right_option",
+                "key_code": "open_bracket",
                 "modifiers": {
+                  "mandatory": [
+                    "left_command"
+                  ],
                   "optional": [
                     "any"
                   ]
@@ -143,11 +145,47 @@
               },
               "to": [
                 {
-                  "key_code": "left_option",
-                  "modifiers": [
-                      "left_command",
-                      "left_control"
+                  "key_code": "delete_or_backspace"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Change left_command + ; to enter only if pressed at the same time.",
+          "manipulators": [
+            {
+              "type": "basic",
+              "from": {
+                "key_code": "semicolon",
+                "modifiers": {
+                  "mandatory": [
+                    "left_command"
+                  ],
+                  "optional": [
+                    "any"
                   ]
+                }
+              },
+              "to": [
+                {
+                  "key_code": "return_or_enter"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Change right_command to shift",
+          "manipulators": [
+            {
+              "type": "basic",
+              "from": {
+                "key_code": "right_command"
+              },
+              "to": [
+                {
+                  "key_code": "left_shift"
                 }
               ]
             }
