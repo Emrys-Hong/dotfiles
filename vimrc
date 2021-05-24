@@ -21,12 +21,16 @@ set linebreak
 set mouse=a
 set number relativenumber
 set foldcolumn=0 foldmethod=expr
-colorscheme peachpuff
-
 source ~/.dotfiles/nvim/monkey_terminal.vim
+
+if has("gui_running")
+  set guifont=Monaco:h14 | colorscheme peachpuff
+endif
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
+
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
