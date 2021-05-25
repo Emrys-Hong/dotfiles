@@ -11,5 +11,9 @@ openssh:
 	sudo apt-get install -y openssh-server
 	sudo ufw allow 22
 
-ag: 
+ag:
 	sudo apt install -y silversearcher-ag
+
+## MACOS
+bash_completion:
+	brew install bash-completion
