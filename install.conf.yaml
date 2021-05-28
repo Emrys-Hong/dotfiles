@@ -13,7 +13,7 @@
       recursive: true
 
 - create:
-    - ~/Github
+    - ~/G
     - ~/Trash_Bin
     - ~/Archived_Projects
     - ~/Data
