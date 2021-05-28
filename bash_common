@@ -79,7 +79,7 @@ a 't'='tmux'
 a 'g'='git'
 a 'p'='python'
 a 'py'='python'
-a 'G'='cd ~/Github'
+a 'G'='cd ~/G'
 a 'D'='cd ~/.dotfiles'
 
 a 'act'='conda activate'
