@@ -93,7 +93,7 @@ nnoremap                  <C-CR>           :call ToggleHiddenAll()<CR>
 nnoremap                  <f1>            :Files<CR>
 tnoremap                  <f1>            <C-\><C-n>:q<CR>
 tnoremap                  <Esc>           <C-\><C-n>
-nnoremap                  t               :MRU<CR>
+nnoremap                  t              :MRU<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
@@ -107,7 +107,7 @@ nnoremap          <leader>`               :Marks<CR>
 nnoremap          <leader>/               :Ag<CR>
 nnoremap          <leader>?               :Helptags<CR>
 nnoremap          <leader>rn              :ALERename<CR>
-nnoremap          <leader>q               :q<CR>
+nnoremap          <leader>q               :q!<CR>
 nnoremap          <leader>p               :pu<CR>
 nnoremap <silent> <leader>w               :w<CR>
 nnoremap          <leader>j               J
