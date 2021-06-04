@@ -47,7 +47,7 @@ rm_all(){
 }
 cvd(){
     export CUDA_VISIBLE_DEVICES="$1"
-    tmux rename-window "CUDA$1"
+    tmux rename-window "CUDA=$1"
 }
 ee(){
     export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`

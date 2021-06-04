@@ -13,7 +13,7 @@
       recursive: true
 
 - create:
-    - ~/Github
+    - ~/G
     - ~/Trash_Bin
     - ~/Archived_Projects
     - ~/Data
@@ -61,8 +61,9 @@
 
       command: 
         - touch ~/.bash_local 
-          && echo 'cd ~/Github' >> ~/.bash_local
+          && echo 'cd ~/G' >> ~/.bash_local
           && echo 'conda activate "$env"' >> ~/.bash_local
+          && echo 'act "$env"' >> ~/.bash_local
           && echo 'cd "$wdir"' >> ~/.bash_local
     -
       command:
