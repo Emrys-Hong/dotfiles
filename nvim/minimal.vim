@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim', { 'name': 'dracula' }
 " Functional
 Plug 'airblade/vim-gitgutter'
+Plug 'yegappan/mru'
 " Navigation "
 Plug 'majutsushi/tagbar', {'on': 'TagbarOpenAutoClose'}
 let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1

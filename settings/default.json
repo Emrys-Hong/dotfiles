@@ -76,30 +76,6 @@
           ]
         },
         {
-          "description": "Change left_command + p to delete only if pressed at the same time.",
-          "manipulators": [
-            {
-              "type": "basic",
-              "from": {
-                "key_code": "p",
-                "modifiers": {
-                  "mandatory": [
-                    "left_command"
-                  ],
-                  "optional": [
-                    "any"
-                  ]
-                }
-              },
-              "to": [
-                {
-                  "key_code": "delete_or_backspace"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "description": "Change left_command + [ to delete only if pressed at the same time.",
           "manipulators": [
             {

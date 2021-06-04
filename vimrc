@@ -21,6 +21,7 @@ set linebreak
 set mouse=a
 set number relativenumber
 set foldcolumn=0 foldmethod=expr
+
 source ~/.dotfiles/nvim/monkey_terminal.vim
 
 if has("gui_running")
@@ -47,6 +48,9 @@ function! ToggleHiddenAll()
     set number!|set relativenumber!|set foldcolumn=1|GitGutterToggle
   endif
 endfunction
+
+autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+
 
 let mapleader = '\'
 map                       f               <Plug>(easymotion-bd-f)
@@ -85,10 +89,11 @@ nnoremap                  <S-K>           :bnext<CR>
 nnoremap                  <S-T>           :Tags<CR>
 vnoremap                  <Tab>           >gv
 vnoremap                  <S-Tab>         <gv
-nnoremap                  <CR>            :call ToggleHiddenAll()<CR>
+nnoremap                  <C-CR>           :call ToggleHiddenAll()<CR>
 nnoremap                  <f1>            :Files<CR>
 tnoremap                  <f1>            <C-\><C-n>:q<CR>
 tnoremap                  <Esc>           <C-\><C-n>
+nnoremap                  t               :MRU<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>

@@ -62,7 +62,7 @@
       command: 
         - touch ~/.bash_local 
           && echo 'cd ~/Github' >> ~/.bash_local
-          && echo 'act "$env"' >> ~/.bash_local
+          && echo 'conda activate "$env"' >> ~/.bash_local
           && echo 'cd "$wdir"' >> ~/.bash_local
     -
       command:

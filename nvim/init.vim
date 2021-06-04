@@ -23,6 +23,7 @@ let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 let g:NERDTreeWinPos = "right"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+Plug 'yegappan/mru'
 
 " Navigation "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
