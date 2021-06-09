@@ -139,12 +139,7 @@
                    ]
                  }
                },
-               "to": [
-                 {
-                   "key_code": "left_shift",
-                 }
-               ],
-               "to_if_alone": [ 
+               "to": [ 
                  {
                    "key_code": "tab",
                      "modifiers": [
@@ -152,7 +147,27 @@
                      ]
                  }
                ]
-
+             }
+          ]
+        },
+        {
+          "description": "right command + space to Command + tab",
+          "manipulators": [
+             {
+               "type": "basic",
+               "from": {
+                 "key_code": "right_command",
+                 "modifiers": {
+                   "mandatory": [
+                     "spacebar"
+                   ]
+                 }
+               },
+               "to": [ 
+                 {
+                   "key_code": "left_shift"
+                 }
+               ]
              }
           ]
         },
