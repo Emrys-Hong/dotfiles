@@ -8,7 +8,7 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'airblade/vim-gitgutter'
 Plug 'yegappan/mru'
 " Navigation "
-Plug 'majutsushi/tagbar', {'on': 'TagbarOpenAutoClose'}
+Plug 'majutsushi/tagbar'
 let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'

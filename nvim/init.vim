@@ -18,12 +18,14 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar', {'on': 'TagbarOpenAutoClose'}
-let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1
-Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
-let g:NERDTreeWinPos = "right"
+Plug 'majutsushi/tagbar'
+let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1 | let g:tagbar_left = 1 | let g:tagbar_vertical = 25
+Plug 'preservim/nerdtree'
+let g:NERDTreeWinPos = "left"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+Plug 'pseewald/nerdtree-tagbar-combined'
 Plug 'yegappan/mru'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Navigation "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'

@@ -49,7 +49,9 @@ function! ToggleHiddenAll()
   endif
 endfunction
 
-autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+function! CloseBuffer()
+  if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | else | bd | endif
+endfunction
 
 
 let mapleader = '\'
@@ -63,11 +65,11 @@ nmap                      ;               za
 nmap                      ,               <Leader>
 vnoremap                  x               "_d
 nnoremap                  x               "_x
-nnoremap                  \_              :new<CR>
+nnoremap                  _               :new<CR>
 nnoremap                  \|              :vnew<CR>
 nnoremap                  /               :Lines<CR>
 vnoremap                  /               gc
-nnoremap                  qq              <Esc>:bd<CR>
+nnoremap                  qq              <Esc>:call CloseBuffer()<CR>
 nnoremap                  qa              <Esc>:qa!<CR>
 nnoremap                  qw              <Esc>:wq<CR>
 nnoremap                  <Down>          L5kzz
@@ -89,11 +91,11 @@ nnoremap                  <S-K>           :bnext<CR>
 nnoremap                  <S-T>           :Tags<CR>
 vnoremap                  <Tab>           >gv
 vnoremap                  <S-Tab>         <gv
-nnoremap                  <C-CR>           :call ToggleHiddenAll()<CR>
+nnoremap                  <C-CR>          :call ToggleHiddenAll()<CR>
 nnoremap                  <f1>            :Files<CR>
 tnoremap                  <f1>            <C-\><C-n>:q<CR>
 tnoremap                  <Esc>           <C-\><C-n>
-nnoremap                  t              :MRU<CR>
+nnoremap                  t               :MRU<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
@@ -113,7 +115,7 @@ nnoremap <silent> <leader>w               :w<CR>
 nnoremap          <leader>j               J
 nnoremap          <leader>pi              :PlugInstall<CR>
 nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
-nnoremap          <leader>n               :NERDTreeToggle<CR>
+nnoremap          <leader>,               :NERDTreeToggle<CR>:TagbarToggle<CR>
 nnoremap          <leader>ru              :IndentLinesToggle<CR>
 nnoremap          <leader>b               :Buffers<CR>
 nnoremap          <leader>s               yy:silent! UnstackFromText('<C-R>"')<CR>
