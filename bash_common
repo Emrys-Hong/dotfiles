@@ -79,7 +79,7 @@ alias 't'='tmux'
 alias 'g'='git'
 alias 'p'='python'
 alias 'py'='python'
-aias 'G'='cd ~/G'
+alias 'G'='cd ~/G'
 alias 'D'='cd ~/.dotfiles'
 
 alias 'act'='conda activate'
