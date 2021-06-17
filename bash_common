@@ -53,6 +53,12 @@ ee(){
     export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`
     echo "export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`"
 }
+
+mkcdir ()
+{
+    mkdir -pv -- "$1" && cd -P -- "$1"
+}
+
 alias a='alias'
 alias ll='ls -FlaSh'
 alias la='ls -A'
@@ -62,7 +68,7 @@ alias '..'='cd ..'
 alias '...'='cd ../..'
 alias '....'='cd ../../..'
 alias '.....'='cd ../../../..'
-alias 'mkd'='mkdir -pv'
+alias 'mkd'='mkcdir'
 alias 'mkdir'='mkdir -pv'
 alias 'cp'='cp -iv'
 alias 'mv'='mv -iv'
