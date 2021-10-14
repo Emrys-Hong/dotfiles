@@ -76,16 +76,13 @@
           ]
         },
         {
-          "description": "Change left_command + [ to delete only if pressed at the same time.",
+          "description": "Change backspace to delete a word",
           "manipulators": [
             {
               "type": "basic",
               "from": {
-                "key_code": "open_bracket",
+                "key_code": "delete_or_backspace",
                 "modifiers": {
-                  "mandatory": [
-                    "left_command"
-                  ],
                   "optional": [
                     "any"
                   ]
