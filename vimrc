@@ -91,7 +91,6 @@ nnoremap                  <S-K>           :bnext<CR>
 nnoremap                  <S-T>           :Tags<CR>
 vnoremap                  <Tab>           >gv
 vnoremap                  <S-Tab>         <gv
-nnoremap                  <C-CR>          :call ToggleHiddenAll()<CR>
 nnoremap                  <f1>            :Files<CR>
 tnoremap                  <f1>            <C-\><C-n>:q<CR>
 tnoremap                  <Esc>           <C-\><C-n>
@@ -100,6 +99,7 @@ nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
 nnoremap                  dW              vbd
+nnoremap          <Leader><CR>            :call ToggleHiddenAll()<CR>
 nnoremap          <leader>x               :ALEFix<CR>
 nnoremap          <Leader>d               Oimport ipdb; ipdb.set_trace()<Esc>
 nnoremap                  `d              /pdb.set_trace()<CR>
