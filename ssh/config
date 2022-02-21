@@ -1,6 +1,6 @@
 Host 2080Ti
     User emrys
-    HostName 172.17.18.1
+    HostName 172.17.240.220
     LocalForward 8888 127.0.0.1:8888
     LocalForward 8080 127.0.0.1:8080
 
@@ -18,6 +18,6 @@ Host 8000_119
 
 Host a6000
     User emrys
-    HostName 172.17.67.222
+    HostName 172.17.240.81
     LocalForward 8888 127.0.0.1:8888
     LocalForward 8080 127.0.0.1:8080

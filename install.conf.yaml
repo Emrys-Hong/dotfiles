@@ -63,7 +63,6 @@
         - touch ~/.bash_local 
           && echo 'cd ~/G' >> ~/.bash_local
           && echo 'conda activate "$env"' >> ~/.bash_local
-          && echo 'act "$env"' >> ~/.bash_local
           && echo 'cd "$wdir"' >> ~/.bash_local
     -
       command:
