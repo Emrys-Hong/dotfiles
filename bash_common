@@ -95,7 +95,7 @@ alias 'cl'='conda info --envs'
 alias 'brc'='source ~/.bashrc'
 alias 'zrc'='source ~/.zshrc'
 alias 'bpf'='source ~/.bash_profile'
-alias 'dush'='du -hLlxcs * 2>/dev/null'
+alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
 
 alias 'd'='python -m ipdb -c continue'
 alias 'Q'='py ~/.dotfiles/tools/queuer.py'
