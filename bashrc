@@ -85,3 +85,5 @@ export CUDA_DEVICE_ORDER=PCI_BUS_ID
 export PATH="/usr/local/cuda/bin":$PATH
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
