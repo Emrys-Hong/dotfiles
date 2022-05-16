@@ -79,6 +79,8 @@ alias 'rm.'='current_dir=`pwd` && cd .. && rmr $current_dir && current_dir='
 alias 'rmrf'='rm -rf'
 alias 'cpr'='cp -r'
 alias 'scpr'='scp -r'
+alias 'dl'='it2dl'
+alias 'ul'='it2ul'
 
 alias 'e'='export'
 alias 'c'='conda'
