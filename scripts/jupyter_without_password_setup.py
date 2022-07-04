@@ -1,6 +1,6 @@
-# from notebook.auth import passwd
+from notebook.auth import passwd
 import os
-from IPython.lib import passwd
+# from IPython.lib import passwd
 
 # generated_password = passwd()
 pw = input('Key in password for jupyter notebook: ')
