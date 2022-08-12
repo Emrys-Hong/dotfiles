@@ -87,3 +87,5 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
