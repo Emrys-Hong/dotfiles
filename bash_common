@@ -87,7 +87,7 @@ alias 'c'='conda'
 alias 't'='tmux'
 alias 'g'='git'
 alias 'p'='python'
-alias 'py'='python'
+alias 'py'='python -m ipdb -c continue'
 alias 'G'='cd ~/G'
 alias 'D'='cd ~/.dotfiles'
 
