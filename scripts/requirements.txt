@@ -1,4 +1,5 @@
 ipdb
+readline
 neovim
 pynvim
 powerline-status
@@ -9,7 +10,7 @@ black
 pyls
 mypy
 pydantic
-nvidia-ml-py3
+# nvidia-ml-py3
 py3nvml
 autoimport
 jupyterlab
