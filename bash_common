@@ -86,6 +86,7 @@ alias 'e'='export'
 alias 'c'='conda'
 alias 't'='tmux'
 alias 'g'='git'
+alias 'gs'='g s' # git status -s in gitconfig
 alias 'p'='python'
 alias 'py'='python -m ipdb -c continue'
 alias 'G'='cd ~/G'
