@@ -58,6 +58,7 @@ let g:ale_set_highlights = 0 | let g:ale_set_signs = 0
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python']
 let g:python_highlight_space_errors = 0
+":UpdateRemotePlugins if semshi have problem
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-plug'] }
 " Plug 'mattboehm/vim-unstack' | let g:unstack_mapkey='<F12>'
 

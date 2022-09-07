@@ -102,7 +102,7 @@ alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
 
 alias 'd'='python -m ipdb -c continue'
 alias 'Q'='py ~/.dotfiles/tools/queuer.py'
-alias 'pipin'='pip install -r ~/.dotfiles/scripts/requirements.txt'
+alias 'pipin'='pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade'
 alias 'pm'='p main.py'
 alias 'dm'='d main.py'
 alias 'smi'="py3smi -w 100"
