@@ -14,3 +14,4 @@ pydantic
 py3nvml
 autoimport
 jupyterlab
+rich

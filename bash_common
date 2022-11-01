@@ -54,9 +54,21 @@ ee(){
     echo "export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`"
 }
 
-mkcdir ()
+mkd ()
 {
     mkdir -pv -- "$1" && cd -P -- "$1"
+}
+
+traceback ()
+{
+    content="from rich.traceback import install;install()"
+    echo $content > "$(python -c 'import site; print(site.getsitepackages()[0])')/sitecustomize.py"
+}
+
+pipin ()
+{
+    pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade
+    traceback
 }
 
 alias a='alias'
@@ -68,7 +80,6 @@ alias '..'='cd ..'
 alias '...'='cd ../..'
 alias '....'='cd ../../..'
 alias '.....'='cd ../../../..'
-alias 'mkd'='mkcdir'
 alias 'mkdir'='mkdir -pv'
 alias 'cp'='cp -iv'
 alias 'mv'='mv -iv'
@@ -102,7 +113,6 @@ alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
 
 alias 'd'='python -m ipdb -c continue'
 alias 'Q'='py ~/.dotfiles/tools/queuer.py'
-alias 'pipin'='pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade'
 alias 'pm'='p main.py'
 alias 'dm'='d main.py'
 alias 'smi'="py3smi -w 100"
@@ -112,4 +122,4 @@ alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
 alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
 alias 'rstop'='ray stop'
 alias 'tb'='tensorboard --logdir . --port' # tb 8080
-alias 'pp'='export PYTHONPATH=$(pwd)'
+alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
