@@ -6,12 +6,9 @@ channels:
 
 # channel_priority: false
 
-changeps1: no
-
+changeps1: yes
 always_yes: true
-
 binstar_personal: true
-
 show_channel_urls: yes
 
 # channel_priority: strict
