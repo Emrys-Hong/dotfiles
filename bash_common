@@ -14,10 +14,15 @@ unset __conda_setup
 
 # neovim settings
 if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
-        alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
-        alias 'vi'="nvim -u ~/.config/nvim/init.vim"
-        alias 'vim'="nvim -u ~/.config/nvim/minimal.vim"
+    alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
+    alias 'vi'="nvim -u ~/.config/nvim/init.vim"
+    alias 'vim'="nvim -u ~/.config/nvim/minimal.vim"
 fi
+
+if [ -f $HOME/.dotfiles/condarc ]; then
+    export 'CONDARC'="$HOME/.dotfiles/condarc"
+fi
+
 
 # color
 if [ -x /usr/bin/dircolors ]; then
