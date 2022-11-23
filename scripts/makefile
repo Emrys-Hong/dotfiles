@@ -14,6 +14,10 @@ openssh:
 ag:
 	sudo apt install -y silversearcher-ag
 
+# for git diff visualization
+tig:
+	sudo apt-get install -y tig
+
 ## MACOS
 bash_completion:
 	brew install bash-completion
