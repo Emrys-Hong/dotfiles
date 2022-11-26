@@ -53,6 +53,7 @@ bind -f ~/.inputrc
 shopt -s checkwinsize
 shopt -s globstar
 shopt -s autocd
+shopt -s expand_aliases
 bind "TAB:menu-complete"
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
