@@ -15,3 +15,4 @@ py3nvml
 autoimport
 jupyterlab
 rich
+tabview

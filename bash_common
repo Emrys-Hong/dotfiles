@@ -130,3 +130,4 @@ alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
 alias 'rstop'='ray stop'
 alias 'tb'='tensorboard --logdir . --port' # tb 8080
 alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
+alias 'tv'='tabview'
