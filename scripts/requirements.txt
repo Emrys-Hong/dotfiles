@@ -1,18 +1,20 @@
-ipdb
-readline
-neovim
-pynvim
-powerline-status
-gpustat
-termcolor
-isort
-black
-pyls
-mypy
-pydantic
+neovim # VIM
+pynvim # VIM
+powerline-status # VIM
+isort # VIM import sort
+pyls # VIM python language server (for autocompletion etc)
+mypy  # VIM python type checker
+autoimport # VIM autoimport
+pydantic # python type import
+py3nvml # python nvidia gpu monitoring
+ipdb # python debugging
+jupyterlab # Jupyter
+jupyterlab-vim # Jupyter VIM
+tabview # For viewing tables in terminal
+
+# black # VIM code formatter
+# termcolor # Python color
+# readline
+# gpustat
 # nvidia-ml-py3
-py3nvml
-autoimport
-jupyterlab
-rich
-tabview
+# rich
