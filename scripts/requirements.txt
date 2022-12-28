@@ -11,10 +11,11 @@ ipdb # python debugging
 jupyterlab # Jupyter
 jupyterlab-vim # Jupyter VIM
 tabview # For viewing tables in terminal
+icdiff # For comparing differences between files
 
 # black # VIM code formatter
 # termcolor # Python color
 # readline
 # gpustat
 # nvidia-ml-py3
-# rich
+# rich # better debugging output
