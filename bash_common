@@ -100,13 +100,12 @@ alias 'scpr'='scp -r'
 alias 'dl'='it2dl'
 alias 'ul'='it2ul'
 
-alias 'e'='export'
-alias 'c'='conda'
 alias 't'='tmux'
 alias 'g'='git'
 alias 'gs'='g s' # git status -s in gitconfig
 alias 'p'='python'
-alias 'py'='python -m ipdb -c continue'
+alias 'py'='python'
+alias 'ipdb'='python -m ipdb -c continue'
 alias 'G'='cd ~/G'
 alias 'D'='cd ~/.dotfiles'
 
@@ -118,10 +117,7 @@ alias 'zrc'='source ~/.zshrc'
 alias 'bpf'='source ~/.bash_profile'
 alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
 
-alias 'd'='python -m ipdb -c continue'
 alias 'Q'='py ~/.dotfiles/tools/queuer.py'
-alias 'pm'='p main.py'
-alias 'dm'='d main.py'
 alias 'smi'="py3smi -w 100"
 alias 'watchgpu'='watch -c gpustat -cp --color'
 alias 'cudnn-version'='cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2'
