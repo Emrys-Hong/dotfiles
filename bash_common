@@ -119,6 +119,7 @@ alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
 alias 'diff'='icdiff'
 
 alias 'smi'="py3smi -w 100"
+alias 'csv'='visidata'
 alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
 alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
 
