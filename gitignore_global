@@ -9,6 +9,8 @@ __pycache__/
 
 # vim annotated files
 tags 
+tags.lock
+tags.temp
 
 
 # C extensions
