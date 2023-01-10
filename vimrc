@@ -62,6 +62,7 @@ nmap                      f               <Plug>(easymotion-overwin-f)
 nmap                      gw              <Plug>(easymotion-overwin-w)
 nmap                      gj              <Plug>(easymotion-overwin-line)
 nmap                      ;               za
+" zM for More fold and zR for Reduce fold
 nmap                      ,               <Leader>
 vnoremap                  x               "_d
 nnoremap                  x               "_x
