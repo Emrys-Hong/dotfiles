@@ -41,11 +41,11 @@ function! ToggleHiddenAll()
   if s:hidden_all == 0
     let s:hidden_all = 1|set list listchars=
     set noshowmode|set noruler|set laststatus=0|set noshowcmd|set mouse=
-    set number!|set relativenumber!|set foldcolumn=0|GitGutterToggle
+    set number!|set relativenumber!|set foldcolumn=0|GitGutterToggle|set paste
   else
     let s:hidden_all = 0|set list listchars=tab:->,trail:.
     set showmode|set ruler|set laststatus=2|set showcmd|set mouse=a
-    set number!|set relativenumber!|set foldcolumn=1|GitGutterToggle
+    set number!|set relativenumber!|set foldcolumn=1|GitGutterToggle|set nopaste
   endif
 endfunction
 
