@@ -105,6 +105,7 @@ alias 'gs'='g s' # git status -s in gitconfig
 alias 'p'='python'
 alias 'py'='python'
 alias 'ipdb'='python -m ipdb -c continue'
+alias 'i'='python -m ipdb -c continue'
 alias 'b'='bash'
 alias 'G'='cd ~/G'
 alias 'D'='cd ~/.dotfiles'
