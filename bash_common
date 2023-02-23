@@ -124,6 +124,7 @@ alias 'smi'="py3smi -w 100"
 alias 'csv'='visidata'
 alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
 alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
+alias 'site'='python -m site'
 
 # alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
 # alias 'rstop'='ray stop'
