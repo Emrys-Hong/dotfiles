@@ -1,18 +1,18 @@
 neovim # VIM
 pynvim # VIM
 powerline-status # VIM
-isort # VIM import sort
 pyls # VIM python language server (for autocompletion etc)
-mypy  # VIM python type checker
-autoimport # VIM autoimport
 pydantic # python type import
 py3nvml # python nvidia gpu monitoring
 ipdb # python debugging
 jupyterlab # Jupyter
-jupyterlab-vim # Jupyter VIM
 visidata # For viewing tables in terminal
 icdiff # For comparing differences between files
 
+# mypy  # VIM python type checker
+# isort # VIM import sort
+# jupyterlab-vim # Jupyter VIM
+# autoimport # VIM autoimport
 # black # VIM code formatter
 # termcolor # Python color
 # readline
