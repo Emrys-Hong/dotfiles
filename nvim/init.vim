@@ -12,7 +12,8 @@ let g:airline#extensions#tabline#enabled = 1 | let g:airline#extensions#tabline#
 let g:airline_section_c = '%F'
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#ale#enabled = 1
-Plug 'dracula/vim', { 'name': 'dracula' }
+" Plug 'dracula/vim', { 'name': 'dracula' }
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Functional "
 Plug 'kalekundert/vim-coiled-snake'
@@ -63,4 +64,5 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 " Plug 'mattboehm/vim-unstack' | let g:unstack_mapkey='<F12>'
 
 call plug#end()
-colorscheme dracula
+" colorscheme dracula
+colorscheme catppuccin-latte
