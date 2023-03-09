@@ -34,11 +34,13 @@ if [ $? -eq 0 ]; then \
   else \
     # @5 - Changes to working tree
     echo "'$BIRed'"$(__git_ps1 "{%s}"); \
-  fi)'$Color_Off'\$ "; \
+  fi)'$Black'\$ "; \
 else \
   # @2 - Prompt when not in GIT repo
-  echo "'$BIBlue$PathShort$Color_Off'\$ "; \
+  echo "'$BIBlue$PathShort$Black'\$ "; \
 fi)'
+
+LS_COLORS=$LS_COLORS:'fi=0;30:'
 
 
 case "$TERM" in
