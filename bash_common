@@ -121,14 +121,15 @@ alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
 alias 'diff'='icdiff'
 
 alias 'smi'="py3smi -w 100"
-alias 'csv'='visidata'
 alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
 alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
 alias 'site'='python -m site'
+alias 'tb'='tensorboard --logdir . --port' # tb 8080
+
+alias 'rig'='rig'
+alias 'icdiff'='icdiff'
+alias 'visidata'='visidata'
 
 # alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
 # alias 'rstop'='ray stop'
-# alias 'tb'='tensorboard --logdir . --port' # tb 8080
 # alias 'watchgpu'='watch -c gpustat -cp --color'
-# alias 'cudnn-version'='cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2'
-# alias 'Q'='py ~/.dotfiles/tools/queuer.py'
