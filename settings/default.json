@@ -75,6 +75,57 @@
                   ]
                 },
                 {
+                  "description": "Change left control to change input source (control + space)",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "left_control",
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "spacebar",
+                          "modifiers": [
+                            "left_control"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "description": "Change right_command + backslash to left_command + tilde",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "backslash",
+                        "modifiers": {
+                          "mandatory": [
+                            "right_command"
+                          ],
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "grave_accent_and_tilde",
+                          "modifiers": [
+                            "left_command"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
                   "description": "Change enter to control + tab",
                   "manipulators": [
                     {
@@ -701,6 +752,36 @@
                       ]
                     }
                   ]
+                },
+                {
+                    "description": "Post tab if caps_lock is pressed alone, otherwise shift + control + option, for sizeup",
+                    "manipulators": [
+                       {
+                          "from": {
+                             "key_code": "tab",
+                             "modifiers": {
+                                "optional": [
+                                   "any"
+                                ]
+                             }
+                          },
+                          "to": [
+                             {
+                               "key_code": "left_control",
+                               "modifiers": [
+                                   "left_shift",
+                                   "left_option"
+                               ]
+                             }
+                          ],
+                          "to_if_alone": [
+                             {
+                               "key_code": "tab"
+                             }
+                          ],
+                          "type": "basic"
+                       }
+                    ]
                 },
                 {
                   "description": "Double tab right shift to become capslock.",
