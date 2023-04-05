@@ -118,7 +118,6 @@ alias 'brc'='source ~/.bashrc'
 alias 'zrc'='source ~/.zshrc'
 alias 'bpf'='source ~/.bash_profile'
 alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
-alias 'diff'='icdiff'
 
 alias 'smi'="py3smi -w 100"
 alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
@@ -126,9 +125,9 @@ alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
 alias 'site'='python -m site'
 alias 'tb'='tensorboard --logdir . --port' # tb 8080
 
-alias 'rig'='rig'
-alias 'icdiff'='icdiff'
-alias 'visidata'='visidata'
+alias 'rig'='rig' # github history
+alias 'icdiff'='icdiff' # difference in files
+alias 'visidata'='visidata' # csv files
 
 # alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
 # alias 'rstop'='ray stop'
