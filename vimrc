@@ -67,6 +67,8 @@ nnoremap                  qa              <Esc>:qa!<CR>
 nnoremap                  qw              <Esc>:wq<CR>
 nnoremap                  <Down>          L5kzz
 nnoremap                  <Up>            H5jzz
+vnoremap                  <Down>          L5kzz
+vnoremap                  <Up>            H5jzz
 nnoremap                  <C-J>           <C-W><C-J>
 nnoremap                  <C-K>           <C-W><C-K>
 tnoremap                  <C-K>           <C-\><C-n><C-W><C-K>
