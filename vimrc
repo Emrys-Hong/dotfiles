@@ -53,6 +53,11 @@ function! CloseBuffer()
   if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | else | bd | endif
 endfunction
 
+if exists(':Lines')
+  nnoremap / :Lines<CR>
+endif
+
+
 
 let mapleader = '\'
 map                       f               <Plug>(easymotion-bd-f)
@@ -68,7 +73,6 @@ vnoremap                  x               "_d
 nnoremap                  x               "_x
 nnoremap                  _               :new<CR>
 nnoremap                  \|              :vnew<CR>
-nnoremap                  /               :Lines<CR>
 vnoremap                  /               gc
 nnoremap                  qq              <Esc>:call CloseBuffer()<CR>
 nnoremap                  qa              <Esc>:qa!<CR>
@@ -92,31 +96,34 @@ nnoremap                  <S-K>           :bnext<CR>
 nnoremap                  <S-T>           :Tags<CR>
 vnoremap                  <Tab>           >gv
 vnoremap                  <S-Tab>         <gv
-nnoremap                  <f1>            :Files<CR>
-tnoremap                  <f1>            <C-\><C-n>:q<CR>
 tnoremap                  <Esc>           <C-\><C-n>
-nnoremap                  t               :MRU<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
 nnoremap                  dW              vbd
 nnoremap          <Leader><CR>            :call ToggleHiddenAll()<CR>
-nnoremap          <leader>x               :ALEFix<CR>
-nnoremap          <Leader>d               Oimport ipdb; ipdb.set_trace()<Esc>
-nnoremap                  `d              /pdb.set_trace()<CR>
+
+" search
 nnoremap          <leader>m               :Maps<CR>
 nnoremap          <leader>:               :Commands<CR>
 nnoremap          <leader>`               :Marks<CR>
 nnoremap          <leader>/               :Ag<CR>
 nnoremap          <leader>?               :Helptags<CR>
+nnoremap          <Leader>f               :Files<CR>
+tnoremap          <Leader>f               <C-\><C-n>:q<CR>
+
+" essential
 nnoremap          <leader>rn              :ALERename<CR>
+nnoremap          <Leader>d               Oimport ipdb; ipdb.set_trace()<Esc>
+nnoremap                  `d              /pdb.set_trace()<CR>
 nnoremap          <leader>q               :q!<CR>
 nnoremap          <leader>p               :pu<CR>
 nnoremap <silent> <leader>w               :w<CR>
 nnoremap          <leader>j               J
+nnoremap          <leader>,               :NERDTreeToggle<CR>:TagbarToggle<CR>
+
 nnoremap          <leader>pi              :PlugInstall<CR>
 nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
-nnoremap          <leader>,               :NERDTreeToggle<CR>:TagbarToggle<CR>
 nnoremap          <leader>ru              :IndentLinesToggle<CR>
 nnoremap          <leader>b               :Buffers<CR>
 nnoremap          <leader>s               yy:silent! UnstackFromText('<C-R>"')<CR>
