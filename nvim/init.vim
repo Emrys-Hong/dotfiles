@@ -21,7 +21,6 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeWinPos = "left"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 Plug 'pseewald/nerdtree-tagbar-combined'
-Plug 'yegappan/mru'
 Plug 'jistr/vim-nerdtree-tabs'
 
 " Navigation "
@@ -33,13 +32,6 @@ let g:EasyMotion_smartcase = 1
 
 " Langauge "
 Plug 'Raimondi/delimitMate' | let delimitMate_expand_cr = 1
-augroup mydelimitMate
-  au!
-  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
-  au FileType tex let b:delimitMate_quotes = ""
-  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
-  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-augroup END
 " Plug 'zxqfl/tabnine-vim' Tabnine::sem
 Plug 'github/copilot.vim'
 " :Copilot setup
