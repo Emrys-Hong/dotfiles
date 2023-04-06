@@ -1,5 +1,5 @@
-        {
-            "rules": [
+{"rules": 
+        [
                 {
                     "description": "[caps_lock] -> [escape]",
                     "manipulators": [
@@ -27,16 +27,19 @@
                     ]
                 },
                 {
-                  "description": "[left_command + d] -> [backspace]",
+                  "description": "[right_shift]x2 -> [capslock]",
                   "manipulators": [
                     {
-                      "type": "basic",
+                      "conditions": [
+                        {
+                          "name": "right_shift pressed",
+                          "type": "variable_if",
+                          "value": 1
+                        }
+                      ],
                       "from": {
-                        "key_code": "d",
+                        "key_code": "right_shift",
                         "modifiers": {
-                          "mandatory": [
-                            "left_command"
-                          ],
                           "optional": [
                             "any"
                           ]
@@ -44,9 +47,50 @@
                       },
                       "to": [
                         {
-                          "key_code": "delete_or_backspace"
+                          "key_code": "caps_lock"
                         }
-                      ]
+                      ],
+                      "type": "basic"
+                    },
+                    {
+                      "from": {
+                        "key_code": "right_shift",
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "set_variable": {
+                            "name": "right_shift pressed",
+                            "value": 1
+                          }
+                        },
+                        {
+                          "key_code": "right_shift"
+                        }
+                      ],
+                      "to_delayed_action": {
+                        "to_if_canceled": [
+                          {
+                            "set_variable": {
+                              "name": "right_shift pressed",
+                              "value": 0
+                            }
+                          }
+                        ],
+                        "to_if_invoked": [
+                          {
+                            "set_variable": {
+                              "name": "right_shift pressed",
+                              "value": 0
+                            }
+                          }
+                        ]
+                      },
+                      "type": "basic"
                     }
                   ]
                 },
@@ -99,33 +143,6 @@
                   ]
                 },
                 {
-                  "description": "[right_command + backslash] -> [left_command + tilde] (change within application)",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "backslash",
-                        "modifiers": {
-                          "mandatory": [
-                            "right_command"
-                          ],
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "grave_accent_and_tilde",
-                          "modifiers": [
-                            "left_command"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
                   "description": "[enter] -> [control + tab] (next page)",
                   "manipulators": [
                     {
@@ -144,6 +161,30 @@
                           "modifiers": [
                             "left_control"
                           ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "description": "[left_command + d] -> [backspace]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                          "mandatory": [
+                            "left_command"
+                          ],
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "delete_or_backspace"
                         }
                       ]
                     }
@@ -252,6 +293,79 @@
                             ],
                             "type": "basic"
                         }
+                    ]
+                },
+                {
+                  "description": "[right_command + backslash] -> [left_command + tilde] (change within application)",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "backslash",
+                        "modifiers": {
+                          "mandatory": [
+                            "right_command"
+                          ],
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "grave_accent_and_tilde",
+                          "modifiers": [
+                            "left_command"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "description": "[right_command] -> [tab] or [command]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "right_command"
+                      },
+                      "to": [
+                        {
+                          "key_code": "right_command"
+                        }
+                      ],
+                      "to_if_alone": [
+                        {
+                          "key_code": "tab"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                    "description": "[right_option] -> [shift + control + option] (for sizeup)",
+                    "manipulators": [
+                       {
+                          "from": {
+                             "key_code": "right_option",
+                             "modifiers": {
+                                "optional": [
+                                   "any"
+                                ]
+                             }
+                          },
+                          "to": [
+                             {
+                               "key_code": "left_control",
+                               "modifiers": [
+                                   "left_shift",
+                                   "left_option"
+                               ]
+                             }
+                          ],
+                          "type": "basic"
+                       }
                     ]
                 },
                 {
@@ -731,120 +845,7 @@
                             "type": "basic"
                         }
                     ]
-                },
-                {
-                  "description": "[right_command] -> [tab] or [command]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "right_command"
-                      },
-                      "to": [
-                        {
-                          "key_code": "right_command"
-                        }
-                      ],
-                      "to_if_alone": [
-                        {
-                          "key_code": "tab"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                    "description": "[right_option] -> [shift + control + option] (for sizeup)",
-                    "manipulators": [
-                       {
-                          "from": {
-                             "key_code": "right_option",
-                             "modifiers": {
-                                "optional": [
-                                   "any"
-                                ]
-                             }
-                          },
-                          "to": [
-                             {
-                               "key_code": "left_control",
-                               "modifiers": [
-                                   "left_shift",
-                                   "left_option"
-                               ]
-                             }
-                          ],
-                          "type": "basic"
-                       }
-                    ]
-                },
-                {
-                  "description": "[right_shift]x2 -> [capslock]",
-                  "manipulators": [
-                    {
-                      "conditions": [
-                        {
-                          "name": "right_shift pressed",
-                          "type": "variable_if",
-                          "value": 1
-                        }
-                      ],
-                      "from": {
-                        "key_code": "right_shift",
-                        "modifiers": {
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "caps_lock"
-                        }
-                      ],
-                      "type": "basic"
-                    },
-                    {
-                      "from": {
-                        "key_code": "right_shift",
-                        "modifiers": {
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "set_variable": {
-                            "name": "right_shift pressed",
-                            "value": 1
-                          }
-                        },
-                        {
-                          "key_code": "right_shift"
-                        }
-                      ],
-                      "to_delayed_action": {
-                        "to_if_canceled": [
-                          {
-                            "set_variable": {
-                              "name": "right_shift pressed",
-                              "value": 0
-                            }
-                          }
-                        ],
-                        "to_if_invoked": [
-                          {
-                            "set_variable": {
-                              "name": "right_shift pressed",
-                              "value": 0
-                            }
-                          }
-                        ]
-                      },
-                      "type": "basic"
-                    }
-                  ]
                 }
-            ]
-        }
+                
+        ]
+ }
