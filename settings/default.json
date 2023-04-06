@@ -1,7 +1,7 @@
         {
             "rules": [
                 {
-                    "description": "Post Escape if caps_lock is pressed alone, otherwise Escape",
+                    "description": "[caps_lock] -> [escape]",
                     "manipulators": [
                        {
                           "from": {
@@ -27,7 +27,7 @@
                     ]
                 },
                 {
-                  "description": "Change left_command + d to delete one word only if pressed at the same time.",
+                  "description": "[left_command + d] -> [backspace]",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -51,7 +51,7 @@
                   ]
                 },
                 {
-                  "description": "Change backspace to delete a word",
+                  "description": "[backspace] -> [option + backspace] (delete a word)",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -75,7 +75,7 @@
                   ]
                 },
                 {
-                  "description": "Change escape to change input source (control + space)",
+                  "description": "[escape] -> [control + space] (change input source)",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -99,7 +99,7 @@
                   ]
                 },
                 {
-                  "description": "Change right_command + backslash to left_command + tilde",
+                  "description": "[right_command + backslash] -> [left_command + tilde] (change within application)",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -126,7 +126,7 @@
                   ]
                 },
                 {
-                  "description": "Change enter to control + tab",
+                  "description": "[enter] -> [control + tab] (next page)",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -150,7 +150,7 @@
                   ]
                 },
                 {
-                  "description": "Change left_command + ; to enter only if pressed at the same time.",
+                  "description": "[left_command + ;] -> [enter]",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -174,7 +174,7 @@
                   ]
                 },
                 {
-                    "description": "Change left_command+hjkl to arrow keys",
+                    "description": "[left_command+hjkl] -> arrow keys",
                     "manipulators": [
                         {
                             "from": {
@@ -255,7 +255,7 @@
                     ]
                 },
                 {
-                    "description": "Change right_command+asdfghjkl; to number keys",
+                    "description": "[right_command+asdfghjkl] -> [number keys]",
                     "manipulators": [
                         {
                             "from": {
@@ -450,7 +450,7 @@
                     ]
                 },
                 {
-                    "description": "Change right_command+qwertyuiop to punctuation keys",
+                    "description": "[right_command+qwertyuiop] -> [punctuation]",
                     "manipulators": [
                         {
                             "from": {
@@ -733,7 +733,7 @@
                     ]
                 },
                 {
-                  "description": "Change right_command to tab",
+                  "description": "[right_command] -> [tab] or [command]",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -754,11 +754,11 @@
                   ]
                 },
                 {
-                    "description": "Post tab if caps_lock is pressed alone, otherwise shift + control + option, for sizeup",
+                    "description": "[right_option] -> [shift + control + option] (for sizeup)",
                     "manipulators": [
                        {
                           "from": {
-                             "key_code": "tab",
+                             "key_code": "right_option",
                              "modifiers": {
                                 "optional": [
                                    "any"
@@ -774,17 +774,12 @@
                                ]
                              }
                           ],
-                          "to_if_alone": [
-                             {
-                               "key_code": "tab"
-                             }
-                          ],
                           "type": "basic"
                        }
                     ]
                 },
                 {
-                  "description": "Double tab right shift to become capslock.",
+                  "description": "[right_shift]x2 -> [capslock]",
                   "manipulators": [
                     {
                       "conditions": [
