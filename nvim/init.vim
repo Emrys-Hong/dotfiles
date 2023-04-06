@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = '' | let g:airline_section_y = ''
+let g:airline_section_error = '' | let g:airline_section_warning = ''
 let g:airline#extensions#tabline#enabled = 1
 " Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
