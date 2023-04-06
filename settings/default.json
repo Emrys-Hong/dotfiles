@@ -75,12 +75,12 @@
                   ]
                 },
                 {
-                  "description": "Change left control to change input source (control + space)",
+                  "description": "Change escape to change input source (control + space)",
                   "manipulators": [
                     {
                       "type": "basic",
                       "from": {
-                        "key_code": "left_control",
+                        "key_code": "escape",
                         "modifiers": {
                           "optional": [
                             "any"
