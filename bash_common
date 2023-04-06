@@ -43,6 +43,7 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+export PYTHONBREAKPOINT=ipdb.set_trace
 [ -f ~/.dotfiles/scripts/color.sh ] && source ~/.dotfiles/scripts/color.sh
 
 # daily commands
@@ -122,7 +123,7 @@ alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
 alias 'smi'="py3smi -w 100"
 alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
 alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
-alias 'site'='python -m site'
+alias 'site'='python -m site' # location of site packages
 alias 'tb'='tensorboard --logdir . --port' # tb 8080
 
 alias 'rig'='rig' # github history

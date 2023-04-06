@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = '' | let g:airline_section_y = ''
+let g:airline#extensions#tabline#enabled = 1
 " Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
@@ -54,3 +55,20 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 call plug#end()
 " colorscheme dracula
 colorscheme catppuccin-latte
+
+" mappings
+map                       f               <Plug>(easymotion-bd-f)
+map                       gw              <Plug>(easymotion-bd-w)
+map                       gj              <Plug>(easymotion-bd-jk)
+nmap                      f               <Plug>(easymotion-overwin-f)
+nmap                      gw              <Plug>(easymotion-overwin-w)
+nmap                      gj              <Plug>(easymotion-overwin-line)
+nmap                      ;               za
+" zM for More fold and zR for Reduce fold
+
+nnoremap                  /               :Lines<CR>
+nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
+nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
+nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
+
+

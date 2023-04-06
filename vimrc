@@ -53,21 +53,9 @@ function! CloseBuffer()
   if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | else | bd | endif
 endfunction
 
-if exists(':Lines')
-  nnoremap / :Lines<CR>
-endif
-
 
 
 let mapleader = '\'
-map                       f               <Plug>(easymotion-bd-f)
-map                       gw              <Plug>(easymotion-bd-w)
-map                       gj              <Plug>(easymotion-bd-jk)
-nmap                      f               <Plug>(easymotion-overwin-f)
-nmap                      gw              <Plug>(easymotion-overwin-w)
-nmap                      gj              <Plug>(easymotion-overwin-line)
-nmap                      ;               za
-" zM for More fold and zR for Reduce fold
 nmap                      ,               <Leader>
 vnoremap                  x               "_d
 nnoremap                  x               "_x
@@ -97,9 +85,6 @@ nnoremap                  <S-T>           :Tags<CR>
 vnoremap                  <Tab>           >gv
 vnoremap                  <S-Tab>         <gv
 tnoremap                  <Esc>           <C-\><C-n>
-nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
-nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
-nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
 nnoremap                  dW              vbd
 nnoremap          <Leader><CR>            :call ToggleHiddenAll()<CR>
 
