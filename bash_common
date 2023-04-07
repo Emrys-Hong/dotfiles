@@ -125,3 +125,6 @@ alias 'visidata'='visidata' # csv files
 # alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
 # alias 'rstop'='ray stop'
 # alias 'watchgpu'='watch -c gpustat -cp --color'
+
+[ -f ~/.bash_local ] && source ~/.bash_local
+
