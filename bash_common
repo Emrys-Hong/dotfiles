@@ -37,7 +37,6 @@ fi
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 # set vim as the common editor

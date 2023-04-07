@@ -12,7 +12,7 @@ if [ "$(uname)" == "Darwin" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
 
-    alias 'vi'='/Applications/MacVim.app/Contents/MacOS/Vim -g -u ~/.dotfiles/nvim/minimal.vim'
+    alias 'vi'='~/.dotfiles/nvim/vimr'
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     source "$HOME/.bashrc"
