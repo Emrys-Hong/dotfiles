@@ -37,6 +37,7 @@ fi
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 # set vim as the common editor
@@ -66,17 +67,9 @@ mkd ()
     mkdir -pv -- "$1" && cd -P -- "$1"
 }
 
-# install verbose tracebacks for python
-traceback ()
-{
-    content="from rich.traceback import install;install()"
-    echo $content > "$(python -c 'import site; print(site.getsitepackages()[0])')/sitecustomize.py"
-}
-
 pipin ()
 {
     pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade
-    # traceback
 }
 
 alias a='alias'

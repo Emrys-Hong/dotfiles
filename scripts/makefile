@@ -18,6 +18,18 @@ ag:
 tig:
 	sudo apt-get install -y tig
 
+fzf:
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+
+tmux-plugins:
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 ## MACOS
 bash_completion:
 	brew install bash-completion
+
+## MACOS
+neovim:
+	brew install neovim
+
