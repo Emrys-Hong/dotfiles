@@ -101,8 +101,8 @@ tnoremap          <Leader>f               <C-\><C-n>:q<CR>
 
 " essential
 nnoremap          <leader>rn              :ALERename<CR>
-nnoremap          <Leader>d               Oimport ipdb; ipdb.set_trace()<Esc>
-nnoremap                  `d              /pdb.set_trace()<CR>
+nnoremap          <Leader>d               Obreakpoint()<Esc>
+nnoremap                  `d              /breakpoint()<CR>
 nnoremap          <leader>q               :q!<CR>
 nnoremap          <leader>p               :pu<CR>
 nnoremap <silent> <leader>w               :w<CR>
