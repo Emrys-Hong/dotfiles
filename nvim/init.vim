@@ -14,7 +14,7 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Functional "
 Plug 'kalekundert/vim-coiled-snake'
-Plug 'Konfekt/FastFold'
+" Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1 | let g:tagbar_left = 1 | let g:tagbar_vertical = 25
@@ -39,7 +39,6 @@ Plug 'github/copilot.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle'}
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
 let g:ale_fixers = {'python': ['isort', 'autoimport'], 'markdown': ['prettier'], 'sh': ['shfmt']}
 let g:ale_linters = {'python': ['pyright', 'mypy', 'pyls'], 'sh': ['shellcheck']}
