@@ -564,7 +564,7 @@
                     ]
                 },
                 {
-                    "description": "[right_command+qwertyuiop] -> [punctuation]",
+                    "description": "[right_command+qwertyuiop[],.] -> [punctuation]",
                     "manipulators": [
                         {
                             "from": {
@@ -807,7 +807,7 @@
                         },
                         {
                             "from": {
-                                "key_code": "quote",
+                                "key_code": "comma",
                                 "modifiers": {
                                     "mandatory": [
                                         "right_command"
@@ -827,7 +827,7 @@
                         },
                         {
                             "from": {
-                                "key_code": "return_or_enter",
+                                "key_code": "period",
                                 "modifiers": {
                                     "mandatory": [
                                         "right_command"
@@ -846,6 +846,6 @@
                         }
                     ]
                 }
-                
+
         ]
  }
