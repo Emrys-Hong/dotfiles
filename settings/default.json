@@ -176,9 +176,6 @@
                         "modifiers": {
                           "mandatory": [
                             "left_command"
-                          ],
-                          "optional": [
-                            "any"
                           ]
                         }
                       },
@@ -564,7 +561,7 @@
                     ]
                 },
                 {
-                    "description": "[right_command+qwertyuiop[],.] -> [punctuation]",
+                    "description": "[right_command+qwertyuiop[],.'d] -> [punctuation]",
                     "manipulators": [
                         {
                             "from": {
@@ -807,7 +804,7 @@
                         },
                         {
                             "from": {
-                                "key_code": "comma",
+                                "key_code": "quote",
                                 "modifiers": {
                                     "mandatory": [
                                         "right_command"
@@ -827,7 +824,7 @@
                         },
                         {
                             "from": {
-                                "key_code": "period",
+                                "key_code": "comma",
                                 "modifiers": {
                                     "mandatory": [
                                         "right_command"
@@ -840,6 +837,25 @@
                             "to": [
                                 {
                                     "key_code": "equal_sign"
+                                }
+                            ],
+                            "type": "basic"
+                        },
+                        {
+                            "from": {
+                                "key_code": "period",
+                                "modifiers": {
+                                    "mandatory": [
+                                        "right_command"
+                                    ],
+                                    "optional": [
+                                        "any"
+                                    ]
+                                }
+                            },
+                            "to": [
+                                {
+                                    "key_code": "period"
                                 }
                             ],
                             "type": "basic"
