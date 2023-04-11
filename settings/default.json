@@ -95,7 +95,7 @@
                   ]
                 },
                 {
-                  "description": "[backspace] -> [option + backspace] (delete a word)",
+                  "description": "[backspace] -> [command + backspace] (delete line or file)",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -111,7 +111,7 @@
                         {
                           "key_code": "delete_or_backspace",
                           "modifiers": [
-                            "option"
+                            "command"
                           ]
                         }
                       ]
