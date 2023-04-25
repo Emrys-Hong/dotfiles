@@ -1,0 +1,43 @@
+Host 2080Ti
+    User emrys
+    HostName 172.17.240.73
+    LocalForward 8888 127.0.0.1:8888
+    LocalForward 8080 127.0.0.1:8080
+
+Host 8000_107
+    User emrys
+    HostName 172.18.240.107
+    LocalForward 8888 127.0.0.1:8888
+    LocalForward 8080 127.0.0.1:8080
+
+Host 8000_119
+    User emrys
+    HostName 172.18.240.119
+    LocalForward 8888 127.0.0.1:8888
+    LocalForward 8080 127.0.0.1:8080
+
+Host a6000_253
+    User emrys
+    HostName 172.17.240.253
+    LocalForward 8888 127.0.0.1:8888
+    LocalForward 8080 127.0.0.1:8080
+
+Host a6000_231
+    User emrys
+    HostName 172.18.240.231
+    LocalForward 8888 127.0.0.1:8888
+    LocalForward 8080 127.0.0.1:8080
+
+Host a6000_195
+    User emrys
+    HostName 172.18.240.195
+    LocalForward 8888 127.0.0.1:8888
+    LocalForward 8080 127.0.0.1:8080
+
+Host a6000_100
+    User emrys
+    HostName 172.18.240.100
+    LocalForward 8888 127.0.0.1:8888
+    LocalForward 8080 127.0.0.1:8080
+
+

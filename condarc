@@ -1,0 +1,16 @@
+channels:
+  - conda-forge
+  - defaults
+  - pytorch 
+  - nvidia
+
+# channel_priority: false
+
+changeps1: yes
+always_yes: true
+binstar_personal: true
+show_channel_urls: yes
+
+# channel_priority: strict
+
+auto_activate_base: false

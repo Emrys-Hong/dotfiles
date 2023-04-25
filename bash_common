@@ -1,0 +1,135 @@
+# >>> conda initialize >>>
+__conda_setup="$('${HOME}/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "${HOME}/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="${HOME}/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# neovim settings
+if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
+    alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
+    alias 'vi'="nvim -u ~/.config/nvim/init.vim"
+    alias 'vim'="nvim -u ~/.config/nvim/minimal.vim"
+fi
+
+if [ -f $HOME/.dotfiles/condarc ]; then
+    export 'CONDARC'="$HOME/.dotfiles/condarc"
+fi
+
+
+# color
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# autojump
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+# set vim as the common editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+export PYTHONBREAKPOINT=ipdb.set_trace
+[ -f ~/.dotfiles/scripts/color.sh ] && source ~/.dotfiles/scripts/color.sh
+
+# daily commands
+rm_all(){
+    find . -name "$1" -type f
+    find . -name "$1" -type f -delete
+}
+cvd(){
+    export CUDA_VISIBLE_DEVICES="$1"
+    # original_window_name=$(tmux display-message -p '#W')
+    # tmux rename-window "cuda$1 $original_window_name"
+}
+ee(){
+    export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`
+    echo "export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`"
+}
+mkd ()
+{
+    mkdir -pv -- "$1" && cd -P -- "$1"
+}
+pipin ()
+{
+    pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade
+}
+gitls () {
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
+  else
+    ls --color=always -CF
+  fi
+}
+
+alias a='alias'
+alias ll='ls -FlaSh'
+alias la='ls -A'
+alias l='gitls'
+alias '..'='cd ..'
+alias '...'='cd ../..'
+alias '....'='cd ../../..'
+alias '.....'='cd ../../../..'
+alias 'mkdir'='mkdir -pv'
+alias 'cp'='cp -iv'
+alias 'mv'='mv -iv'
+alias 'rmi'='rm -vI'
+alias 'rm'='rm -v'
+alias 'rmr'='rm -vr'
+alias 'rm.'='current_dir=`pwd` && cd .. && rmr $current_dir && current_dir='
+alias 'rmrf'='rm -rf'
+alias 'cpr'='cp -r'
+alias 'scpr'='scp -r'
+alias 'dl'='it2dl'
+alias 'ul'='it2ul'
+
+alias 't'='tmux'
+alias 'g'='git'
+alias 'gs'='g s' # git status -s in gitconfig
+alias 'p'='python'
+alias 'py'='python'
+alias 'ipdb'='python -m ipdb -c continue'
+alias 'i'='python -m ipdb -c continue'
+alias 'v'='vi'
+alias 'b'='bash'
+alias 'G'='cd ~/G'
+alias 'D'='cd ~/.dotfiles'
+
+alias 'act'='conda activate'
+alias 'deact'='conda deactivate'
+alias 'cl'='conda info --envs'
+alias 'brc'='source ~/.bashrc'
+alias 'zrc'='source ~/.zshrc'
+alias 'bpf'='source ~/.bash_profile'
+alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
+
+alias 'smi'="py3smi -w 100"
+alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
+alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
+alias 'site'='python -m site' # location of site packages
+alias 'tb'='tensorboard --logdir . --port' # tb 8080
+
+alias 'rig'='rig' # github history
+alias 'icdiff'='icdiff' # difference in files
+alias 'visidata'='visidata' # csv files
+
+# alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
+# alias 'rstop'='ray stop'
+# alias 'watchgpu'='watch -c gpustat -cp --color'
+
+[ -f ~/.bash_local ] && source ~/.bash_local
+

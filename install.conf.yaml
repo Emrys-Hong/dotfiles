@@ -1,0 +1,64 @@
+- defaults:
+    clean:
+      force: true
+    link:
+      create: true
+      relink: true
+      force: true
+
+- clean:
+    ~/:
+      - 
+    ~/.config:
+      recursive: true
+
+- create:
+    - ~/G
+    - ~/Trash_Bin
+    - ~/Archived_Projects
+    - ~/Data
+
+- link:
+    ~/.tmux.conf:
+      path: tmux.conf
+    ~/.vimrc:
+      path: vimrc
+    ~/.bash_common:
+      path: bash_common
+    ~/.bashrc:
+      path: bashrc
+    ~/.bash_profile:
+      path: bash_profile
+    ~/.zshrc:
+      path: zshrc
+    ~/.profile:
+      path: profile
+    ~/.inputrc:
+      path: inputrc
+    ~/.gitignore_global:
+      path: gitignore_global
+    ~/.gitattributes_global:
+      path: gitattributes_global
+    ~/.gitconfig:
+      path: gitconfig
+    ~/.ssh:
+      path: ssh
+    ~/.config/nvim:
+      path: nvim
+    ~/.config/karabiner/assets/complex_modifications/default.json:
+      path: settings/default.json
+
+- shell:
+    - git submodule update --remote dotbot
+    - bind -f  ~/.inputrc
+
+      command: 
+        - touch ~/.bash_local 
+          && echo 'cd ~/G' >> ~/.bash_local
+          && echo 'conda activate "$env"' >> ~/.bash_local
+          && echo 'cd "$wdir"' >> ~/.bash_local
+
+    - echo -e "\n\n"
+    - echo 'Main setup Complete!'
+    - echo 'Skip Sudo commands setups which is in makefile'
+
