@@ -8,6 +8,7 @@ ipdb # python debugging
 jupyterlab # Jupyter
 visidata # For viewing tables in terminal
 icdiff # For comparing differences between files
+grip # Visualizing markdowns usage: grip <filename> port
 
 # mypy  # VIM python type checker
 # isort # VIM import sort
