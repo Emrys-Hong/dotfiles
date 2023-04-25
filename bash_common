@@ -60,21 +60,26 @@ ee(){
     export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`
     echo "export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`"
 }
-
 mkd ()
 {
     mkdir -pv -- "$1" && cd -P -- "$1"
 }
-
 pipin ()
 {
     pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade
+}
+gitls () {
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
+  else
+    ls --color=always -CF
+  fi
 }
 
 alias a='alias'
 alias ll='ls -FlaSh'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='gitls'
 alias '..'='cd ..'
 alias '...'='cd ../..'
 alias '....'='cd ../../..'
