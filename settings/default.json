@@ -366,7 +366,7 @@
                     ]
                 },
                 {
-                    "description": "[right_command+asdfghjkl] -> [number keys]",
+                    "description": "[right_command+asdfghjkl;] -> [number keys]",
                     "manipulators": [
                         {
                             "from": {
@@ -561,7 +561,7 @@
                     ]
                 },
                 {
-                    "description": "[right_command+qwertyuiop[],.'d] -> [punctuation]",
+                    "description": "[right/left_command+qwertyuiop[],.'d] -> [punctuation]",
                     "manipulators": [
                         {
                             "from": {
@@ -768,7 +768,7 @@
                                 "key_code": "open_bracket",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -787,7 +787,7 @@
                                 "key_code": "close_bracket",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -807,7 +807,7 @@
                                 "key_code": "quote",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -827,7 +827,7 @@
                                 "key_code": "comma",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -846,7 +846,7 @@
                                 "key_code": "period",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
