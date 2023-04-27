@@ -27,74 +27,6 @@
                     ]
                 },
                 {
-                  "description": "[right_shift]x2 -> [capslock]",
-                  "manipulators": [
-                    {
-                      "conditions": [
-                        {
-                          "name": "right_shift pressed",
-                          "type": "variable_if",
-                          "value": 1
-                        }
-                      ],
-                      "from": {
-                        "key_code": "right_shift",
-                        "modifiers": {
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "caps_lock"
-                        }
-                      ],
-                      "type": "basic"
-                    },
-                    {
-                      "from": {
-                        "key_code": "right_shift",
-                        "modifiers": {
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "set_variable": {
-                            "name": "right_shift pressed",
-                            "value": 1
-                          }
-                        },
-                        {
-                          "key_code": "right_shift"
-                        }
-                      ],
-                      "to_delayed_action": {
-                        "to_if_canceled": [
-                          {
-                            "set_variable": {
-                              "name": "right_shift pressed",
-                              "value": 0
-                            }
-                          }
-                        ],
-                        "to_if_invoked": [
-                          {
-                            "set_variable": {
-                              "name": "right_shift pressed",
-                              "value": 0
-                            }
-                          }
-                        ]
-                      },
-                      "type": "basic"
-                    }
-                  ]
-                },
-                {
                   "description": "[backspace] -> [command + backspace] (delete line or file)",
                   "manipulators": [
                     {
@@ -119,7 +51,7 @@
                   ]
                 },
                 {
-                  "description": "[escape] -> [control + space] (change input source)",
+                  "description": "[escape] -> [capslock]",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -133,10 +65,7 @@
                       },
                       "to": [
                         {
-                          "key_code": "spacebar",
-                          "modifiers": [
-                            "left_control"
-                          ]
+                          "key_code": "caps_lock"
                         }
                       ]
                     }
@@ -182,6 +111,27 @@
                       "to": [
                         {
                           "key_code": "delete_or_backspace"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "description": "[left_command + e] -> [forward delete]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                          "mandatory": [
+                            "left_command"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "delete_forward"
                         }
                       ]
                     }
