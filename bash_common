@@ -126,6 +126,7 @@ alias 'tb'='tensorboard --logdir . --port' # tb 8080
 alias 'rig'='rig' # github history
 alias 'icdiff'='icdiff' # difference in files
 alias 'visidata'='visidata' # csv files
+alias 'img'='imgcat  -H 1000px -s' # image files
 
 # alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
 # alias 'rstop'='ray stop'
