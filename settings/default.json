@@ -668,7 +668,7 @@
                                 "key_code": "y",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -688,7 +688,7 @@
                                 "key_code": "u",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -708,7 +708,7 @@
                                 "key_code": "i",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -728,7 +728,7 @@
                                 "key_code": "o",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -748,7 +748,7 @@
                                 "key_code": "p",
                                 "modifiers": {
                                     "mandatory": [
-                                        "right_command"
+                                        "left_command"
                                     ],
                                     "optional": [
                                         "any"
@@ -846,7 +846,7 @@
                                 "key_code": "period",
                                 "modifiers": {
                                     "mandatory": [
-                                        "left_command"
+                                        "right_command"
                                     ],
                                     "optional": [
                                         "any"
