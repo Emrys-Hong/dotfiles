@@ -160,12 +160,12 @@
                   ]
                 },
                 {
-                  "description": "[right_command + v] -> [;]",
+                  "description": "[right_command + c] -> [;]",
                   "manipulators": [
                     {
                       "type": "basic",
                       "from": {
-                        "key_code": "v",
+                        "key_code": "c",
                         "modifiers": {
                           "mandatory": [
                             "right_command"
@@ -184,12 +184,12 @@
                   ]
                 },
                 {
-                  "description": "[right_command + c] -> [:]",
+                  "description": "[right_command + v] -> [:]",
                   "manipulators": [
                     {
                       "type": "basic",
                       "from": {
-                        "key_code": "c",
+                        "key_code": "v",
                         "modifiers": {
                           "mandatory": [
                             "right_command"
