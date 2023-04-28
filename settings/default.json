@@ -139,27 +139,6 @@
                   ]
                 },
                 {
-                  "description": "[;] -> [enter]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "semicolon",
-                        "modifiers": {
-                            "optional": [
-                                "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "return_or_enter"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
                   "description": "[right_command + c] -> [;]",
                   "manipulators": [
                     {
@@ -972,7 +951,36 @@
                             "type": "basic"
                         }
                     ]
+                },
+                {
+                  "description": "[;] -> [enter]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "optional": [
+                                "right_command"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "return_or_enter"
+                        }
+                      ],
+                      "conditions": [
+                          {
+                              "type": "variable_if",
+                              "name": "right_command_pressed",
+                              "value": 0
+                          }
+                      ]
+                    }
+                  ]
                 }
+
 
         ]
  }
