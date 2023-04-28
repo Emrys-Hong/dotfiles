@@ -63,7 +63,7 @@ map                       gj              <Plug>(easymotion-bd-jk)
 nmap                      f               <Plug>(easymotion-overwin-f)
 nmap                      gw              <Plug>(easymotion-overwin-w)
 nmap                      gj              <Plug>(easymotion-overwin-line)
-nmap                      ;               za
+nmap                      <CR>            za
 " zM for More fold and zR for Reduce fold
 
 nnoremap                  /               :Lines<CR>
