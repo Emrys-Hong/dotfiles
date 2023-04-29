@@ -1,38 +1,34 @@
-# tmux cheat sheet
+# Tmux installation
 
-> (C-x means ctrl+x, M-x means alt+x)
+```sh
+wget -O ~/.tmux.conf https://raw.githubusercontent.com/Emrys-Hong/dotfiles/main/tmux.conf
 
-## Getting help
+echo "tmux source-file ~/.tmux.conf" >> ~/.bashrc
 
-Display a list of keyboard shortcuts:
+tmux source-file ~/.tmux.conf
 
-    C-a ?
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
 
-## Managing sessions
+## My frequent shortcuts
 
-Kill all the session:
-
-    tmux kill-server
-    tmux kill-session
-
-Switch between sessions:
-
-    C-a (          previous session
-    C-a )          next session
-    C-a {          move the current pane to the previous position
-    C-a }          move the current pane to the next position
-
-Rename:
-
-    C-a $          rename the current session
-    C-a ,          rename the current window
-
-
-Switch between windows:
-
-    C-a 1 ...      switch to window 1, ..., 9, 0
-
-## More resources
-Tmux Cheetsheet(https://tmuxcheatsheet.com/)
-
-Config for remote server(https://gist.github.com/dbeckham/655da225f1243b2db5da)
+```
+prefix = Ctrl + A
+session includes multiple windows, windows includes multiple tabs
+tmux # new session
+tmux a # attach session
+prefix then d # detach last session (d for detach)
+prefix then l # list sessions, windows / switch sessions (l for list)
+prefix then q # list tabs
+prefix then t # new window (t for tab)
+prefix then j # select previous window
+prefix then k # select next window
+prefix then n # rename session (n for name)
+prefix then w # kill window (w for window)
+Ctrl + D      # kill tab
+prefix then | # split window horizontally
+prefix then _ # split window vertically
+prefix then [esc] # enter visual mode, use 'v' for selection 'y' for copy 'p' for paste (similar to vim)
+prefix then z # toggle zoom in/ zoom out of certain tab
+prefix then I # use for install tmux plugins (capital I for install), such as GPU usage function in status bar
+```
