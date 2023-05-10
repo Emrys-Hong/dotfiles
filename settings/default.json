@@ -163,33 +163,6 @@
                   ]
                 },
                 {
-                  "description": "[right_command + v] -> [:]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "v",
-                        "modifiers": {
-                          "mandatory": [
-                            "right_command"
-                          ],
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "semicolon",
-                          "modifiers": [
-                            "left_shift"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
                   "description": "[right_command + n] -> [<]",
                   "manipulators": [
                     {
@@ -953,6 +926,34 @@
                     ]
                 },
                 {
+                  "description": "[left_shift + left_command + ;] -> [left_shift + enter]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                          "mandatory": [
+                            "left_shift",
+                            "left_command"
+                          ],
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "return_or_enter",
+                          "modifiers": [
+                            "left_shift"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
                   "description": "[;] -> [enter]",
                   "manipulators": [
                     {
@@ -961,8 +962,7 @@
                         "key_code": "semicolon",
                         "modifiers": {
                             "optional": [
-                                "right_command",
-                                "left_shift"
+                                "right_command"
                           ]
                         }
                       },
@@ -970,17 +970,11 @@
                         {
                           "key_code": "return_or_enter"
                         }
-                      ],
-                      "conditions": [
-                          {
-                              "type": "variable_if",
-                              "name": "right_command_pressed",
-                              "value": 0
-                          }
                       ]
                     }
                   ]
                 }
+
 
 
         ]
