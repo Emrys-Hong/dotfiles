@@ -139,52 +139,7 @@
                   ]
                 },
                 {
-                  "description": "[;] -> [enter]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "semicolon",
-                        "modifiers": {
-                            "optional": [
-                                "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "return_or_enter"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "description": "[right_command + v] -> [;]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "v",
-                        "modifiers": {
-                          "mandatory": [
-                            "right_command"
-                          ],
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "semicolon"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "description": "[right_command + c] -> [:]",
+                  "description": "[right_command + c] -> [;]",
                   "manipulators": [
                     {
                       "type": "basic",
@@ -201,83 +156,7 @@
                       },
                       "to": [
                         {
-                          "key_code": "semicolon",
-                          "modifiers": [
-                            "left_shift"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "description": "[right_command + n] -> [<]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "n",
-                        "modifiers": {
-                          "mandatory": [
-                            "right_command"
-                          ],
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "comma",
-                          "modifiers": [
-                            "left_shift"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "description": "[right_command + m] -> [>]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "m",
-                        "modifiers": {
-                          "mandatory": [
-                            "right_command"
-                          ],
-                          "optional": [
-                            "any"
-                          ]
-                        }
-                      },
-                      "to": [
-                        {
-                          "key_code": "period",
-                          "modifiers": [
-                            "left_shift"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "description": "[tab] -> [command + tab]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "tab"
-                      },
-                      "to": [
-                        {
-                          "key_code": "tab",
-                          "modifiers": [
-                            "left_command"
-                          ]
+                          "key_code": "semicolon"
                         }
                       ]
                     }
@@ -972,7 +851,58 @@
                             "type": "basic"
                         }
                     ]
+                },
+                {
+                  "description": "[left_shift + left_command + ;] -> [left_shift + enter]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                          "mandatory": [
+                            "left_shift",
+                            "left_command"
+                          ],
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "return_or_enter",
+                          "modifiers": [
+                            "left_shift"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "description": "[;] -> [enter]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "optional": [
+                                "right_command"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "return_or_enter"
+                        }
+                      ]
+                    }
+                  ]
                 }
+
+
 
         ]
  }

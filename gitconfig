@@ -6,29 +6,20 @@
         a = add
         addt = !sh -c 'git ls-files | grep \"\\.$1*\" | xargs git add' -
         alias = "!git config -l | grep alias | cut -c 7-"
-        br = branch
-        ci = commit
-        co = checkout
-        s = status -s
+        back = reset --hard HEAD
         cre = config credential.helper store
+        d = difftool -y
         f = "!git ls-files | grep -i"
         l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
-        lo = log --pretty=oneline --since='2 days ago' --color --graph --abbrev-commit
         lod = log -p -1 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(cyan) <%an>%Creset' --abbrev-commit
-        loq  = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+        log  = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
         p = "!git rev-parse --abbrev-ref HEAD | xargs git push origin"
-        ; pl = "!git rev-parse --abbrev-ref HEAD | xargs git pull --rebase origin"
         pl = "!git rev-parse --abbrev-ref HEAD | xargs git pull --no-rebase origin"
         rmc = rm --cached
         set-url = remote set-url origin
-        url = remote -v
         show-br = remote show origin
-        back = reset --hard HEAD
-        unstage = reset -- .
-        uncommit = reset --soft HEAD^
-        amendc = commit --amend
+        s = status -s
         vimdiff = "!vim -p `git diff --name-only`"
-        d = difftool -y
         m = mergetool -y
         nb = "mergetool --tool=nbdime"
         commit-change = "!change() { git diff --name-status \"$1^\" \"$1\"; }; change"
@@ -74,9 +65,6 @@
 
 [man]
         viewer = vim
-
-; [rebase]
-;         autoStash = true
 
 [init]
         defaultBranch = main
