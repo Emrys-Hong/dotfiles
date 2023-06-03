@@ -56,10 +56,6 @@ cvd(){
     # original_window_name=$(tmux display-message -p '#W')
     # tmux rename-window "cuda$1 $original_window_name"
 }
-ee(){
-    export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`
-    echo "export env="$CONDA_DEFAULT_ENV" && export "wdir"=`pwd`"
-}
 mkd ()
 {
     mkdir -pv -- "$1" && cd -P -- "$1"

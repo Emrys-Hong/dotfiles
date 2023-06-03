@@ -79,8 +79,14 @@ if ! shopt -oq posix; then
 fi
 
 
-[ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf
+[ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf \
+&& tmux send-keys "conda activate $(tmux display-message -p '#{session_environment:pythonenv}')" C-m \
+&& tmux send-keys "cd $(tmux display-message -p '#{session_environment:workdir}')" C-m
 
+set () {
+  tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"
+  tmux set-environment workdir "$(pwd)"
+}
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
 export PATH="/usr/local/cuda/bin":$PATH
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
