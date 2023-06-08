@@ -65,10 +65,11 @@ export VISUAL="vim"
 export EDITOR="vim"
 export TERM=xterm-256color
 
-HISTCONTROL=ignoreboth
-shopt -s histappend
+export HISTCONTROL=ignoredups:erasedups
 HISTSIZE=10000
 HISTFILESIZE=10000
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then

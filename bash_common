@@ -53,8 +53,6 @@ rm_all(){
 }
 cvd(){
     export CUDA_VISIBLE_DEVICES="$1"
-    # original_window_name=$(tmux display-message -p '#W')
-    # tmux rename-window "cuda$1 $original_window_name"
 }
 mkd ()
 {
@@ -117,16 +115,13 @@ alias 'smi'="py3smi -w 100"
 alias 'lab'='jupyter lab --no-browser --allow-root --port ' # lab 8888
 alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
 alias 'site'='python -m site' # location of site packages
-alias 'tb'='tensorboard --logdir . --port' # tb 8080
 
 alias 'rig'='rig' # github history
 alias 'icdiff'='icdiff' # difference in files
 alias 'visidata'='visidata' # csv files
 alias 'img'='imgcat  -H 1000px -s' # image files
 
-# alias 'rstart'='ray start --head --dashboard-port' # rstart 8080
-# alias 'rstop'='ray stop'
-# alias 'watchgpu'='watch -c gpustat -cp --color'
+alias 'tb'='tensorboard --logdir . --port' # tb 8080
 
 [ -f ~/.bash_local ] && source ~/.bash_local
 
