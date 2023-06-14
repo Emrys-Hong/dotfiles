@@ -921,6 +921,26 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "description": "[control+doublequote] -> [singlequote], [singlequote] -> [doublequote]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "quote",
+                        "modifiers": {
+                          "optional": ["any"]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "quote",
+                          "modifiers": ["left_shift"]
+                        }
+                      ]
+                    }
+                  ]
                 }
 
 
