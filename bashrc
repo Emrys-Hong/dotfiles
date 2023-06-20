@@ -4,11 +4,22 @@ case $- in
       *) return;;
 esac
 
+
+
+
+
+
+## Load regular commands
 if [ -f ~/.bash_common ]; then
     source ~/.bash_common
 fi
 
-# Display
+
+
+
+
+
+## Display Prompt and default editor
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -42,7 +53,6 @@ fi)'
 
 LS_COLORS=$LS_COLORS:'fi=0;30:'
 
-
 case "$TERM" in
 xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
@@ -51,6 +61,17 @@ xterm*|rxvt*)
     ;;
 esac
 
+unset color_prompt force_color_prompt
+export VISUAL="vim"
+export EDITOR="vim"
+export TERM=xterm-256color
+
+
+
+
+
+
+## Command history search and completion
 bind -f ~/.inputrc
 shopt -s checkwinsize
 shopt -s globstar
@@ -59,11 +80,6 @@ shopt -s expand_aliases
 bind "TAB:menu-complete"
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
-
-unset color_prompt force_color_prompt
-export VISUAL="vim"
-export EDITOR="vim"
-export TERM=xterm-256color
 
 export HISTCONTROL=ignoredups:erasedups
 HISTSIZE=10000
@@ -78,21 +94,44 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
+
+
+
+
+## Tmux
 [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf \
 && tmux send-keys "conda activate $(tmux display-message -p '#{session_environment:pythonenv}')" C-m \
 && tmux send-keys "cd $(tmux display-message -p '#{session_environment:workdir}')" C-m
-
 set () {
   tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"
   tmux set-environment workdir "$(pwd)"
 }
+alias 't'='tmux'
+alias 'ta'='tmux a'
+
+
+
+
+
+
+## CUDA
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
 export PATH="/usr/local/cuda/bin":$PATH
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
+cvd(){
+    export CUDA_VISIBLE_DEVICES="$1"
+}
 
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
+
+
+## iTerm2 integration
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+alias 'dl'='it2dl'
+alias 'ul'='it2ul'
+alias 'img'='imgcat  -H 1000px -s' # image files

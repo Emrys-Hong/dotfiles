@@ -10,12 +10,10 @@ let g:airline_section_z = '' | let g:airline_section_y = ''
 let g:airline_section_error = '' | let g:airline_section_warning = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_c = '%{expand("%:p")}'
-" Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Functional "
 Plug 'kalekundert/vim-coiled-snake'
-" Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1 | let g:tagbar_left = 1 | let g:tagbar_vertical = 25
@@ -43,7 +41,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'dense-analysis/ale'
 let g:ale_fixers = {'python': ['isort', 'autoimport'], 'markdown': ['prettier'], 'sh': ['shfmt']}
 let g:ale_linters = {'python': ['pyright', 'mypy', 'pyls'], 'sh': ['shellcheck']}
-let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1
+let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1 | let g:ale_lint_on_save = 1
 let g:ale_set_highlights = 0 | let g:ale_set_signs = 0
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python']
@@ -53,7 +51,6 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 " Plug 'mattboehm/vim-unstack' | let g:unstack_mapkey='<F12>'
 
 call plug#end()
-" colorscheme dracula
 colorscheme catppuccin-latte
 
 " mappings
@@ -70,5 +67,4 @@ nnoremap                  /               :Lines<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
-
 
