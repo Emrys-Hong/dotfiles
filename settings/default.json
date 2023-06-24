@@ -955,7 +955,35 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "description": "[left_option + K] -> [left_command + K] (insert link)",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                          "mandatory": [
+                            "left_option"
+                          ],
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "k",
+                          "modifiers": [
+                            "left_command"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
+
 
 
 
