@@ -43,4 +43,4 @@ Host 100
 Host oracle
     User ubuntu
     HostName 158.178.245.66
-    IdentityFile ~/.ssh/ssh-key-2023-06-25.key
+    IdentityFile ~/.ssh/oracle.key
