@@ -1,4 +1,4 @@
-## Useful libraries and scripts I encounter as a programmer
+## Useful libraries
 
 ### Jupyter notebook related
 Enable install jupyter notebook extension
@@ -76,45 +76,28 @@ grip # Visualizing markdowns | Usage: grip <filename> port
 
 Jump to history folders
 ```
-if [ ! -d ~/.dotfiles/autojump ]; then
-    git clone https://github.com/wting/autojump.git
-    cd autojump
-    ./install.py
-fi
+cd ~/.dotfiles
+git clone https://github.com/wting/autojump.git
+cd autojump
+./install.py
 ```
 
 
 Install miniconda
 ```
-if [[ ! -d ~/miniconda3 ]]; then 
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
-    bash Miniconda3-latest-Linux-x86_64.sh
-    rm Miniconda3-latest-Linux-x86_64.sh
-fi
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
 Neovim Linux
 ```
-set -x
-if [ ! -f ~/.dotfiles/nvim/nvim.appimage ]; then
-    curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage
-    chmod u+x ~/.dotfiles/nvim/nvim.appimage
-    sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-fi
+curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage
+chmod u+x ~/.dotfiles/nvim/nvim.appimage
+sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
 Nodejs
 ```
-if [ "$npm" == "y" ]; then
-    mkdir ~/nodejs-latest
-    cd ~/nodejs-latest
-    wget -c https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.xz  -O node-latest.tar.xz
-    tar -xvf node-latest.tar.xz --strip-components=1 
-    export NODE_HOME=~/nodejs-latest
-    export PATH=$NODE_HOME/bin:$PATH
-    npm install -g pyright
-    npm install -g prettier
-fi
-echo "export NODE_HOME=~/nodejs-latest" >> ~/.bash_local
-echo 'export PATH=$NODE_HOME/bin:$PATH' >> ~/.bash_local
+cd ~/.dotfiles/scripts/install_nodejs.sh
+bash install_nodejs.sh
 ```
