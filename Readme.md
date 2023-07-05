@@ -7,6 +7,7 @@ Setup is as simple as:
 git clone https://github.com/Emrys-Hong/dotfiles ~/.dotfiles && cd ~/.dotfiles && ./setup.sh
 ```
 
+
 ## Tips 
 1. `alias cmd` to check alias
 2. `git alias` to check git alias

@@ -1,7 +1,8 @@
 #!/bin/bash
 set -x
 
-mkdir -p ~/G ~/Trash_Bin ~/Archived_Projects ~/Data
+mkdir -p ~/G
+# mkdir -p ~/G ~/Trash_Bin ~/Archived_Projects ~/Data
 
 declare -a files=("tmux.conf" "vimrc" "bashrc" "bash_profile" "bash_common" "zshrc" "profile" "inputrc" "gitignore_global" "gitattributes_global" "gitconfig" "condarc")
 for file in "${files[@]}"; do
