@@ -3,7 +3,7 @@ set -x
 
 mkdir -p ~/G ~/Trash_Bin ~/Archived_Projects ~/Data
 
-declare -a files=("tmux.conf" "vimrc" "bashrc" "bash_profile" "zshrc" "profile" "inputrc" "gitignore_global" "gitattributes_global" "gitconfig" "condarc")
+declare -a files=("tmux.conf" "vimrc" "bashrc" "bash_profile" "bash_common" "zshrc" "profile" "inputrc" "gitignore_global" "gitattributes_global" "gitconfig" "condarc")
 for file in "${files[@]}"; do
     [ -e ~/.$file ] && rm ~/.$file
     ln -s ~/.dotfiles/${file} ~/.$file
