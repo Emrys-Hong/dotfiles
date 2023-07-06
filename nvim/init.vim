@@ -39,8 +39,8 @@ Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle'}
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'dense-analysis/ale'
-let g:ale_fixers = {'python': ['isort', 'autoimport'], 'markdown': ['prettier'], 'sh': ['shfmt']}
-let g:ale_linters = {'python': ['pyright', 'mypy', 'pyls'], 'sh': ['shellcheck']}
+let g:ale_fixers = {'python': ['isort', 'autoimport'], 'markdown': ['prettier'], 'sh': ['shfmt']} "requires pip packages, check scripts/requirements.txt
+let g:ale_linters = {'python': ['pyright', 'mypy', 'pyls', 'isort'], 'sh': ['shellcheck']} "requires pip packages
 let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1 | let g:ale_lint_on_save = 1
 let g:ale_set_highlights = 0 | let g:ale_set_signs = 0
 Plug 'sheerun/vim-polyglot'
@@ -67,4 +67,4 @@ nnoremap                  /               :Lines<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
-
+nnoremap                  <Leader>i       :ALEFix<CR>
