@@ -83,34 +83,15 @@ nnoremap                  <C-A>           gg0vG$
 nnoremap                  <C-C>           a<C-C>
 nnoremap                  <S-J>           :bprev<CR>
 nnoremap                  <S-K>           :bnext<CR>
-nnoremap                  <S-T>           :Tags<CR>
 vnoremap                  <Tab>           >gv
 vnoremap                  <S-Tab>         <gv
 tnoremap                  <Esc>           <C-\><C-n>
 nnoremap                  dW              vbd
 nnoremap          <Leader><CR>            :call ToggleHiddenAll()<CR>
-
-" search
-nnoremap          <leader>m               :Maps<CR>
-nnoremap          <leader>:               :Commands<CR>
-nnoremap          <leader>`               :Marks<CR>
-nnoremap          <leader>/               :Ag<CR>
-nnoremap          <leader>?               :Helptags<CR>
-nnoremap          <Leader>f               :Files<CR>
-tnoremap          <Leader>f               <C-\><C-n>:q<CR>
-
-" essential
-nnoremap          <leader>rn              :ALERename<CR>
-nnoremap          <Leader>d               Obreakpoint()<Esc>
+nnoremap          <Leader>d               obreakpoint()<Esc>
+nnoremap          <Leader>D               Obreakpoint()<Esc>
 nnoremap                  `d              /breakpoint()<CR>
 nnoremap          <leader>q               :q!<CR>
 nnoremap          <leader>p               :pu<CR>
 nnoremap <silent> <leader>w               :w<CR>
 nnoremap          <leader>j               J
-nnoremap          <leader>,               :NERDTreeToggle<CR>:TagbarToggle<CR>
-
-nnoremap          <leader>pi              :PlugInstall<CR>
-nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
-nnoremap          <leader>ru              :IndentLinesToggle<CR>
-nnoremap          <leader>b               :Buffers<CR>
-nnoremap          <leader>s               yy:silent! UnstackFromText('<C-R>"')<CR>

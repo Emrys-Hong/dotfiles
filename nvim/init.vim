@@ -52,6 +52,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 
 call plug#end()
 colorscheme catppuccin-latte
+hi Normal guibg=NONE ctermbg=NONE
 
 " mappings
 map                       f               <Plug>(easymotion-bd-f)
@@ -63,8 +64,28 @@ nmap                      gj              <Plug>(easymotion-overwin-line)
 nmap                      <CR>            za
 " zM for More fold and zR for Reduce fold
 
+nnoremap          <leader>,               :NERDTreeToggle<CR>:TagbarToggle<CR>
+
 nnoremap                  /               :Lines<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
 nnoremap                  gf              :w<CR>$F( h:ALEGoToDefinition<CR>
 nnoremap                  gr              :w<CR>:ALEFindReferences<CR>
-nnoremap                  <Leader>i       :ALEFix<CR>
+nnoremap          <Leader>i               :ALEFix<CR>
+
+" search
+nnoremap          <leader>m               :Maps<CR>
+nnoremap          <leader>:               :Commands<CR>
+nnoremap          <leader>`               :Marks<CR>
+nnoremap          <leader>/               :Ag<CR>
+nnoremap          <leader>?               :Helptags<CR>
+nnoremap          <Leader>f               :Files<CR>
+tnoremap          <Leader>f               <C-\><C-n>:q<CR>
+nnoremap          <S-T>                   :Tags<CR>
+
+nnoremap          <leader>pi              :PlugInstall<CR>
+nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
+nnoremap          <leader>b               :Buffers<CR>
+
+" nnoremap          <leader>ru              :IndentLinesToggle<CR>
+" nnoremap          <leader>rn              :ALERename<CR>
+" nnoremap          <leader>s               yy:silent! UnstackFromText('<C-R>"')<CR>
