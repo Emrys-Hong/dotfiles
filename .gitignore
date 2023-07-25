@@ -3,3 +3,4 @@ ssh/*
 autojump/
 nvim/nvim.appimage
 nvim/.netrwhist
+gdrive

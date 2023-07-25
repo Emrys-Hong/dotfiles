@@ -101,3 +101,7 @@ Nodejs
 cd ~/.dotfiles/scripts/install_nodejs.sh
 bash install_nodejs.sh
 ```
+
+Gdrive
+
+Installation and setup gdrive from [link](https://github.com/glotlabs/gdrive)
