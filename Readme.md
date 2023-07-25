@@ -13,4 +13,4 @@ git clone https://github.com/Emrys-Hong/dotfiles ~/.dotfiles && cd ~/.dotfiles &
 2. `git alias` to check git alias
 3. `prefix+?` to check tmux shortcut
 
-Configurations are included in [mds](mds/)
+Useful tools and how to use them are included in [docs](docs/)
