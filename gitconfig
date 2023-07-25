@@ -8,6 +8,8 @@
         alias = "!git config -l | grep alias | cut -c 7-"
         back = reset --hard HEAD
         cre = config credential.helper store
+        cm = commit
+        co = checkout
         d = difftool -y
         f = "!git ls-files | grep -i"
         l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
@@ -28,7 +30,8 @@
         default = simple
 
 [core]
-        editor = vim
+        ; editor = vim
+        editor = $HOME/.dotfiles/nvim/nvim.appimage
         excludesfile = ~/.gitignore_global
         attributesfile = ~/.gitattributes_global
 

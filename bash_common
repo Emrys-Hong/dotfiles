@@ -64,7 +64,7 @@ alias 'tb'='tensorboard --logdir . --port' # tb 8080
 if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
     alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
     alias 'vi'="nvim -u ~/.config/nvim/init.vim"
-    alias 'vim'="nvim -u ~/.config/nvim/minimal.vim"
+    alias 'vim'="nvim -u ~/.config/nvim/init.vim"
 fi
 
 
