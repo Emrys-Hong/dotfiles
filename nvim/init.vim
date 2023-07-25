@@ -53,6 +53,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 call plug#end()
 colorscheme catppuccin-latte
 hi Normal guibg=NONE ctermbg=NONE
+highlight semshiUnresolved cterm=underline ctermbg=Red ctermfg=White gui=underline guibg=Red guifg=White
 
 " mappings
 map                       f               <Plug>(easymotion-bd-f)
