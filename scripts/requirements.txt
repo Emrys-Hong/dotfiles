@@ -1,20 +1,20 @@
-neovim # VIM
-pynvim # VIM
-powerline-status # VIM
-python-language-server # VIM python language server
-mypy  # VIM python type checker
 pydantic # python type import
 py3nvml # python nvidia gpu monitoring
 ipdb # python debugging
 jupyterlab # Jupyter
 visidata # For viewing tables in terminal
 icdiff # For comparing differences between files
-grip # Visualizing markdowns usage: grip <filename> port
-isort # VIM import sort
+grip # Visualizing markdowns. usage: grip <filename> port
+neovim # VIM
+pynvim # VIM
+powerline-status # VIM
+python-language-server # VIM python language server
+mypy  # VIM python type checker
+isort # VIM ALE import sort
+black # VIM ALE code formatter
+autoimport # VIM ALE autoimport
 
 # jupyterlab-vim # Jupyter VIM
-# autoimport # VIM autoimport
-# black # VIM code formatter
 # termcolor # Python color
 # gpustat
 # nvidia-ml-py3
