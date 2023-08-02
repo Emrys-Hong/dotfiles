@@ -30,8 +30,7 @@
         default = simple
 
 [core]
-        ; editor = vim
-        editor = $HOME/.dotfiles/nvim/nvim.appimage
+        editor = ~/.dotfiles/scripts/git-editor.sh
         excludesfile = ~/.gitignore_global
         attributesfile = ~/.gitattributes_global
 
