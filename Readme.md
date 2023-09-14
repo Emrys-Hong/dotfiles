@@ -7,10 +7,14 @@ Setup is as simple as:
 git clone https://github.com/Emrys-Hong/dotfiles ~/.dotfiles && cd ~/.dotfiles && ./setup.sh
 ```
 
+### Customize
+- Change the `name` and `email` field inside `gitconfig`
+- Change config files inside ssh for server address
+
 
 ## Tips 
 1. `alias cmd` to check alias
 2. `git alias` to check git alias
 3. `prefix+?` to check tmux shortcut
 
-Useful tools and how to use them are included in [docs](docs/)
+Useful tools and how to use them are included in [docs](docs/tools.md)

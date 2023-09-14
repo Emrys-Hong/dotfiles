@@ -11,6 +11,7 @@ let g:airline_section_error = '' | let g:airline_section_warning = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_c = '%{expand("%:p")}'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+let g:airline_theme='catppuccin'
 
 " Functional "
 Plug 'kalekundert/vim-coiled-snake'
