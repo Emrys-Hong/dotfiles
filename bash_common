@@ -126,7 +126,7 @@ alias 'b'='bash'
 alias 'brc'='source ~/.bashrc'
 alias 'zrc'='source ~/.zshrc'
 alias 'bpf'='source ~/.bash_profile'
-alias 'dush'='du -hLlxcs * 2>/dev/null | sort -hr'
+alias 'dush'='du -ahxcs * 2>/dev/null | sort -hr'
 alias 'drive'='~/.dotfiles/gdrive'
 
 [ -f ~/.bash_local ] && source ~/.bash_local
