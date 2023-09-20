@@ -23,7 +23,9 @@ prefix then q # list tabs
 prefix then t # new window (t for tab)
 prefix then j # select previous window
 prefix then k # select next window
-prefix then n # rename session (n for name)
+prefix then m # toggle mouse on/off (mouse on to use mouse clicking/scrolling, mouse off for select and copy/paste)
+prefix then s # rename session (s for session)
+prefix then n # rename window (n for name)
 prefix then w # kill window (w for window)
 Ctrl + D      # kill tab
 prefix then | # split window horizontally
@@ -31,4 +33,5 @@ prefix then _ # split window vertically
 prefix then [esc] # enter visual mode, use 'v' for selection 'y' for copy 'p' for paste (similar to vim)
 prefix then z # toggle zoom in/ zoom out of certain tab
 prefix then I # use for install tmux plugins (capital I for install), such as GPU usage function in status bar
+prefix then r # reload tmux.conf file (if you change the tmux.conf need to reload to take effect)
 ```

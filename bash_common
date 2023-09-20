@@ -43,6 +43,17 @@ unset __conda_setup
 if [ -f $HOME/.dotfiles/condarc ]; then
     export 'CONDARC'="$HOME/.dotfiles/condarc"
 fi
+
+File() {
+    # File "path/to/script.py", line 97, in method
+    local input="$@"
+    local file_path=$(echo "$1" | sed 's/,$//')
+    local line_num=$(echo "$input" | awk -F'line ' '{print $2}' | awk -F',' '{print $1}')
+    local cmd="vi +$line_num $file_path"
+    echo "$cmd"
+    $cmd
+}
+
 alias 'act'='conda activate'
 alias 'deact'='conda deactivate'
 alias 'cl'='conda info --envs'
