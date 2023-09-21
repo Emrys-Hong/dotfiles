@@ -10,9 +10,8 @@ esac
 
 
 ## Load regular commands
-if [ -f ~/.bash_common ]; then
-    source ~/.bash_common
-fi
+[ -f ~/.bash_local ] && source ~/.bash_local
+[ -f ~/.bash_common ] && source ~/.bash_common
 
 
 
@@ -101,22 +100,6 @@ fi
 
 
 
-## Tmux
-[ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf \
-&& tmux send-keys "conda activate $(tmux display-message -p '#{session_environment:pythonenv}')" C-m \
-&& tmux send-keys "cd $(tmux display-message -p '#{session_environment:workdir}')" C-m
-set () {
-  tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"
-  tmux set-environment workdir "$(pwd)"
-}
-alias 't'='tmux'
-alias 'ta'='tmux a'
-
-
-
-
-
-
 ## CUDA
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
 export PATH="/usr/local/cuda/bin":$PATH
@@ -129,9 +112,7 @@ cvd(){
 
 
 
+## Extra Settings
+export NODE_HOME=~/nodejs-latest
+export PATH=$NODE_HOME/bin:$PATH
 
-## iTerm2 integration
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-alias 'dl'='it2dl'
-alias 'ul'='it2ul'
-alias 'img'='imgcat  -H 1000px -s' # image files
