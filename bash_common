@@ -101,7 +101,8 @@ alias '.....'='cd ../../../..'
 [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf \
 && tmux send-keys "conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-)" C-m \
 && tmux send-keys "cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)" C-m
-set () {
+# export working environment for python and project folder
+ee () {
   tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"
   tmux set-environment workdir "$(pwd)"
   tmux show-environment | grep ^pythonenv
