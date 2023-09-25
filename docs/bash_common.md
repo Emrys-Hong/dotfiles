@@ -1,4 +1,4 @@
-# Display color and set default editor as vim
+## Display color and set default editor as vim
     export VISUAL=vim
     export EDITOR="$VISUAL"
     [ -f ~/.dotfiles/scripts/color.sh ] && source ~/.dotfiles/scripts/color.sh
@@ -15,7 +15,7 @@
 
 
 
-# Use Neovim as vim
+## Use Neovim as vim
     if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
         alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
         alias 'vi'="nvim -u ~/.config/nvim/init.vim"
@@ -27,7 +27,7 @@
 
 
 
-# Python related
+## Python related
     __conda_setup="$('${HOME}/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
@@ -188,7 +188,7 @@
 
 
 
-# Daily commands
+## Daily commands
     # remove all file name with certain extenstion
     # Usage: `rm_all py`, to remove all python files from directory and subdirectory
     rm_all(){
