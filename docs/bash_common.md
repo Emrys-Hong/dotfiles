@@ -94,8 +94,8 @@
     alias 'site'='python -m site' 
 
     # For viewing better github history locally
-    # 
-    alias 'rig'='rig'
+    # Installation: sudo apt-get install -y tig
+    alias 'tig'='tig'
 
     # For comparing differences between files
     # Usage icdiff <filename>
@@ -148,6 +148,9 @@
 
 
 ## Tmux
+    # Install tmux package manager
+    # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
     # Export working environment for python and project folder
     # Tmux will automatically open project and activate conda environment when open new section
     # Usage: ee

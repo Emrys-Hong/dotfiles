@@ -16,7 +16,6 @@ autoimport # VIM ALE autoimport
 
 # jupyterlab-vim # Jupyter VIM
 # termcolor # Python color
-# gpustat
 # nvidia-ml-py3
 # rich # better debugging output
 # tabview # For viewing tables in terminal
