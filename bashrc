@@ -19,6 +19,8 @@ esac
 
 
 ## Display Prompt and default editor
+unset PROMPT_COMMAND
+
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
