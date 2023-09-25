@@ -74,13 +74,6 @@ grip # Visualizing markdowns | Usage: grip <filename> port
 
 ### Others
 
-Jump to history folders
-```
-cd ~/.dotfiles
-git clone https://github.com/wting/autojump.git
-cd autojump
-./install.py
-```
 
 
 Install miniconda
