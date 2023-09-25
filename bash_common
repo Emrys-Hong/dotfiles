@@ -51,7 +51,7 @@ File() {
     local line_num=$(echo "$input" | awk -F'line ' '{print $2}' | awk -F',' '{print $1}')
     local cmd="$HOME/.dotfiles/nvim/nvim.appimage -u ~/.config/nvim/init.vim +$line_num $file_path -c 'normal zt'"
     echo "$cmd"
-    $cmd
+    eval $cmd
 }
 
 alias 'act'='conda activate'
