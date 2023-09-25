@@ -16,18 +16,26 @@
 
 
 ## Use Neovim as vim
+    # Install neovim
+    # curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage
+    # chmod u+x ~/.dotfiles/nvim/nvim.appimage
+    # sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
         alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
         alias 'vi'="nvim -u ~/.config/nvim/init.vim"
         alias 'vim'="nvim -u ~/.config/nvim/init.vim"
     fi
 
+    # Ctags generates an index (or tag) file of language objects found in source files for programming languages. For Vim
+    # Installation: sudo apt-get -y install exuberant-ctags
 
 
 
 
 
-## Python related
+
+
+## Python related: Conda and useful pip packages
     __conda_setup="$('${HOME}/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
@@ -192,12 +200,17 @@
 
 
 ## Daily commands
-    # remove all file name with certain extenstion
+    # Remove all file name with certain extenstion
     # Usage: `rm_all py`, to remove all python files from directory and subdirectory
     rm_all(){
         find . -name "$1" -type f
         find . -name "$1" -type f -delete
     }
+
+    # Global search in files for folder
+    # Installation: sudo apt install -y silversearcher-ag
+    # Usage ag -i <pattern> /path
+
 
     # Make directory and cd into it
     mkd ()

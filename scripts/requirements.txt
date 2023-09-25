@@ -2,11 +2,11 @@ pydantic # python type import
 py3nvml # python nvidia gpu monitoring
 ipdb # python debugging
 jupyterlab # Jupyter
-visidata # For viewing tables in terminal
-icdiff # For comparing differences between files
-grip # Visualizing markdowns. usage: grip <filename> port
-neovim # VIM
-pynvim # VIM
+visidata # For viewing tables in terminal | visidata file.csv
+icdiff # For comparing differences between files | Usage icdiff
+grip # Visualizing markdowns | Usage: grip <filename> port
+neovim # neoVIM
+pynvim # neoVIM
 powerline-status # VIM
 python-language-server # VIM python language server
 mypy  # VIM python type checker
@@ -19,3 +19,4 @@ autoimport # VIM ALE autoimport
 # nvidia-ml-py3
 # rich # better debugging output
 # tabview # For viewing tables in terminal
+# pyls # deprecated python language server for completion

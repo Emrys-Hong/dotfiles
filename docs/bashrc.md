@@ -46,6 +46,8 @@
   # 1. CUDA_VISIBLE_DEVICES
   # 2. Current path
   # 3. Git branch and commit status
+  # It looks like this:
+  # (conda_env)|cuda_numbers|~/path/{main}$
   export PS1=$Color_Off'$([ -z "${CUDA_VISIBLE_DEVICES}" ] || echo "|$CUDA_VISIBLE_DEVICES|")$(git branch &>/dev/null;\
   if [ $? -eq 0 ]; then \
     echo "'$BIBlue$PathShort'$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
@@ -80,6 +82,7 @@
 
 
 ## Command history search and completion
+  # Folder fuzzy completion using TAB
   bind -f ~/.inputrc
   shopt -s checkwinsize
   shopt -s globstar
@@ -130,6 +133,21 @@
 
 
 ## Nodejs
-export NODE_HOME=~/nodejs-latest
-export PATH=$NODE_HOME/bin:$PATH
+    # Install nodejs
+    # cd ~/.dotfiles/scripts/install_nodejs.sh
+    # bash install_nodejs.sh
+    export NODE_HOME=~/nodejs-latest
+    export PATH=$NODE_HOME/bin:$PATH
+
+
+
+
+
+
+## SSH
+    # Openssh
+    # `sudo apt-get install -y openssh-server && ufw allow 22`
+    # Usage: ssh host_name
+    # host_name are defined in ./ssh/config
+
 
