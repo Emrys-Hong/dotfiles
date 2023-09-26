@@ -1,3 +1,4 @@
+" Author Emrys-Hong
 filetype plugin indent on
 syntax on
 set nocompatible

@@ -1,3 +1,4 @@
+#### Author Emrys-Hong
 ## If not running interactively, don't do anything
     case $- in
       *i*) ;;
@@ -10,7 +11,7 @@
 
 
 ## Load regular commands
-   # Check docs/bash_common.md
+    # Check docs/bash_common.md
     [ -f ~/.bash_common ] && source ~/.bash_common
 
 

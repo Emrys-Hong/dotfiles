@@ -1,3 +1,4 @@
+#### Author Emrys-Hong
 ## Helper function for alias, (can ignore this function)
     als() {
       local func_name="$1"
@@ -271,7 +272,7 @@
         ls --color=always -CF
       fi
     }
-    als l 'gitls'
+    alias l='gitls'
 
     als ll 'ls -FlaSh'
     als la 'ls -A'
