@@ -10,10 +10,7 @@
 
 
 ## Load regular commands
-    # Load locally defined commands
-    [ -f ~/.bash_local ] && source ~/.bash_local
-    # Load globally defined commands
-    # Check docs/bash_common.md
+   # Check docs/bash_common.md
     [ -f ~/.bash_common ] && source ~/.bash_common
 
 
@@ -124,7 +121,7 @@
     export CUDA_DEVICE_ORDER=PCI_BUS_ID
     export PATH="/usr/local/cuda/bin":$PATH
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
-    # Usage: `cvd 1,2` to use GPU 1,2
+    # Usage: `cvd 1,2` to use GPU 1,2, (it will be shown in PS1)
     cvd(){
       export CUDA_VISIBLE_DEVICES="$1"
     }
@@ -135,8 +132,7 @@
 
 ## Nodejs
     # Install nodejs
-    # cd ~/.dotfiles/scripts/install_nodejs.sh
-    # bash install_nodejs.sh
+    # Installation: cd ~/.dotfiles/scripts/install_nodejs.sh && bash install_nodejs.sh
     export NODE_HOME=~/nodejs-latest
     export PATH=$NODE_HOME/bin:$PATH
 

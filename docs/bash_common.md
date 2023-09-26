@@ -259,3 +259,6 @@
     # Upload and download files using google drive
     # Installation follow https://github.com/glotlabs/gdrive
     alias 'drive'='~/.dotfiles/gdrive'
+
+## Load locally defined commands
+    [ -f ~/.bash_local ] && source ~/.bash_local
