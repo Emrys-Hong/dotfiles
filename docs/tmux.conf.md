@@ -1,11 +1,16 @@
 #### Emrys-Hong
-set-option -g mouse on
+# General Settings
 
-setw -g xterm-keys on
-setw -g mode-keys vi
-set -g history-limit 50000
-set -sg escape-time 0
-set -g default-terminal "screen-256color"
+
+    setw -g xterm-keys on
+    setw -g mode-keys vi
+    set -g history-limit 50000
+    set -sg escape-time 0
+    set -g default-terminal "screen-256color"
+## Mouse on for scrolling, Toggle Mouse on/off by (prefix+m)
+    set-option -g mouse on
+    unbind m
+    bind m set -gF mouse "#{?mouse,off,on}"
 
 set-option -g pane-border-style fg=colour235
 set-option -ag pane-active-border-style fg=colour240
@@ -73,8 +78,6 @@ bind l choose-tree -s
 unbind '$'
 unbind n
 bind n command-prompt -I "#S" "rename-window '%%'"
-unbind m
-bind m set -gF mouse "#{?mouse,off,on}"
 
 unbind z
 bind z resize-pane -Z
