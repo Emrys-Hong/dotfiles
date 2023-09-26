@@ -10,6 +10,8 @@ set editing-mode vi
 "\C-a.":beginning-of-line
 "\C-e.":end-of-line
 "\C-l":clear-screen
+"\C-e": alias-expand-line
+
 set skip-completed-text on
 set show-all-if-ambiguous on
 set completion-query-items 200
