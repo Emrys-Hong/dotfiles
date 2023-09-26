@@ -1,3 +1,47 @@
+## Helper function for alias, (can ignore this function)
+    als() {
+      local func_name="$1"
+      local command="$2"
+
+      eval "
+      $func_name() {
+        local args=\"\$@\"
+        local full_command=\"$command \$args\"
+
+        if [[ \"$command\" == git* ]]; then
+          local git_alias=\$(git config --get alias.\$args)
+            if [[ \"\$git_alias\" == !* ]]; then
+              git_alias=\${git_alias:1}
+              full_command=\"\$git_alias\"
+            else
+              full_command=\"$command \$git_alias\"
+            fi
+        fi
+
+        if [[ \"$command\" == ssh* ]]; then
+          local ssh_user=\$(grep -A2 \"Host \$args\" ~/.ssh/config | grep 'User' | awk '{print \$2}')
+          local ssh_host=\$(grep -A2 \"Host \$args\" ~/.ssh/config | grep 'HostName' | awk '{print \$2}')
+          local local_forwards=\$(grep -A5 \"Host \$args\" ~/.ssh/config | grep 'LocalForward' | awk '{print \"-L \" \$2 \":\" \$3}')
+          if [[ \$ssh_user != \"\" && \$ssh_host != \"\" ]]; then
+            full_command=\"$command \$ssh_user@\$ssh_host\"
+            echo \"User: \$ssh_user\"
+            echo \"Hostname: \$ssh_host\"
+          fi
+        fi
+        for lf in \$local_forwards; do
+          full_command+=\" \$lf\"
+        done
+
+        tput setaf 1
+        echo \"\$full_command\"
+        tput sgr0
+        eval \$full_command
+      }
+      "
+      export -f $func_name
+    }
+
+
 ## Display color and set default editor as vim
     export VISUAL=vim
     export EDITOR="$VISUAL"
@@ -21,9 +65,9 @@
     # chmod u+x ~/.dotfiles/nvim/nvim.appimage
     # sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
-        alias 'nvim'='$HOME/.dotfiles/nvim/nvim.appimage'
-        alias 'vi'="nvim -u ~/.config/nvim/init.vim"
-        alias 'vim'="nvim -u ~/.config/nvim/init.vim"
+        als 'nvim' '$HOME/.dotfiles/nvim/nvim.appimage'
+        als 'vi' "nvim -u ~/.config/nvim/init.vim"
+        als 'vim' "nvim -u ~/.config/nvim/init.vim"
     fi
 
     # Ctags generates an index (or tag) file of language objects found in source files for programming languages. For Vim
@@ -68,17 +112,17 @@
     }
 
     # Common conda aliases
-    alias 'act'='conda activate'
-    alias 'deact'='conda deactivate'
-    alias 'cl'='conda info --envs'
+    als 'act' 'conda activate'
+    als 'deact' 'conda deactivate'
+    als 'cl' 'conda info --envs'
 
-    alias 'p'='python'
-    alias 'py'='python'
+    als 'p' 'python'
+    als 'py' 'python'
 
     # ipdb for breakpoint() in python
     # Installation: `pip install ipdb`
-    alias 'ipdb'='python -m ipdb -c continue'
-    alias 'i'='python -m ipdb -c continue'
+    als 'ipdb' 'python -m ipdb -c continue'
+    als 'i' 'python -m ipdb -c continue'
 
     # Set ipdb for `breakpoint()` in python
     export PYTHONBREAKPOINT=ipdb.set_trace
@@ -92,41 +136,41 @@
     # Better UI for nvidia-smi
     # Usage: smi
     # Installation: `pip install py2smi`
-    alias 'smi'="py3smi -w 100"
+    als 'smi' "py3smi -w 100"
 
     # Add the current directory to pythonpath to resolve importing issues
     # Usage `pp`
-    alias 'pp'='export PYTHONPATH=$(pwd):$PYTHONPATH'
+    als 'pp' 'export PYTHONPATH=$(pwd):$PYTHONPATH'
 
     # print location of installed python packages
-    alias 'site'='python -m site' 
+    als 'site' 'python -m site' 
 
     # For viewing better github history locally
     # Installation: sudo apt-get install -y tig
-    alias 'tig'='tig'
+    als 'tig' 'tig'
 
     # For comparing differences between files
     # Usage icdiff <filename>
     # Installation `pip install icdiff`
-    alias 'icdiff'='icdiff'
+    als 'icdiff' 'icdiff'
 
     # For viewing tables in terminal
     # Usage: visidata file.csv
     # Installation: `pip install visidata`
-    alias 'visidata'='visidata' # csv files
+    als 'visidata' 'visidata' # csv files
 
     # Visualizing markdowns
     # Usage: grip <filename> port
     # Installation: `pip install grip`
-    alias 'grip'='grip' # render readme
+    als 'grip' 'grip' # render readme
 
     # Installation `pip install tensorboard`
     # Usage: tb 8080
-    alias 'tb'='tensorboard --logdir . --port'
+    als 'tb' 'tensorboard --logdir . --port'
 
     # Installation: `pip install jupyterlab`
     # Usage: lab 8888
-    alias 'lab'='jupyter lab --no-browser --allow-root --port '
+    als 'lab' 'jupyter lab --no-browser --allow-root --port '
 
 
 
@@ -141,14 +185,14 @@
     # locate to common directories
 
     # Github projects
-    alias 'G'='cd ~/G'
-    alias 'D'='cd ~/.dotfiles'
+    als 'G' 'cd ~/G'
+    als 'D' 'cd ~/.dotfiles'
 
     # go to Parent folders with shortcut
-    alias '..'='cd ..'
-    alias '...'='cd ../..'
-    alias '....'='cd ../../..'
-    alias '.....'='cd ../../../..'
+    als '..' 'cd ..'
+    als '...' 'cd ../..'
+    als '....' 'cd ../../..'
+    als '.....' 'cd ../../../..'
 
 
 
@@ -175,8 +219,8 @@
     && tmux send-keys "conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-)" C-m \
     && tmux send-keys "cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)" C-m
  
-    alias 't'='tmux'
-    alias 'ta'='tmux a'
+    als 't' 'tmux'
+    als 'ta' 'tmux a'
 
 
 
@@ -186,13 +230,13 @@
 ## iTerm2 integration
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
     # Usage: dl <filename>
-    alias 'dl'='it2dl'
+    als 'dl' 'it2dl'
 
     # Usage: ul
-    alias 'ul'='it2ul'
+    als 'ul' 'it2ul'
 
     # Usage: img <filename>
-    alias 'img'='imgcat  -H 1000px -s' # image files
+    als 'img' 'imgcat  -H 1000px -s' # image files
 
 
 
@@ -227,38 +271,38 @@
         ls --color=always -CF
       fi
     }
-    alias l='gitls'
+    als l 'gitls'
 
-    alias a='alias'
-    alias ll='ls -FlaSh'
-    alias la='ls -A'
+    als ll 'ls -FlaSh'
+    als la 'ls -A'
     alias 'cp'='cp -iv'
     alias 'mv'='mv -iv'
-    alias 'rmi'='rm -vI'
+    als 'r' 'rm -vI'
     alias 'rm'='rm -v'
-    alias 'rmr'='rm -vr'
-    alias 'rm.'='current_dir=`pwd` && cd .. && rmr $current_dir && current_dir='
-    alias 'rmrf'='rm -rf'
-    alias 'cpr'='cp -r'
-    alias 'scpr'='scp -r'
-    alias 'g'='git'
-    # git status -s in gitconfig
-    alias 'gs'='g s' 
-    alias 'v'='vi'
-    alias 'b'='bash'
-    alias 'brc'='source ~/.bashrc'
-    alias 'zrc'='source ~/.zshrc'
-    alias 'bpf'='source ~/.bash_profile'
+    als 'rmr' 'rm -vr'
+    als 'rm.' 'current_dir=`pwd` && cd .. && rmr $current_dir && current_dir='
+    als 'rmrf' 'rm -rf'
+    als 'cpr' 'cp -r'
+    als 'scpr' 'scp -r'
+    als 'g' 'git'
+
+    # Function: git status -s in gitconfig
+    als 'gs' 'g s'
+    als 'v' 'vi'
+    als 'b' 'bash'
+    als 's' 'ssh'
+    als 'brc' 'source ~/.bashrc'
+    als 'zrc' 'source ~/.zshrc'
+    als 'bpf' 'source ~/.bash_profile'
 
     # list disk usage for current folder
-    alias 'dush'='du -hxcs * 2>/dev/null | sort -hr'
-
+    als 'dush' 'du -hxcs * 2>/dev/null | sort -hr'
     # list disk usage for current folder including hidden files
-    alias 'dusha'='du -hxcs $(ls -A) 2>/dev/null | sort -hr'
+    als 'dusha' 'du -hxcs $(ls -A) 2>/dev/null | sort -hr'
 
     # Upload and download files using google drive
     # Installation follow https://github.com/glotlabs/gdrive
-    alias 'drive'='~/.dotfiles/gdrive'
+    als 'drive' '~/.dotfiles/gdrive'
 
 ## Load locally defined commands
     [ -f ~/.bash_local ] && source ~/.bash_local
