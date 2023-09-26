@@ -1,5 +1,5 @@
 ## Configurations
-- Tmux related: [[tmux markdown]](./tmux.md) [[tmux.conf]](../tmux.conf)
+- Tmux related: [[tmux markdown]](./tmux.md) [[tmux.conf]](./tmux.conf.md)
 - Bashrc related: [[bashrc]](./bashrc.md) for linux, [[bash_common]](./bash_common.md) for linux and mac, [[bash_profile]](../bash_profile) for mac, [[inputrc]](../inputrc) for mac and linux to control input behavior
 - Git settings: [[gitconfig]](../gitconfig), [[gitignore_global]](../gitignore_global), [[gitattributes_global]](gitattributes_global)
 - Conda settings: [[condarc]](../condarc)

@@ -1,7 +1,7 @@
 # Tmux installation
 
 ```sh
-wget -O ~/.tmux.conf https://raw.githubusercontent.com/Emrys-Hong/dotfiles/main/tmux.conf
+wget -O ~/.tmux.conf https://raw.githubusercontent.com/Emrys-Hong/dotfiles/main/docs/tmux.conf.md
 
 echo "tmux source-file ~/.tmux.conf" >> ~/.bashrc
 
@@ -19,6 +19,7 @@ tmux # new session
 tmux a # attach session
 prefix then d # detach last session (d for detach)
 prefix then l # list sessions, windows / switch sessions (l for list)
+tmux ls # list sessions
 prefix then q # list tabs
 prefix then t # new window (t for tab)
 prefix then j # select previous window
