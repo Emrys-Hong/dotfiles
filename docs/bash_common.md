@@ -11,12 +11,16 @@
 
         if [[ \"$command\" == git* ]]; then
           local git_alias=\$(git config --get alias.\$args)
+          if [[ \"\$git_alias\" != \"\" ]]; then
             if [[ \"\$git_alias\" == !* ]]; then
               git_alias=\${git_alias:1}
               full_command=\"\$git_alias\"
             else
               full_command=\"$command \$git_alias\"
             fi
+          else
+            full_command=\"$command \$args\"
+          fi
         fi
 
         if [[ \"$command\" == ssh* ]]; then
