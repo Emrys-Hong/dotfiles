@@ -280,15 +280,108 @@
 
     als ll 'ls -FlaSh'
     als la 'ls -A'
-    alias 'cp'='cp -iv'
-    alias 'mv'='mv -iv'
-    als 'r' 'rm -vI'
-    alias 'rm'='rm -v'
-    als 'rmr' 'rm -vr'
+
+
+    # copy for files and folders
+    copy() {
+      if [ "$#" -lt 2 ]; then
+        cmd="cp $@"
+        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        return 0
+      fi
+
+      dest="${!#}"  # get the last argument as destination
+      for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
+        if [ -f "$item" ] || [ -L "$item" ]; then
+          cmd="cp -v $item $dest"
+        elif [[ -d $item ]]; then
+          count=$(find "$item" -type f | wc -l)
+          if (( count < 10 )); then
+            cmd="cp -rIv $item $dest"
+          else
+            cmd="cp -rI $item $dest"
+          fi
+        else
+          cmd="cp $@"
+          tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+          return 0
+        fi
+        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+      done
+    }
+    alias 'cp'='copy'
+
+
+    move() {
+       if [ "$#" -lt 2 ]; then
+        cmd="mv $@"
+        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        return 0
+      fi
+
+     dest="${!#}"  # get the last argument as destination
+
+      # Check if destination is in the format xxx:/path
+      if [[ $dest =~ ^[0-9]+: ]]; then
+        # Removing leading / from item if destination is localhost with specific format
+        item="$1"
+        cmd="rsync -a --info=progress2 $item $dest"
+        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+      else
+        for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
+          if [ -f "$item" ] || [ -L "$item" ]; then
+            cmd="mv -iv $item $dest"
+            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+          elif [[ -d $item ]]; then
+            count=$(find "$item" -type f | wc -l)
+            if (( count < 10 )); then
+              cmd="mv -iv $item $dest"
+              tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+            else
+              cmd="mv -i $item $dest"
+              tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+            fi
+          else
+            cmd="mv $@"
+            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+            return 0
+          fi
+        done
+      fi
+    }
+    alias 'mv'='move'
+
+    # rm for files and folders
+    remove() {
+      if [ "$#" -lt 1 ]; then
+        cmd="rm $@"
+        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        return 0
+      fi
+
+
+      for item in "$@"; do
+        if [ -f "$item" ] || [ -L "$item" ]; then
+          cmd="rm -v $item"
+        elif [[ -d $item ]]; then
+          count=$(find "$item" -type f | wc -l)
+          if (( count < 10 )); then
+            cmd="rm -rIv $item"
+          else
+            cmd="rm -rI $item"
+          fi
+        else
+          cmd="rm $@"
+          tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+          return 0
+        fi
+        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+      done
+    }
+    alias 'rm'='remove'
+
     als 'rm.' 'current_dir=`pwd` && cd .. && rmr $current_dir && current_dir='
     als 'rmrf' 'rm -rf'
-    als 'cpr' 'cp -r'
-    als 'scpr' 'scp -r'
     als 'g' 'git'
 
     # Function: git status -s in gitconfig
