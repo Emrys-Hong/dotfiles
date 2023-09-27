@@ -221,9 +221,9 @@
 
     # Use load tmux configuration
     [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf \
-    && tmux send-keys "conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-)" C-m \
-    && tmux send-keys "cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)" C-m
- 
+    && conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-) \
+    && cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)
+
     als 't' 'tmux'
     als 'ta' 'tmux a'
 
