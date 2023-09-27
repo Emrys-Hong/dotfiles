@@ -1,4 +1,4 @@
-#### Emrys-Hong
+#### Author Emrys-Hong
 
 # General Settings
     setw -g xterm-keys on

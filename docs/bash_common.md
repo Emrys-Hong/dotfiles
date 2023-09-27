@@ -152,22 +152,22 @@
 
     # For viewing better github history locally
     # Installation: sudo apt-get install -y tig
-    als 'tig' 'tig'
+    alias 'tig'='tig'
 
     # For comparing differences between files
     # Usage icdiff <filename>
     # Installation `pip install icdiff`
-    als 'icdiff' 'icdiff'
+    alias 'icdiff'='icdiff'
 
     # For viewing tables in terminal
     # Usage: visidata file.csv
     # Installation: `pip install visidata`
-    als 'visidata' 'visidata' # csv files
+    alias 'visidata'='visidata' # csv files
 
     # Visualizing markdowns
     # Usage: grip <filename> port
     # Installation: `pip install grip`
-    als 'grip' 'grip' # render readme
+    alias 'grip'='grip' # render readme
 
     # Installation `pip install tensorboard`
     # Usage: tb 8080
