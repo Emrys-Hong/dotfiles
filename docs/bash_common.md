@@ -297,9 +297,9 @@
         elif [[ -d $item ]]; then
           count=$(find "$item" -type f | wc -l)
           if (( count < 10 )); then
-            cmd="cp -rIv $item $dest"
+            cmd="cp -rv $item $dest"
           else
-            cmd="cp -rI $item $dest"
+            cmd="cp -r $item $dest"
           fi
         else
           cmd="cp $@"
@@ -333,14 +333,8 @@
             cmd="mv -iv $item $dest"
             tput setaf 1; echo "$cmd"; tput sgr0; $cmd
           elif [[ -d $item ]]; then
-            count=$(find "$item" -type f | wc -l)
-            if (( count < 10 )); then
-              cmd="mv -iv $item $dest"
-              tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-            else
-              cmd="mv -i $item $dest"
-              tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-            fi
+            cmd="mv -iv $item $dest"
+            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
           else
             cmd="mv $@"
             tput setaf 1; echo "$cmd"; tput sgr0; $cmd
@@ -380,7 +374,7 @@
     }
     alias 'rm'='remove'
 
-    als 'rm.' 'current_dir=`pwd` && cd .. && rmr $current_dir && current_dir='
+    alias 'rm.'='current_dir=`pwd` && cd .. && rm $current_dir'
     als 'rmrf' 'rm -rf'
     als 'g' 'git'
 
