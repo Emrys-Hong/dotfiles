@@ -149,3 +149,10 @@
     # host_name are defined in ./ssh/config
 
 
+
+
+
+
+## Automatically enable environment
+    conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-)
+    cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)

@@ -10,13 +10,14 @@
         local full_command=\"$command \$args\"
 
         if [[ \"$command\" == git* ]]; then
-          local git_alias=\$(git config --get alias.\$args)
+          local git_alias=\$(git config --get alias.\$1)
+          local rest_args=\${args[@]:2}
           if [[ \"\$git_alias\" != \"\" ]]; then
             if [[ \"\$git_alias\" == !* ]]; then
               git_alias=\${git_alias:1}
               full_command=\"\$git_alias\"
             else
-              full_command=\"$command \$git_alias\"
+              full_command=\"$command \$git_alias \$rest_args\"
             fi
           else
             full_command=\"$command \$args\"
@@ -220,9 +221,7 @@
     }
 
     # Use load tmux configuration
-    [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf \
-    && conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-) \
-    && cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)
+    [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf
 
     als 't' 'tmux'
     als 'ta' 'tmux a'
