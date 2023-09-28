@@ -149,7 +149,7 @@
         pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade
     }
 
-### Better UI for nvidia-smi, Usage: smi, Installation: `pip install py2smi`
+### Better UI for nvidia-smi, Usage: smi, Installation: `pip install py3smi`
     als 'smi' "py3smi -w 100"
 
 ### Add the current directory to pythonpath to resolve importing issues, Usage: `pp`

@@ -1,5 +1,5 @@
 # Dotfiles
-All of configuration files([dotfiles](http://dotfiles.github.io/)) in this repo
+All of configuration files([dotfiles](http://dotfiles.github.io/)) in this repo, using bash as shell script, and neovim as editor
 
 ## To setup:
 Setup is as simple as:
@@ -7,7 +7,7 @@ Setup is as simple as:
 git clone https://github.com/Emrys-Hong/dotfiles ~/.dotfiles && cd ~/.dotfiles
 ./setup.sh
 ```
-Specifically `setup.sh` will use softlinks to link the configuration files as hidden files to your home directory `~/` (you can also choose to link the files yourself).
+Specifically `setup.sh` will use softlinks to link the configuration files as hidden files to your home directory `~/` (alternatively, you can also choose to link the files yourself).
 
 Configuration files include :
 
