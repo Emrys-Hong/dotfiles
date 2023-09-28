@@ -1,5 +1,5 @@
 #### Author Emrys-Hong
-## Helper function for alias, (can ignore this function)
+## Helper function for alias, It will display the expanded alias command and execute it, Usage: als func_name command
     als() {
       local func_name="$1"
       local command="$2"
@@ -48,9 +48,11 @@
     }
 
 
-## Display color and set default editor as vim
-    export VISUAL=vim
-    export EDITOR="$VISUAL"
+
+
+
+
+## Enable colors
     [ -f ~/.dotfiles/scripts/color.sh ] && source ~/.dotfiles/scripts/color.sh
     if [ -x /usr/bin/dircolors ]; then
         test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -65,19 +67,26 @@
 
 
 
-## Use Neovim as vim
-    # Install neovim
-    # curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage
-    # chmod u+x ~/.dotfiles/nvim/nvim.appimage
-    # sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+## Vim
+### Vim as default editor
+    export VISUAL=vim
+    export EDITOR="$VISUAL"
+
+### Install neovim
+    # `curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage`
+    # `chmod u+x ~/.dotfiles/nvim/nvim.appimage`
+    # `sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
+    #
+### Use Neovim as vim
     if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
         als 'nvim' '$HOME/.dotfiles/nvim/nvim.appimage'
         als 'vi' "nvim -u ~/.config/nvim/init.vim"
         als 'vim' "nvim -u ~/.config/nvim/init.vim"
     fi
-
+    #
+    ### Install ctags for vim go to definition
     # Ctags generates an index (or tag) file of language objects found in source files for programming languages. For Vim
-    # Installation: sudo apt-get -y install exuberant-ctags
+    # Installation: $ sudo apt-get -y install exuberant-ctags
 
 
 
@@ -85,7 +94,14 @@
 
 
 
-## Python related: Conda and useful pip packages
+## Python
+
+### Install miniconda
+    # $wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    # $bash Miniconda3-latest-Linux-x86_64.sh
+
+
+### Initialize miniconda
     __conda_setup="$('${HOME}/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
@@ -97,17 +113,12 @@
         fi
     fi
     unset __conda_setup
-    # Install Miniconda
-    # wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    # bash Miniconda3-latest-Linux-x86_64.sh
 
-    # load .condarc
-    if [ -f $HOME/.dotfiles/condarc ]; then
-        export 'CONDARC'="$HOME/.dotfiles/condarc"
-    fi
+### load .condarc
+    [ -f $HOME/.dotfiles/condarc ] && export 'CONDARC'="$HOME/.dotfiles/condarc"
 
-    # Go to line in stacktrace in python
-    # Usage: File "path/to/script.py", line 97, in method
+### Go to line in stacktrace in python
+    # Usage: `File "path/to/script.py", line 97, in method`
     File() {
         local input="$@"
         local file_path=$(echo "$1" | sed 's/,$//')
@@ -117,7 +128,7 @@
         eval $cmd
     }
 
-    # Common conda aliases
+### Common aliases related to python and conda
     als 'act' 'conda activate'
     als 'deact' 'conda deactivate'
     als 'cl' 'conda info --envs'
@@ -125,32 +136,29 @@
     als 'p' 'python'
     als 'py' 'python'
 
-    # ipdb for breakpoint() in python
-    # Installation: `pip install ipdb`
+### ipdb for breakpoint() in python Installation
     als 'ipdb' 'python -m ipdb -c continue'
     als 'i' 'python -m ipdb -c continue'
 
-    # Set ipdb for `breakpoint()` in python
+### Set ipdb for `breakpoint()` in python
     export PYTHONBREAKPOINT=ipdb.set_trace
 
-    # Install the following required packages
+### Install common packages in [here](../scripts/requirements.txt)
     pipin ()
     {
         pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade
     }
 
-    # Better UI for nvidia-smi
-    # Usage: smi
-    # Installation: `pip install py2smi`
+### Better UI for nvidia-smi, Usage: smi, Installation: `pip install py2smi`
     als 'smi' "py3smi -w 100"
 
-    # Add the current directory to pythonpath to resolve importing issues
-    # Usage `pp`
+### Add the current directory to pythonpath to resolve importing issues, Usage: `pp`
     als 'pp' 'export PYTHONPATH=$(pwd):$PYTHONPATH'
 
-    # print location of installed python packages
+### print location of installed python packages
     als 'site' 'python -m site' 
 
+### Other useful pip libraries
     # For viewing better github history locally
     # Installation: sudo apt-get install -y tig
     alias 'tig'='tig'
@@ -183,18 +191,19 @@
 
 
 ## Directories
-    # autojump using "j" without complete folder path, usage, j <foldername>
+
+### autojump using "j" without complete folder path
+    # Usage: j <foldername>
     # Installation
-    # cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
+    # $cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
     [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
-    # locate to common directories
 
-    # Github projects
+### Folder shortcuts
     als 'G' 'cd ~/G'
     als 'D' 'cd ~/.dotfiles'
 
-    # go to Parent folders with shortcut
+### Go to Parent folders with shortcut
     als '..' 'cd ..'
     als '...' 'cd ../..'
     als '....' 'cd ../../..'
@@ -205,27 +214,6 @@
 
 
 
-## Tmux
-    # Install tmux package manager
-    # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-    # Export working environment for python and project folder
-    # Tmux will automatically open project and activate conda environment when open new section
-    # Usage: ee
-
-    ee () {
-      tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"
-      tmux set-environment workdir "$(pwd)"
-      tmux show-environment | grep ^pythonenv
-      tmux show-environment | grep ^workdir
-    }
-
-    # Use load tmux configuration
-    [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf
-
-    als 't' 'tmux'
-    als 'ta' 'tmux a'
-
 
 
 
@@ -233,13 +221,13 @@
 
 ## iTerm2 integration
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-    # Usage: dl <filename>
+    # Usage: `dl <filename>`
     als 'dl' 'it2dl'
 
-    # Usage: ul
+    # Usage: `ul`
     als 'ul' 'it2ul'
 
-    # Usage: img <filename>
+    # Usage: `img <filename>`
     als 'img' 'imgcat  -H 1000px -s' # image files
 
 
@@ -247,27 +235,27 @@
 
 
 
-## Daily commands
-    # Remove all file name with certain extenstion
-    # Usage: `rm_all py`, to remove all python files from directory and subdirectory
+## Other Useful commands
+
+### Usage: `rm_all py`, to remove all python files from directory and subdirectory
     rm_all(){
         find . -name "$1" -type f
         find . -name "$1" -type f -delete
     }
 
-    # Global search in files for folder
-    # Installation: sudo apt install -y silversearcher-ag
-    # Usage ag -i <pattern> /path
+### Global search in files for folder
+    # Installation: `sudo apt install -y silversearcher-ag`
+    # Usage `ag -i <pattern> /path`
 
 
-    # Make directory and cd into it
+### Make directory and cd into it
     mkd ()
     {
         mkdir -pv -- "$1" && cd -P -- "$1"
     }
     alias 'mkdir'='mkdir -pv'
 
-    # list directory by ignoring files in .gitignore
+### list directory by ignoring files in .gitignore
     gitls () {
       if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
         ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
@@ -281,7 +269,7 @@
     als la 'ls -A'
 
 
-    # copy for files and folders
+### copy for files and folders with cp -r
     copy() {
       if [ "$#" -lt 2 ]; then
         cmd="cp $@"
@@ -311,6 +299,7 @@
     alias 'cp'='copy'
 
 
+### Move files and folders within server and between server
     move() {
        if [ "$#" -lt 2 ]; then
         cmd="mv $@"
@@ -344,7 +333,7 @@
     }
     alias 'mv'='move'
 
-    # rm for files and folders
+# rm for files and folders
     remove() {
       if [ "$#" -lt 1 ]; then
         cmd="rm $@"
@@ -375,23 +364,22 @@
 
     alias 'rm.'='current_dir=`pwd` && cd .. && rm $current_dir'
     als 'rmrf' 'rm -rf'
-    als 'g' 'git'
 
+### Git alias
+    als 'g' 'git'
     # Function: git status -s in gitconfig
     als 'gs' 'g s'
-    als 'v' 'vi'
-    als 'b' 'bash'
-    als 's' 'ssh'
+
+### Alias for source config files
     als 'brc' 'source ~/.bashrc'
     als 'zrc' 'source ~/.zshrc'
     als 'bpf' 'source ~/.bash_profile'
 
-    # list disk usage for current folder
+### list disk usage for current folder
     als 'dush' 'du -hxcs * 2>/dev/null | sort -hr'
-    # list disk usage for current folder including hidden files
     als 'dusha' 'du -hxcs $(ls -A) 2>/dev/null | sort -hr'
 
-    # Upload and download files using google drive
+### Upload and download files using google drive
     # Installation follow https://github.com/glotlabs/gdrive
     als 'drive' '~/.dotfiles/gdrive'
 

@@ -19,7 +19,7 @@
 
 
 
-## Default settings
+## Default settings for command prompt
     unset PROMPT_COMMAND
 
     [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -38,7 +38,7 @@
       fi
     fi
 
-    # PS1 setting 
+### PS1 setting 
     # including
     # 0. conda environment
     # 1. CUDA_VISIBLE_DEVICES
@@ -63,6 +63,7 @@
 
     LS_COLORS=$LS_COLORS:'fi=0;30:'
 
+### Force color loading
     case "$TERM" in
     xterm*|rxvt*)
       PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
@@ -80,7 +81,8 @@
 
 
 ## Command history search and completion
-    # Folder fuzzy completion using TAB
+
+### Input Settings
     bind -f ~/.inputrc
     shopt -s checkwinsize
     shopt -s globstar
@@ -90,16 +92,16 @@
     bind "set show-all-if-ambiguous on"
     bind "set menu-complete-display-prefix on"
 
-    # keep long bash history
+### keep long bash history
     export HISTCONTROL=ignoredups:erasedups
     HISTSIZE=10000
     HISTFILESIZE=10000
 
-    # keep unified bash history for all tmux sessions
+### keep unified bash history for all tmux sessions
     shopt -s histappend
     export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-    # load bash completion
+### load bash completion
     if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
       . /usr/share/bash-completion/bash_completion
@@ -108,7 +110,7 @@
     fi
     fi
 
-    # Fuzzy match for commands
+### Fuzzy match for commands
     # Automatically loaded when pressing control + R
     # Installation: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -133,7 +135,7 @@
 
 ## Nodejs
     # Install nodejs
-    # Installation: cd ~/.dotfiles/scripts/install_nodejs.sh && bash install_nodejs.sh
+    # Installation: `cd ~/.dotfiles/scripts/install_nodejs.sh && bash install_nodejs.sh`
     export NODE_HOME=~/nodejs-latest
     export PATH=$NODE_HOME/bin:$PATH
 
@@ -144,7 +146,7 @@
 
 ## SSH
     # Openssh
-    # `sudo apt-get install -y openssh-server && ufw allow 22`
+    # Installation: `sudo apt-get install -y openssh-server && ufw allow 22`
     # Usage: ssh host_name
     # host_name are defined in ./ssh/config
 
@@ -152,7 +154,28 @@
 
 
 
+## Tmux
+#### Install tmux package manager
+    # `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
-## Automatically enable environment
+### Export working environment for python and project folder
+    # Usage: `ee`
+
+    ee () {
+      tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"
+      tmux set-environment workdir "$(pwd)"
+      tmux show-environment | grep ^pythonenv
+      tmux show-environment | grep ^workdir
+    }
+
+### Tmux will automatically open project and activate conda environment when open new section
     conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-)
     cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)
+
+### Load tmux configuration
+    [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf
+
+### Tmux related alias
+    als 't' 'tmux'
+    als 'ta' 'tmux a'
+    als 'tl' 'tmux ls'
