@@ -57,7 +57,8 @@ def log_gpu_usage_to_csv(gpu_usage, file_path):
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
-csv_file_path = f'{s.getsockname()[0]}_gpu_log.csv'
+csv_file_path = f'{os.path.dirname(os.path.abspath(__file__))}/{s.getsockname()[0]}_gpu_log.csv'
+print(csv_file_path)
 s.close()
 
 gpu_usage = get_gpu_usage()
