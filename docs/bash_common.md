@@ -269,7 +269,7 @@
     als la 'ls -A'
 
 
-### copy for files and folders with cp -r
+### copy for files and folders with cp -r between and within machines
     copy() {
       if [ "$#" -lt 2 ]; then
         cmd="cp $@"
@@ -278,28 +278,37 @@
       fi
 
       dest="${!#}"  # get the last argument as destination
-      for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
-        if [ -f "$item" ] || [ -L "$item" ]; then
-          cmd="cp -v $item $dest"
-        elif [[ -d $item ]]; then
-          count=$(find "$item" -type f | wc -l)
-          if (( count < 10 )); then
-            cmd="cp -rv $item $dest"
-          else
-            cmd="cp -r $item $dest"
-          fi
-        else
-          cmd="cp $@"
-          tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-          return 0
-        fi
+      # Check if destination is in the format xxx:/path
+      if [[ $dest =~ [0-9]+: ]]; then
+        # Removing leading / from item if destination is localhost with specific format
+        item="$1"
+        cmd="rsync -a --info=progress2 $item $dest"
         tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-      done
+
+      else
+        for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
+          if [ -f "$item" ] || [ -L "$item" ]; then
+            cmd="cp -v $item $dest"
+          elif [[ -d $item ]]; then
+            count=$(find "$item" -type f | wc -l)
+            if (( count < 10 )); then
+              cmd="cp -rv $item $dest"
+            else
+              cmd="cp -r $item $dest"
+            fi
+          else
+            cmd="cp $@"
+            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+            return 0
+          fi
+          tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        done
+      fi
     }
     alias 'cp'='copy'
 
 
-### Move files and folders within server and between server
+### Move files and folders
     move() {
        if [ "$#" -lt 2 ]; then
         cmd="mv $@"
@@ -309,27 +318,19 @@
 
      dest="${!#}"  # get the last argument as destination
 
-      # Check if destination is in the format xxx:/path
-      if [[ $dest =~ ^[0-9]+: ]]; then
-        # Removing leading / from item if destination is localhost with specific format
-        item="$1"
-        cmd="rsync -a --info=progress2 $item $dest"
-        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-      else
-        for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
-          if [ -f "$item" ] || [ -L "$item" ]; then
-            cmd="mv -iv $item $dest"
-            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-          elif [[ -d $item ]]; then
-            cmd="mv -iv $item $dest"
-            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-          else
-            cmd="mv $@"
-            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
-            return 0
-          fi
-        done
-      fi
+     for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
+       if [ -f "$item" ] || [ -L "$item" ]; then
+         cmd="mv -iv $item $dest"
+         tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+       elif [[ -d $item ]]; then
+         cmd="mv -iv $item $dest"
+         tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+       else
+         cmd="mv $@"
+         tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+         return 0
+       fi
+     done
     }
     alias 'mv'='move'
 

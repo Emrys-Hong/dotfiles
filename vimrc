@@ -89,8 +89,8 @@ vnoremap                  <S-Tab>         <gv
 tnoremap                  <Esc>           <C-\><C-n>
 nnoremap                  dW              vbd
 nnoremap          <Leader><CR>            :call ToggleHiddenAll()<CR>
-nnoremap          <Leader>d               obreakpoint()<Esc>
-nnoremap          <Leader>D               Obreakpoint()<Esc>
+nnoremap          <Leader>D               obreakpoint()<Esc>
+nnoremap          <Leader>d               Obreakpoint()<Esc>
 nnoremap                  `d              /breakpoint()<CR>
 nnoremap          <leader>q               :q!<CR>
 nnoremap          <leader>p               :pu<CR>
