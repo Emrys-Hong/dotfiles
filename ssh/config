@@ -44,3 +44,8 @@ Host 170
     User emrys
     HostName 172.18.240.170
     LocalForward 8080 127.0.0.1:8080
+
+Host 81
+    User emrys
+    HostName 172.18.78.81
+
