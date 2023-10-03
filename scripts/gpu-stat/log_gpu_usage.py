@@ -1,12 +1,18 @@
+import csv
 import os
 import pwd
-import csv
-import time
-import psutil
 import socket
+import time
+
+import psutil
 from py3nvml.py3nvml import (
-    nvmlInit, nvmlShutdown,
-    nvmlDeviceGetCount, nvmlDeviceGetHandleByIndex, nvmlDeviceGetComputeRunningProcesses)
+    nvmlDeviceGetComputeRunningProcesses,
+    nvmlDeviceGetCount,
+    nvmlDeviceGetHandleByIndex,
+    nvmlInit,
+    nvmlShutdown,
+)
+
 
 def get_gpu_usage():
     nvmlInit()
@@ -29,38 +35,45 @@ def get_gpu_usage():
             user = pwd.getpwuid(process.uids().real).pw_name
 
             gpu_usage.append(
-                {'user': user, 'command': command, 'memory_usage': used_memory//1024//1024}
+                {
+                    "user": user,
+                    "command": command,
+                    "memory_usage": used_memory // 1024 // 1024,
+                }
             )
 
     nvmlShutdown()
     return gpu_usage
 
+
 def log_gpu_usage_to_csv(gpu_usage, file_path):
-    header = ['date', 'time', 'user', 'command', 'memory_usage']
+    header = ["date", "time", "user", "command", "memory_usage"]
 
     file_exists = os.path.isfile(file_path)
 
-    with open(file_path, 'a', newline='') as csvfile:
+    with open(file_path, "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=header)
 
         if not file_exists:
             writer.writeheader()
 
         current_time = time.localtime()
-        date_str = time.strftime('%Y-%m-%d', current_time)
-        time_str = time.strftime('%H:%M:%S', current_time)
+        date_str = time.strftime("%Y-%m-%d", current_time)
+        time_str = time.strftime("%H:%M:%S", current_time)
 
         for usage in gpu_usage:
-            usage['date'] = date_str
-            usage['time'] = time_str
+            usage["date"] = date_str
+            usage["time"] = time_str
             writer.writerow(usage)
+
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
-csv_file_path = f'{os.path.dirname(os.path.abspath(__file__))}/{s.getsockname()[0]}_gpu_log.csv'
+csv_file_path = (
+    f"{os.path.dirname(os.path.abspath(__file__))}/{s.getsockname()[0]}_gpu_log.csv"
+)
 print(csv_file_path)
 s.close()
 
 gpu_usage = get_gpu_usage()
 log_gpu_usage_to_csv(gpu_usage, csv_file_path)
-
