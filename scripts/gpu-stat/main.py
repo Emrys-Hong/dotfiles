@@ -20,6 +20,11 @@ time_span = st.radio("Usage History in Days", ("1", "3", "7", "30"))
 def create_line_chart(ip):
     if ip == "Total":
         df = pd.concat([pd.read_csv(f"{ip}_gpu_log.csv") for ip in ip_list])
+        if per_user:
+            user = st.selectbox("Select User: ", ["All User"] + list(set(df["user"])))
+            if user != "All User":
+                df = df[df["user"] == user]
+
     else:
         df = pd.read_csv(f"{ip}_gpu_log.csv")
 
