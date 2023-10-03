@@ -20,4 +20,4 @@ On the data server
 */5 * * * * rsync -avz --progress 81:~/.dotfiles/scripts/gpu-stat/*.csv  ~/.dotfiles/scripts/gpu-stat/
 ```
 
-Run `streamlit run main.py --server.port 8080`
+Run `streamlit run main.py --server.port 8080` and check result at `http://172.17.240.73:8080`
