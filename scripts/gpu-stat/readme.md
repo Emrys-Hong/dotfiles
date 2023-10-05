@@ -30,6 +30,6 @@ Logging disk usage every 1 hour
 
 using `sudo crontab -e`
 ```
-0 */1 * * * /home/emrys/.dotfiles/scripts/gpu-stat/log_disk_usage.bash /home/ /data/ /mnt/*/*
+0 */1 * * * /home/emrys/.dotfiles/scripts/gpu-stat/log_disk_usage.bash /home/ /data/ /mnt/*
 ```
 
