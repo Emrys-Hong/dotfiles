@@ -17,7 +17,7 @@ per_user = st.checkbox("Show individual user usage", value=False)
 time_span = st.radio("Usage History in Days", ("1", "3", "7", "30"))
 
 
-def create_line_chart(ip):
+def main(ip):
     if ip == "Total":
         df = pd.concat([pd.read_csv(f"{ip}_gpu_log.csv") for ip in ip_list])
         if per_user:
@@ -34,6 +34,10 @@ def create_line_chart(ip):
     df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"])
     time_limit = datetime.today() - timedelta(days=int(time_span))
     df = df[df["datetime"] >= time_limit]
+    # previous full hour
+    now = datetime.now()
+    truncated_time = now.replace(minute=0, second=0, microsecond=0)
+    df = df[df["datetime"] < truncated_time]
 
     grouped_df = (
         df.groupby([pd.Grouper(key="datetime", freq="1H"), "user"])
@@ -46,7 +50,13 @@ def create_line_chart(ip):
     )
     table = table.divide(12)  # one hour have 12 five minutes interval
 
-    return table
+    st.line_chart(table)
 
+    if ip != "Total":
+        du_file = f"disk_usage_{ip}.txt"
+        if os.path.exists(du_file):
+            with open(du_file, 'r') as file: content = file.read()
+            st.text_area("Disk Usage:", content, height=400)  # Adjust height as needed
 
-st.line_chart(create_line_chart(chart_option))
+main(chart_option)
+

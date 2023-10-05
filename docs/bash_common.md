@@ -1,5 +1,6 @@
 #### Author Emrys-Hong
-## Helper function for alias, It will display the expanded alias command and execute it, Usage: als func_name command
+## Helper function for alias, It will display the expanded alias command and execute it, 
+#### Usage: `als func_name command`
     als() {
       local func_name="$1"
       local command="$2"
@@ -117,8 +118,8 @@
 ### load .condarc
     [ -f $HOME/.dotfiles/condarc ] && export 'CONDARC'="$HOME/.dotfiles/condarc"
 
-### Go to line in stacktrace in python
-    # Usage: `File "path/to/script.py", line 97, in method`
+### Open vim and Go to line in stacktrace in python
+#### Usage: `File "path/to/script.py", line 97, in method`
     File() {
         local input="$@"
         local file_path=$(echo "$1" | sed 's/,$//')
@@ -144,21 +145,26 @@
     export PYTHONBREAKPOINT=ipdb.set_trace
 
 ### Install common packages in [here](../scripts/requirements.txt)
+### Usage: `pipin`
     pipin ()
     {
         pip install -r ~/.dotfiles/scripts/requirements.txt --upgrade
     }
 
-### Better UI for nvidia-smi, Usage: smi, Installation: `pip install py3smi`
+### Better alternative for nvidia-smi, Usage: smi, Installation: `pip install py3smi`
+#### Usage: `smi`
     als 'smi' "py3smi -w 100"
 
-### Add the current directory to pythonpath to resolve importing issues, Usage: `pp`
+### Add the current directory to pythonpath to resolve importing issues, 
+#### Usage: `pp`
     als 'pp' 'export PYTHONPATH=$(pwd):$PYTHONPATH'
 
 ### print location of installed python packages
+#### Usage: `site`
     als 'site' 'python -m site' 
 
 ### Other useful pip libraries
+#### Usage: `tig`
     # For viewing better github history locally
     # Installation: sudo apt-get install -y tig
     alias 'tig'='tig'
@@ -169,21 +175,17 @@
     alias 'icdiff'='icdiff'
 
     # For viewing tables in terminal
-    # Usage: visidata file.csv
+#### Usage: `visidata file.csv`
     # Installation: `pip install visidata`
     alias 'visidata'='visidata' # csv files
 
+#### Usage: `grip <filename> port`
     # Visualizing markdowns
-    # Usage: grip <filename> port
     # Installation: `pip install grip`
     alias 'grip'='grip' # render readme
 
-    # Installation `pip install tensorboard`
-    # Usage: tb 8080
-    als 'tb' 'tensorboard --logdir . --port'
-
+#### Usage: `lab 8888`
     # Installation: `pip install jupyterlab`
-    # Usage: lab 8888
     als 'lab' 'jupyter lab --no-browser --allow-root --port '
 
 
@@ -193,7 +195,7 @@
 ## Directories
 
 ### autojump using "j" without complete folder path
-    # Usage: j <foldername>
+#### Usage: j <foldername>
     # Installation
     # $cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
     [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
@@ -221,13 +223,13 @@
 
 ## iTerm2 integration
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-    # Usage: `dl <filename>`
+#### Usage: `dl <filename>`
     als 'dl' 'it2dl'
 
-    # Usage: `ul`
+#### Usage: `ul`
     als 'ul' 'it2ul'
 
-    # Usage: `img <filename>`
+#### Usage: `img <filename>`
     als 'img' 'imgcat  -H 1000px -s' # image files
 
 
@@ -236,7 +238,6 @@
 
 
 ## Other Useful commands
-
 ### Usage: `rm_all py`, to remove all python files from directory and subdirectory
     rm_all(){
         find . -name "$1" -type f
@@ -244,8 +245,8 @@
     }
 
 ### Global search in files for folder
+#### Usage `ag -i <pattern> /path`
     # Installation: `sudo apt install -y silversearcher-ag`
-    # Usage `ag -i <pattern> /path`
 
 
 ### Make directory and cd into it
@@ -256,6 +257,7 @@
     alias 'mkdir'='mkdir -pv'
 
 ### list directory by ignoring files in .gitignore
+#### Usage: `l`
     gitls () {
       if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
         ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
@@ -269,7 +271,9 @@
     als la 'ls -A'
 
 
-### copy for files and folders with cp -r between and within machines
+### copy for files and folders between and within machines
+#### Usage1: `cp file_or_folder /path/`
+#### Usage2: `cp ~/miniconda3/envs/<package_name> username@ip:~/miniconda3/envs/`
     copy() {
       if [ "$#" -lt 2 ]; then
         cmd="cp $@"
@@ -309,6 +313,7 @@
 
 
 ### Move files and folders
+#### Usage: `mv <folder_or_file> path/`
     move() {
        if [ "$#" -lt 2 ]; then
         cmd="mv $@"
@@ -335,6 +340,7 @@
     alias 'mv'='move'
 
 # rm for files and folders
+#### Usage: `rm <folder_or_file> path/`
     remove() {
       if [ "$#" -lt 1 ]; then
         cmd="rm $@"
@@ -377,8 +383,42 @@
     als 'bpf' 'source ~/.bash_profile'
 
 ### list disk usage for current folder
-    als 'dush' 'du -hxcs * 2>/dev/null | sort -hr'
-    als 'dusha' 'du -hxcs $(ls -A) 2>/dev/null | sort -hr'
+#### Usage1: `disk /path` 
+#### Usage2 list hidden files: `disk -a /path`
+    disk() {
+      show_all=0
+      dir=""
+      cmd=""
+
+      if [ "$1" == "-a" ]; then
+          show_all=1
+          dir="$2"
+      else
+          dir="$1"
+      fi
+
+      if [ -z "$dir" ]; then
+          echo "Please provide a directory path."
+          return 1
+      fi
+
+      if [ ! -d "$dir" ]; then
+          echo "Error: $dir is not a directory."
+          return 2
+      fi
+
+      if [ $show_all -eq 1 ]; then
+          cmd="du -hxcs \"$dir\"/* \"$dir\"/.[^.]* \"$dir\"/..?* 2>/dev/null | sort -hr"
+      else
+          cmd="du -hxcs \"$dir\"/* 2>/dev/null | sort -hr"
+      fi
+
+      # Echo the command
+      echo "$cmd"
+      # Execute the command
+      eval "$cmd"
+  }
+
 
 ### Upload and download files using google drive
     # Installation follow https://github.com/glotlabs/gdrive

@@ -14,6 +14,7 @@ from py3nvml.py3nvml import (
 )
 
 
+SIZE = 20000
 def get_gpu_usage():
     nvmlInit()
     gpu_usage = []
@@ -50,6 +51,14 @@ def log_gpu_usage_to_csv(gpu_usage, file_path):
     header = ["date", "time", "user", "command", "memory_usage"]
 
     file_exists = os.path.isfile(file_path)
+    if file_exists:
+        with open(file_path, "r") as f:
+            lines = f.readlines()
+
+            if len(lines) > SIZE:
+                trim_length = len(lines) - SIZE + len(gpu_usage)
+                with open(file_path, "w") as f:
+                    f.writelines(lines[trim_length:])
 
     with open(file_path, "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=header)
