@@ -9,12 +9,30 @@ def get_ip_list(directory="."):
     return [f.split("_")[0] for f in os.listdir(directory) if f.endswith(".csv")]
 
 
-ip_list = get_ip_list() + ['172.17.240.73']
+def remove_slash(s):
+    return "".join(x for i, x in enumerate(s) if i == 0 or x != s[i - 1])
 
-st.title("DeCLaRe Admin GPU Monitoring")
-chart_option = st.selectbox("Select Machine: ", ["Total"] + ip_list)
-per_user = st.checkbox("Show individual user usage", value=False)
-time_span = st.radio("Usage History in Days", ("1", "3", "7", "30"))
+
+def parse_content(du_file):
+    with open(du_file, "r") as file:
+        content = file.readlines()
+    lst = []
+    for i in range(len(content)):
+        if content[i] != content[i - 1]:
+            if len(content[i].strip()) > 0:
+                du, user = content[i].split()
+                if du == "0":
+                    continue
+                if "lost+found" in user:
+                    continue
+                if user == "total":
+                    # content[i+1] : 4.0K	/mnt/data1/emrys
+                    user = content[i + 1].split()[1]
+                    user = "/".join(user.split("/")[:-1])
+                    lst.append("\n")
+                user = remove_slash(user)
+                lst.append(du + "\t" + user)
+    return "\n".join(lst).strip()
 
 
 def main(ip):
@@ -70,10 +88,17 @@ def main(ip):
     if ip != "Total":
         du_file = f"disk_usage_{ip}.txt"
         if os.path.exists(du_file):
-            with open(du_file, "r") as file:
-                content = file.read()
+            content = parse_content(du_file)
             st.text_area("Disk Usage:", content, height=400)  # Adjust height as needed
 
 
 if __name__ == "__main__":
+    current_server_ip = "172.17.240.73"
+    ip_list = get_ip_list() + [current_server_ip]
+
+    st.title("DeCLaRe Admin GPU & Disk Monitoring")
+    chart_option = st.selectbox("Select Machine: ", ["Total"] + ip_list)
+    per_user = st.checkbox("Show individual user usage", value=False)
+    time_span = st.radio("Usage History in Days", ("1", "3", "7", "30"))
+
     main(chart_option)
