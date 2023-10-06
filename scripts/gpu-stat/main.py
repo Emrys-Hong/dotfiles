@@ -9,7 +9,7 @@ def get_ip_list(directory="."):
     return [f.split("_")[0] for f in os.listdir(directory) if f.endswith(".csv")]
 
 
-ip_list = get_ip_list()
+ip_list = get_ip_list() + ['172.17.240.73']
 
 st.title("DeCLaRe Admin GPU Monitoring")
 chart_option = st.selectbox("Select Machine: ", ["Total"] + ip_list)
@@ -19,14 +19,29 @@ time_span = st.radio("Usage History in Days", ("1", "3", "7", "30"))
 
 def main(ip):
     if ip == "Total":
-        df = pd.concat([pd.read_csv(f"{ip}_gpu_log.csv", on_bad_lines='skip') for ip in ip_list])
+        df = pd.concat(
+            [
+                pd.read_csv(f"{ip}_gpu_log.csv", on_bad_lines="skip")
+                for ip in ip_list
+                if os.path.exists(f"{ip}_gpu_log.csv")
+            ]
+        )
         if per_user:
             user = st.selectbox("Select User: ", ["All User"] + list(set(df["user"])))
             if user != "All User":
                 df = df[df["user"] == user]
 
     else:
-        df = pd.read_csv(f"{ip}_gpu_log.csv", on_bad_lines='skip')
+        if os.path.exists(f"{ip}_gpu_log.csv"):
+            df = pd.read_csv(f"{ip}_gpu_log.csv", on_bad_lines="skip")
+        else:
+            df = pd.concat(
+                [
+                    pd.read_csv(f"{ip}_gpu_log.csv", on_bad_lines="skip")
+                    for ip in ip_list
+                    if os.path.exists(f"{ip}_gpu_log.csv")
+                ]
+            )
 
     if not per_user:
         df["user"] = "All Users"
@@ -55,8 +70,10 @@ def main(ip):
     if ip != "Total":
         du_file = f"disk_usage_{ip}.txt"
         if os.path.exists(du_file):
-            with open(du_file, 'r') as file: content = file.read()
+            with open(du_file, "r") as file:
+                content = file.read()
             st.text_area("Disk Usage:", content, height=400)  # Adjust height as needed
 
-main(chart_option)
 
+if __name__ == "__main__":
+    main(chart_option)
