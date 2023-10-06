@@ -7,7 +7,10 @@ Run logging and synchronization script in a crontab job by `crontab -e`, every 5
 ```
 */5 * * * * $HOME/miniconda3/bin/python $HOME/.dotfiles/scripts/gpu-stat/log_gpu_usage.py
 ```
-and sometimes need to run this `sudo ip link delete docker0`
+and sometimes need to put this in sudo crontab as well
+```
+0 */5 * * * /usr/sbin/ip link delete docker0
+```
 
 ### On the central server
 (Ensure .ssh/config is set and ssh-copy-id have done)
@@ -26,10 +29,10 @@ and sometimes need to run this `sudo ip link delete docker0`
 Run `streamlit run main.py --server.port 8080`.
 
 ## Disk
-Logging disk usage every 1 hour
+Logging disk usage every 5 hour
 
 using `sudo crontab -e`
 ```
-0 */1 * * * /home/emrys/.dotfiles/scripts/gpu-stat/log_disk_usage.bash /home/ /data/ /mnt/*
+0 */5 * * * /home/emrys/.dotfiles/scripts/gpu-stat/log_disk_usage.bash /home/ /data/ /mnt/*
 ```
 
