@@ -13,14 +13,14 @@ and sometimes need to run this `sudo ip link delete docker0`
 (Ensure .ssh/config is set and ssh-copy-id have done)
 (try `ssh xxx` can run smoothly)
 ```
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 119:~/.dotfiles/scripts/gpu-stat/*.csv ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 107:~/.dotfiles/scripts/gpu-stat/*.csv ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 195:~/.dotfiles/scripts/gpu-stat/*.csv ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 100:~/.dotfiles/scripts/gpu-stat/*.csv ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 231:~/.dotfiles/scripts/gpu-stat/*.csv ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 158:~/.dotfiles/scripts/gpu-stat/*.csv ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 170:~/.dotfiles/scripts/gpu-stat/*.csv ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 81:~/.dotfiles/scripts/gpu-stat/*.csv  ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 119:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 107:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 195:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 100:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 231:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 158:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 170:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 81:~/.dotfiles/scripts/gpu-stat/  ~/.dotfiles/scripts/gpu-stat/
 ```
 
 Run `streamlit run main.py --server.port 8080`.
