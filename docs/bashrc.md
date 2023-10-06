@@ -121,10 +121,10 @@
 
 
 ## CUDA configurations
+#### Usage: `cvd 1,2` to use GPU 1,2, (it will be shown in PS1)
     export CUDA_DEVICE_ORDER=PCI_BUS_ID
     export PATH="/usr/local/cuda/bin":$PATH
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
-    # Usage: `cvd 1,2` to use GPU 1,2, (it will be shown in PS1)
     cvd(){
       export CUDA_VISIBLE_DEVICES="$1"
     }
@@ -145,9 +145,9 @@
 
 
 ## SSH
+#### Usage: `ssh host_name`
     # Openssh
     # Installation: `sudo apt-get install -y openssh-server && ufw allow 22`
-    # Usage: ssh host_name
     # host_name are defined in ./ssh/config
 
 
@@ -159,7 +159,7 @@
     # `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ### Export working environment for python and project folder
-    # Usage: `ee`
+#### Usage: `ee`
 
     ee () {
       tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"

@@ -1,4 +1,5 @@
 #### Author Emrys-Hong
+
 ## Helper function for alias, It will display the expanded alias command and execute it, 
 #### Usage: `als func_name command`
     als() {
@@ -133,15 +134,12 @@
     als 'act' 'conda activate'
     als 'deact' 'conda deactivate'
     als 'cl' 'conda info --envs'
-
     als 'p' 'python'
     als 'py' 'python'
 
-### ipdb for breakpoint() in python Installation
+### ipdb for breakpoint() in python
     als 'ipdb' 'python -m ipdb -c continue'
     als 'i' 'python -m ipdb -c continue'
-
-### Set ipdb for `breakpoint()` in python
     export PYTHONBREAKPOINT=ipdb.set_trace
 
 ### Install common packages in [here](../scripts/requirements.txt)
@@ -184,7 +182,7 @@
     # Installation: `pip install grip`
     alias 'grip'='grip' # render readme
 
-#### Usage: `lab 8888`
+#### Usage: `lab <port>`
     # Installation: `pip install jupyterlab`
     als 'lab' 'jupyter lab --no-browser --allow-root --port '
 
@@ -195,7 +193,7 @@
 ## Directories
 
 ### autojump using "j" without complete folder path
-#### Usage: j <foldername>
+#### Usage: `j <foldername>`
     # Installation
     # $cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
     [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
@@ -260,8 +258,10 @@
 #### Usage: `l`
     gitls () {
       if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        echo git ls-files
         ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
       else
+        echo ls --color=always -CF
         ls --color=always -CF
       fi
     }
