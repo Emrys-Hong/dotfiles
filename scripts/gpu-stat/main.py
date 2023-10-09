@@ -16,8 +16,8 @@ def remove_slash(s):
 def parse_content(du_file):
     with open(du_file, "r") as file:
         content = file.readlines()
-    lst = []
-    for i in range(len(content)):
+    lst = [content[0]]
+    for i in range(1, len(content)):
         if content[i] != content[i - 1]:
             if len(content[i].strip()) > 0:
                 du, user = content[i].split()

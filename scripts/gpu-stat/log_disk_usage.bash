@@ -6,8 +6,10 @@ function dirs() {
 
     output_file="/home/emrys/.dotfiles/scripts/gpu-stat/disk_usage_${ip}.txt"
 
-    # Clear the output file
     > "$output_file"
+
+    echo "Last Update: $(date)" >> "$output_file"
+    echo "" >> "$output_file"
 
     for dir in "$@"; do
         du -hxcs "$dir"/* 2>/dev/null | sort -hr >> "$output_file"
