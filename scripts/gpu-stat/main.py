@@ -16,7 +16,7 @@ def remove_slash(s):
 def parse_content(du_file):
     with open(du_file, "r") as file:
         content = file.readlines()
-    lst = [content[0]]
+    lst = [content[0]] # execution time
     for i in range(1, len(content)):
         if content[i] != content[i - 1]:
             if len(content[i].strip()) > 0:
