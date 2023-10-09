@@ -45,7 +45,7 @@ def main(ip):
         v["machine"] = k
 
     if ip == "Total":
-        df = pd.concat([csvs.values()])
+        df = pd.concat(list(csvs.values()))
         if per_user:
             user = st.selectbox("Select User: ", ["All User"] + list(set(df["user"])))
             if user != "All User":
@@ -55,7 +55,7 @@ def main(ip):
         if os.path.exists(f"{ip}_gpu_log.csv"):
             df = csvs[ip]
         else:
-            df = pd.concat([csvs.values()])
+            df = pd.concat(list(csvs.values()))
 
     if not per_user:
         df["user"] = "All Users"
@@ -107,9 +107,16 @@ if __name__ == "__main__":
     ip_list = get_ip_list() + [current_server_ip]
 
     st.title("DeCLaRe Admin GPU & Disk Monitoring")
-    chart_option = st.selectbox("Select Machine: ", ["Total"] + ip_list)
+    chart_option = st.selectbox(
+        "Select Machine for gpu and disk usage: ", ["Total"] + ip_list
+    )
     per_user = st.checkbox("Show individual user usage", value=False)
     per_machine = st.checkbox("Show individual machine usage", value=False)
+
+    if per_user and per_machine:
+        st.text(
+            "Error: You cannot select individual user and machine at the same time!",
+        )
     time_span = st.radio("Usage History in Days", ("1", "3", "7", "30"))
 
     main(chart_option)
