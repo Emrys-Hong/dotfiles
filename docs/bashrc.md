@@ -121,13 +121,29 @@
 
 
 ## CUDA configurations
-#### Usage: `cvd 1,2` to use GPU 1,2, (it will be shown in PS1)
+#### Usage: `cvd 1,2,4-6` to use GPU 1,2,4,5,6 (it will be shown in PS1)
     export CUDA_DEVICE_ORDER=PCI_BUS_ID
     export PATH="/usr/local/cuda/bin":$PATH
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
-    cvd(){
-      export CUDA_VISIBLE_DEVICES="$1"
+    cvd() {
+        local input="$1"
+        local result=()
+
+        IFS=',' read -ra segments <<< "$input"
+        for segment in "${segments[@]}"; do
+            if [[ $segment =~ ([0-9]+)-([0-9]+) ]]; then
+                range_seq=$(seq -s, "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}")
+                IFS=',' read -ra expanded <<< "$range_seq"
+                result+=("${expanded[@]}")
+            else
+                result+=("$segment")
+            fi
+        done
+
+        IFS=,; CUDA_VISIBLE_DEVICES="${result[*]}"
+        export CUDA_VISIBLE_DEVICES
     }
+
 
 
 
@@ -159,9 +175,9 @@
     # `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ### Export working environment for python and project folder
-#### Usage: `ee`
+#### Usage: `,`
 
-    ee () {
+    , () {
       tmux set-environment pythonenv "$CONDA_DEFAULT_ENV"
       tmux set-environment workdir "$(pwd)"
       tmux show-environment | grep ^pythonenv
