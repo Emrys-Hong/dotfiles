@@ -16,7 +16,7 @@ def remove_slash(s):
 def parse_content(du_file):
     with open(du_file, "r") as file:
         content = file.readlines()
-    lst = [content[0]] # execution time
+    lst = [content[0]]  # execution time
     for i in range(1, len(content)):
         if content[i] != content[i - 1]:
             if len(content[i].strip()) > 0:
@@ -62,7 +62,7 @@ def main(ip):
     if per_machine:
         df["user"] = "All Users"
 
-    df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"])
+    df["datetime"] = pd.to_datetime(df["date"] + " " + df["time"], errors="coerce")
     time_limit = datetime.today() - timedelta(days=int(time_span))
     df = df[df["datetime"] >= time_limit]
     # previous full hour
