@@ -23,7 +23,7 @@ and sometimes need to put this in sudo crontab as well
 */5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 231:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
 */5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 158:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
 */5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 170:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
-*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 81:~/.dotfiles/scripts/gpu-stat/  ~/.dotfiles/scripts/gpu-stat/
+*/5 * * * * rsync -avz --progress  --include='*.csv' --include='*.txt' --exclude='*' 187:~/.dotfiles/scripts/gpu-stat/ ~/.dotfiles/scripts/gpu-stat/
 ```
 
 Run `streamlit run main.py --server.port 8080`.
