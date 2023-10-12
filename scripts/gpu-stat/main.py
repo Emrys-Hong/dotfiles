@@ -1,9 +1,9 @@
 import os
 from datetime import datetime, timedelta
 
+import numpy as np
 import pandas as pd
 import streamlit as st
-
 
 def get_ip_list(directory="."):
     return [f.split("_")[0] for f in os.listdir(directory) if f.endswith(".csv")]
@@ -33,6 +33,13 @@ def parse_content(du_file):
                 user = remove_slash(user)
                 lst.append(du + "\t" + user)
     return "\n".join(lst).strip()
+
+
+def moving_average(data, window_size=5):
+    for _ in range(2):
+        data = np.convolve(data, np.ones(window_size) / window_size, mode="same")
+    return data
+
 
 
 def main(ip):
@@ -92,6 +99,9 @@ def main(ip):
             index="datetime", columns="user", values="count", fill_value=0
         )
     table = table.divide(12)  # one hour have 12 five minutes interval
+
+    for col in table.columns:
+        table[col] = moving_average(table[col])
 
     st.line_chart(table)
 
