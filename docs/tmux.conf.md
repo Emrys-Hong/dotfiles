@@ -106,8 +106,15 @@
     bind-key -n S-Right swap-window -t +1
 
 ## Plugins
+#### Tmux Plugin Manager
     set -g @plugin 'tmux-plugins/tpm'
+#### Basic Tmux setting package
     set -g @plugin 'tmux-plugins/tmux-sensible'
+#### Show GPU status on status bar
     set -g @plugin 'danijoo/tmux-plugin-simple-gpu'
+#### Automatically saves for system restart and resumes the session
+#### Save every 15 mins
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
     run '~/.tmux/plugins/tpm/tpm'
     # prefix + I to install Plugins
