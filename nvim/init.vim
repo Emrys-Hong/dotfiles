@@ -27,7 +27,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 
 " Navigation "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
@@ -42,7 +41,7 @@ Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle'}
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'dense-analysis/ale'
 let g:ale_fixers = {'python': ['isort', 'autoimport', 'black'], 'markdown': ['prettier'], 'sh': ['shfmt']} "requires pip packages, check scripts/requirements.txt
-let g:ale_linters = {'python': ['pyright', 'mypy', 'pyls', 'isort'], 'sh': ['shellcheck']} "requires pip packages
+let g:ale_linters = {'python': ['pylsp', 'pyls'], 'sh': ['shellcheck']} " Check :ALEInfo
 let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1 | let g:ale_lint_on_save = 1
 let g:ale_set_highlights = 0 | let g:ale_set_signs = 0
 Plug 'sheerun/vim-polyglot'

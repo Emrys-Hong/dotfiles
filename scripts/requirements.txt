@@ -9,7 +9,7 @@ neovim # neoVIM
 pynvim # neoVIM
 powerline-status # VIM
 python-language-server # VIM python language server
-mypy  # VIM python type checker
+python-lsp-server # VIM python language servers
 isort # VIM ALE import sort
 black # VIM ALE code formatter
 autoimport # VIM ALE autoimport
@@ -19,4 +19,4 @@ autoimport # VIM ALE autoimport
 # nvidia-ml-py3
 # rich # better debugging output
 # tabview # For viewing tables in terminal
-# pyls # deprecated python language server for completion
+# mypy  # VIM python type checker

@@ -75,20 +75,18 @@
     export EDITOR="$VISUAL"
 
 ### Install neovim
-    # `curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage`
-    # `chmod u+x ~/.dotfiles/nvim/nvim.appimage`
-    # `sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
-    #
+    if [ ! -f /path/to/your/file ]; then
+        curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage
+        chmod u+x ~/.dotfiles/nvim/nvim.appimage
+        sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    fi
+
 ### Use Neovim as vim
     if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
         als 'nvim' '$HOME/.dotfiles/nvim/nvim.appimage'
         als 'vi' "nvim -u ~/.config/nvim/init.vim"
         als 'vim' "nvim -u ~/.config/nvim/init.vim"
     fi
-    #
-    ### Install ctags for vim go to definition
-    # Ctags generates an index (or tag) file of language objects found in source files for programming languages. For Vim
-    # Installation: $ sudo apt-get -y install exuberant-ctags
 
 
 
@@ -195,7 +193,9 @@
 ### autojump using "j" without complete folder path
 #### Usage: `j <foldername>`
     # Installation
-    # $cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
+    if [[ ! -s $HOME/.autojump/etc/profile.d/autojump.sh ]]; then
+        cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
+    fi
     [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 
