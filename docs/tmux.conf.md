@@ -11,9 +11,10 @@
     set -g prefix C-a
     bind C-a send-prefix
 ## Mouse on for scrolling, Toggle Mouse on/off by (prefix+m)
-    set-option -g mouse on
     unbind m
     bind m set -gF mouse "#{?mouse,off,on}"
+    # Control K to scroll up
+    bind -n C-k copy-mode -u
 
 # Appearance
 ## Status Bar UI
