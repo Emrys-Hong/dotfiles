@@ -172,7 +172,9 @@
 
 ## Tmux
 #### Install tmux package manager
-    # `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+    if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
 
 ### Export working environment for python and project folder
 #### Usage: `,`
