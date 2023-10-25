@@ -163,22 +163,22 @@
 #### Usage: `tig`
     # For viewing better github history locally
     # Installation: sudo apt-get install -y tig
-    alias 'tig'='tig'
+    als 'gl' 'tig'
 
     # For comparing differences between files
-    # Usage icdiff <filename>
+    # Usage icdiff <filename1> <filename2>
     # Installation `pip install icdiff`
-    alias 'icdiff'='icdiff'
+    als 'diff' 'icdiff'
 
     # For viewing tables in terminal
 #### Usage: `visidata file.csv`
     # Installation: `pip install visidata`
-    alias 'visidata'='visidata' # csv files
+    als 'table' 'visidata' # csv files
 
 #### Usage: `grip <filename> port`
     # Visualizing markdowns
     # Installation: `pip install grip`
-    alias 'grip'='grip' # render readme
+    als 'markdown' 'grip' # render readme
 
 #### Usage: `lab <port>`
     # Installation: `pip install jupyterlab`
