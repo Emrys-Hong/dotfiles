@@ -1,6 +1,12 @@
 #### Author Emrys-Hong
 
 ## Helper function for alias, It will display the expanded alias command and execute it, 
+    print_in_red() {
+        local input_string="$1"
+        tput setaf 1
+        echo "$input_string"
+        tput sgr0
+    }
 #### Usage: `als func_name command`
     als() {
       local func_name="$1"
@@ -32,17 +38,15 @@
           local local_forwards=\$(grep -A5 \"Host \$args\" ~/.ssh/config | grep 'LocalForward' | awk '{print \"-L \" \$2 \":\" \$3}')
           if [[ \$ssh_user != \"\" && \$ssh_host != \"\" ]]; then
             full_command=\"$command \$ssh_user@\$ssh_host\"
-            echo \"User: \$ssh_user\"
-            echo \"Hostname: \$ssh_host\"
+            print_in_red \"User: \$ssh_user\"
+            print_in_red \"Hostname: \$ssh_host\"
           fi
         fi
         for lf in \$local_forwards; do
           full_command+=\" \$lf\"
         done
 
-        tput setaf 1
-        echo \"\$full_command\"
-        tput sgr0
+        print_in_red \"\$full_command\"
         eval \$full_command
       }
       "
@@ -124,7 +128,7 @@
         local file_path=$(echo "$1" | sed 's/,$//')
         local line_num=$(echo "$input" | awk -F'line ' '{print $2}' | awk -F',' '{print $1}')
         local cmd="$HOME/.dotfiles/nvim/nvim.appimage -u ~/.config/nvim/init.vim +$line_num $file_path -c 'normal zt'"
-        echo "$cmd"
+        print_in_red "$cmd"
         eval $cmd
     }
 
@@ -221,14 +225,20 @@
 
 ## iTerm2 integration
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-#### Usage: `dl <filename>`
+#### Usage in iterm2: `dl <filename>`
     als 'dl' 'it2dl'
 
-#### Usage: `ul`
+#### Usage in iterm2: `ul`
     als 'ul' 'it2ul'
 
-#### Usage: `img <filename>`
+#### Usage in iterm2: `img <filename>`
     als 'img' 'imgcat  -H 1000px -s' # image files
+
+### Upload and download files using google drive
+    # Installation follow https://github.com/glotlabs/gdrive
+    als 'drive' '~/.dotfiles/gdrive'
+    als 'dul' '~/.dotfiles/gdrive files upload'
+
 
 
 
@@ -258,10 +268,10 @@
 #### Usage: `l`
     gitls () {
       if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-        echo git ls-files
+        print_in_red "git ls-files"
         ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
       else
-        echo ls --color=always -CF
+        print_in_red "ls --color=always -CF"
         ls --color=always -CF
       fi
     }
@@ -277,7 +287,7 @@
     copy() {
       if [ "$#" -lt 2 ]; then
         cmd="cp $@"
-        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        print_in_red "$cmd"; $cmd
         return 0
       fi
 
@@ -287,7 +297,7 @@
         # Removing leading / from item if destination is localhost with specific format
         item="$1"
         cmd="rsync -a --info=progress2 $item $dest"
-        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        print_in_red "$cmd"; $cmd
 
       else
         for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
@@ -302,10 +312,10 @@
             fi
           else
             cmd="cp $@"
-            tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+            print_in_red "$cmd"; $cmd
             return 0
           fi
-          tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+          print_in_red "$cmd"; $cmd
         done
       fi
     }
@@ -317,7 +327,7 @@
     move() {
        if [ "$#" -lt 2 ]; then
         cmd="mv $@"
-        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        print_in_red "$cmd"; $cmd
         return 0
       fi
 
@@ -326,13 +336,13 @@
      for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
        if [ -f "$item" ] || [ -L "$item" ]; then
          cmd="mv -iv $item $dest"
-         tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+         print_in_red "$cmd"; $cmd
        elif [[ -d $item ]]; then
          cmd="mv -iv $item $dest"
-         tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+         print_in_red "$cmd"; $cmd
        else
          cmd="mv $@"
-         tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+         print_in_red "$cmd"; $cmd
          return 0
        fi
      done
@@ -344,7 +354,7 @@
     remove() {
       if [ "$#" -lt 1 ]; then
         cmd="rm $@"
-        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        print_in_red "$cmd"; $cmd
         return 0
       fi
 
@@ -361,10 +371,10 @@
           fi
         else
           cmd="rm $@"
-          tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+          print_in_red "$cmd"; $cmd
           return 0
         fi
-        tput setaf 1; echo "$cmd"; tput sgr0; $cmd
+        print_in_red "$cmd"; $cmd
       done
     }
     alias 'rm'='remove'
@@ -414,15 +424,10 @@
       fi
 
       # Echo the command
-      echo "$cmd"
+      print_in_red "$cmd"
       # Execute the command
       eval "$cmd"
   }
-
-
-### Upload and download files using google drive
-    # Installation follow https://github.com/glotlabs/gdrive
-    als 'drive' '~/.dotfiles/gdrive'
 
 ## Load locally defined commands
     [ -f ~/.bash_local ] && source ~/.bash_local

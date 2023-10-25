@@ -17,12 +17,9 @@ let g:airline_theme='catppuccin'
 " Functional "
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar'
-let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1 | let g:tagbar_left = 1 | let g:tagbar_vertical = 25
 Plug 'preservim/nerdtree'
 let g:NERDTreeWinPos = "left"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-Plug 'pseewald/nerdtree-tagbar-combined'
 Plug 'jistr/vim-nerdtree-tabs'
 
 " Navigation "
@@ -33,7 +30,6 @@ let g:EasyMotion_smartcase = 1
 
 " Langauge "
 Plug 'Raimondi/delimitMate' | let delimitMate_expand_cr = 1
-" Plug 'zxqfl/tabnine-vim' Tabnine::sem
 Plug 'github/copilot.vim'
 " :Copilot setup
 Plug 'tpope/vim-commentary'
@@ -49,7 +45,6 @@ let g:polyglot_disabled = ['python']
 let g:python_highlight_space_errors = 0
 ":UpdateRemotePlugins if semshi have problem
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-plug'] }
-" Plug 'mattboehm/vim-unstack' | let g:unstack_mapkey='<F12>'
 
 call plug#end()
 colorscheme catppuccin-latte
@@ -66,7 +61,7 @@ nmap                      gj              <Plug>(easymotion-overwin-line)
 nmap                      <CR>            za
 " zM for More fold and zR for Reduce fold
 
-nnoremap          <leader>,               :NERDTreeToggle<CR>:TagbarToggle<CR>
+nnoremap          <leader>,               :NERDTreeToggle<CR>
 
 nnoremap                  /               :Lines<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
@@ -87,7 +82,3 @@ nnoremap          <S-T>                   :Tags<CR>
 nnoremap          <leader>pi              :PlugInstall<CR>
 nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
 nnoremap          <leader>b               :Buffers<CR>
-
-" nnoremap          <leader>ru              :IndentLinesToggle<CR>
-" nnoremap          <leader>rn              :ALERename<CR>
-" nnoremap          <leader>s               yy:silent! UnstackFromText('<C-R>"')<CR>
