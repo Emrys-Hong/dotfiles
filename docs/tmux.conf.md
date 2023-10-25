@@ -85,7 +85,7 @@
 #### Split window vertically
     bind | split-window -h
 #### Split window vertically
-    bind _ split-window -v
+    bind _ split-window -v -p 25
 
 #### Rename sessions and windows
     unbind s
