@@ -37,6 +37,8 @@
           color_prompt=
       fi
     fi
+    unset color_prompt force_color_prompt
+    export TERM=xterm-256color
 
 ### PS1 setting 
     # including
@@ -63,17 +65,16 @@
 
     LS_COLORS=$LS_COLORS:'fi=0;30:'
 
-### Force color loading
+### Change Terminal Title
     case "$TERM" in
     xterm*|rxvt*)
-      PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+      ip_address=$(hostname -I | awk '{print $1}')
+      PS1="\[\e]0;${ip_address}\a\]$PS1"
       ;;
     *)
       ;;
     esac
 
-    unset color_prompt force_color_prompt
-    export TERM=xterm-256color
 
 
 
