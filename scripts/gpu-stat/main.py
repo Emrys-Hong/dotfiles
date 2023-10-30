@@ -1,6 +1,7 @@
 import os
 from datetime import datetime, timedelta
 
+from log_gpu_usage import header
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -44,7 +45,7 @@ def moving_average(data, window_size=5):
 
 def main(ip):
     csvs = {
-        ip: pd.read_csv(f"{ip}_gpu_log.csv", on_bad_lines="skip")
+        ip: pd.read_csv(f"{ip}_gpu_log.csv", on_bad_lines="skip", names=header)
         for ip in ip_list
         if os.path.exists(f"{ip}_gpu_log.csv")
     }
