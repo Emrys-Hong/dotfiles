@@ -151,8 +151,7 @@
 
 
 ## Nodejs
-    # Install nodejs
-    # Installation: `cd ~/.dotfiles/scripts/install_nodejs.sh && bash install_nodejs.sh`
+    # Installation:
     # mkdir ~/nodejs-latest && cd ~/nodejs-latest
     # wget -c https://nodejs.org/dist/latest/node-v21.2.0-linux-x64.tar.xz -O node-latest.tar.xz
     # tar -xvf node-latest.tar.xz --strip-components=1 
