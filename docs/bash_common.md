@@ -326,7 +326,6 @@
       fi
     }
     alias 'cp'='copy'
-    alias 'c'='/usr/bin/cp'
 
 
 ### Move files and folders
@@ -339,6 +338,11 @@
       fi
 
      dest="${!#}"  # get the last argument as destination
+
+     if [ ! -d "$dest" ]; then
+        cmd="mv $@"
+        return 0
+     fi
 
      for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
        if [ -f "$item" ] || [ -L "$item" ]; then
@@ -355,7 +359,6 @@
      done
     }
     alias 'mv'='move'
-    alias 'm'='/usr/bin/mv'
 
 # rm for files and folders
 #### Usage: `rm <folder_or_file> path/`
@@ -386,8 +389,6 @@
       done
     }
     alias 'rm'='remove'
-    alias 'r'='/usr/bin/rm'
-
     alias 'rm.'='current_dir=`pwd` && cd .. && rm $current_dir'
     als 'rmrf' 'rm -rf'
 
