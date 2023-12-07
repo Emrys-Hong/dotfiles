@@ -326,6 +326,7 @@
       fi
     }
     alias 'cp'='copy'
+    alias 'c'='/usr/bin/cp'
 
 
 ### Move files and folders
@@ -354,6 +355,7 @@
      done
     }
     alias 'mv'='move'
+    alias 'm'='/usr/bin/mv'
 
 # rm for files and folders
 #### Usage: `rm <folder_or_file> path/`
@@ -384,6 +386,7 @@
       done
     }
     alias 'rm'='remove'
+    alias 'r'='/usr/bin/rm'
 
     alias 'rm.'='current_dir=`pwd` && cd .. && rm $current_dir'
     als 'rmrf' 'rm -rf'
