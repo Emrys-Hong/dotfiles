@@ -342,7 +342,7 @@
       if [ ! -d "$dest" ]; then
         cmd=(mv)
         cmd+=("$@")
-        print_in_color "${cmd[@]}"; "${cmd[@]}"
+        "${cmd[@]}"
         return 0
       fi
 
