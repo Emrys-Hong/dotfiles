@@ -1,9 +1,9 @@
 #### Author Emrys-Hong
 
 ## Helper function for alias, It will display the expanded alias command and execute it, 
-    print_in_red() {
+    print_in_color() {
         local input_string="$1"
-        tput setaf 1
+        tput setaf 2
         echo "$input_string"
         tput sgr0
     }
@@ -38,15 +38,15 @@
           local local_forwards=\$(grep -A5 \"Host \$args\" ~/.ssh/config | grep 'LocalForward' | awk '{print \"-L \" \$2 \":\" \$3}')
           if [[ \$ssh_user != \"\" && \$ssh_host != \"\" ]]; then
             full_command=\"$command \$ssh_user@\$ssh_host\"
-            print_in_red \"User: \$ssh_user\"
-            print_in_red \"Hostname: \$ssh_host\"
+            print_in_color \"User: \$ssh_user\"
+            print_in_color \"Hostname: \$ssh_host\"
           fi
         fi
         for lf in \$local_forwards; do
           full_command+=\" \$lf\"
         done
 
-        print_in_red \"\$full_command\"
+        print_in_color \"\$full_command\"
         eval \$full_command
       }
       "
@@ -107,8 +107,8 @@
 ## Python
 
 ### Install miniconda
-    # $wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    # $bash Miniconda3-latest-Linux-x86_64.sh
+    #cd $HOME && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    #bash Miniconda3-latest-Linux-x86_64.sh
 
 
 ### Initialize miniconda
@@ -134,7 +134,7 @@
         local file_path=$(echo "$1" | sed 's/,$//')
         local line_num=$(echo "$input" | awk -F'line ' '{print $2}' | awk -F',' '{print $1}')
         local cmd="$HOME/.dotfiles/nvim/nvim.appimage -u ~/.config/nvim/init.vim +$line_num $file_path -c 'normal zt'"
-        print_in_red "$cmd"
+        print_in_color "$cmd"
         eval $cmd
     }
 
@@ -274,10 +274,10 @@
 #### Usage: `l`
     gitls () {
       if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-        print_in_red "git ls-files"
+        print_in_color "git ls-files"
         ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
       else
-        print_in_red "ls --color=always -CF"
+        print_in_color "ls --color=always -CF"
         ls --color=always -CF
       fi
     }
@@ -293,7 +293,7 @@
     copy() {
       if [ "$#" -lt 2 ]; then
         cmd="cp $@"
-        print_in_red "$cmd"; $cmd
+        print_in_color "$cmd"; $cmd
         return 0
       fi
 
@@ -303,7 +303,7 @@
         # Removing leading / from item if destination is localhost with specific format
         item="$1"
         cmd="rsync -a --info=progress2 $item $dest"
-        print_in_red "$cmd"; $cmd
+        print_in_color "$cmd"; $cmd
 
       else
         for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
@@ -318,10 +318,10 @@
             fi
           else
             cmd="cp $@"
-            print_in_red "$cmd"; $cmd
+            print_in_color "$cmd"; $cmd
             return 0
           fi
-          print_in_red "$cmd"; $cmd
+          print_in_color "$cmd"; $cmd
         done
       fi
     }
@@ -331,26 +331,33 @@
 ### Move files and folders
 #### Usage: `mv <folder_or_file> path/`
     move() {
-       if [ "$#" -lt 2 ]; then
+      if [ "$#" -lt 2 ]; then
         cmd="mv $@"
-        print_in_red "$cmd"; $cmd
+        print_in_color "$cmd"; $cmd
         return 0
       fi
 
-     dest="${!#}"  # get the last argument as destination
+      dest="${!#}"  # get the last argument as destination
 
-     for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
-       if [ -f "$item" ] || [ -L "$item" ]; then
-         cmd="mv -iv $item $dest"
-         print_in_red "$cmd"; $cmd
-       elif [[ -d $item ]]; then
-         cmd="mv -iv $item $dest"
-         print_in_red "$cmd"; $cmd
-       else
-         cmd="mv $@"
-         print_in_red "$cmd"; $cmd
-         return 0
-       fi
+      if [ ! -d "$dest" ]; then
+        cmd=(mv)
+        cmd+=("$@")
+        "${cmd[@]}"
+        return 0
+      fi
+
+      for item in "${@:1:$(($#-1))}"; do  # iterate over all arguments except the last one
+        if [ -f "$item" ] || [ -L "$item" ]; then
+          cmd="mv -iv $item $dest"
+          print_in_color "$cmd"; $cmd
+        elif [[ -d $item ]]; then
+          cmd="mv -iv $item $dest"
+          print_in_color "$cmd"; $cmd
+        else
+          cmd="mv $@"
+          print_in_color "$cmd"; $cmd
+          return 0
+        fi
      done
     }
     alias 'mv'='move'
@@ -360,7 +367,7 @@
     remove() {
       if [ "$#" -lt 1 ]; then
         cmd="rm $@"
-        print_in_red "$cmd"; $cmd
+        print_in_color "$cmd"; $cmd
         return 0
       fi
 
@@ -377,14 +384,13 @@
           fi
         else
           cmd="rm $@"
-          print_in_red "$cmd"; $cmd
+          print_in_color "$cmd"; $cmd
           return 0
         fi
-        print_in_red "$cmd"; $cmd
+        print_in_color "$cmd"; $cmd
       done
     }
     alias 'rm'='remove'
-
     alias 'rm.'='current_dir=`pwd` && cd .. && rm $current_dir'
     als 'rmrf' 'rm -rf'
 
@@ -430,7 +436,7 @@
       fi
 
       # Echo the command
-      print_in_red "$cmd"
+      print_in_color "$cmd"
       # Execute the command
       eval "$cmd"
   }

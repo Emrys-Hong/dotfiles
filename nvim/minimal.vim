@@ -2,16 +2,11 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
 call plug#begin('~/.vim/plugged')
-" UI
-Plug 'dracula/vim', { 'name': 'dracula' }
 " Functional
 Plug 'airblade/vim-gitgutter'
-Plug 'yegappan/mru'
 " Navigation "
-Plug 'majutsushi/tagbar'
 let g:tagbar_sort = 0 | let g:tagbar_foldlevel = 1
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
@@ -25,5 +20,4 @@ augroup mydelimitMate
   au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
 Plug 'tpope/vim-commentary'
-Plug 'mattboehm/vim-unstack' | let g:unstack_mapkey='<F12>'
 call plug#end()
