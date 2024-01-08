@@ -126,8 +126,6 @@
 
 ### load .condarc
     [ -f $HOME/.dotfiles/condarc ] && export 'CONDARC'="$HOME/.dotfiles/condarc"
-### Add conda to LD_LIBRARY_PATH
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
 
 ### Open vim and Go to line in stacktrace in python
 #### Usage: `File "path/to/script.py", line 97, in method`
