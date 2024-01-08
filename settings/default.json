@@ -853,25 +853,6 @@
                     ]
                 },
                 {
-                  "description": "[down_arrow] -> [left_shift + enter]",
-                  "manipulators": [
-                    {
-                      "type": "basic",
-                      "from": {
-                        "key_code": "down_arrow"
-                        },
-                      "to": [
-                        {
-                          "key_code": "return_or_enter",
-                          "modifiers": [
-                            "left_shift"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
                   "description": "[left_shift + left_command + ;] -> [left_shift + enter]",
                   "manipulators": [
                     {
