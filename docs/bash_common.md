@@ -139,8 +139,16 @@
     }
 
 ### Common aliases related to python and conda
-    als 'act' 'conda activate'
-    als 'deact' 'conda deactivate'
+    function conda_activate() {
+        conda activate "$@"
+        export OLD_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+        export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
+    }
+    function deact() {
+        conda deactivate
+        export LD_LIBRARY_PATH=$OLD_LD_LIBRARY_PATH
+        unset OLD_LD_LIBRARY_PATH
+    }
     als 'cl' 'conda info --envs'
     als 'p' 'python'
     als 'py' 'python'

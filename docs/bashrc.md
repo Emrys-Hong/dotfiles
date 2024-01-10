@@ -196,9 +196,6 @@
 ### Load tmux configuration
     [ -f ~/.tmux.conf ] && tmux source-file ~/.tmux.conf
 
-### Add conda to LD_LIBRARY_PATH (this need to be after `conda activate`)
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
-
 ### Tmux related alias
     als 't' 'tmux'
     als 'ta' 'tmux a'
