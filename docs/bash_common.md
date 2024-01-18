@@ -139,7 +139,7 @@
     }
 
 ### Common aliases related to python and conda
-    function conda_activate() {
+    function act() {
         conda activate "$@"
         export OLD_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
         export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
