@@ -190,7 +190,7 @@
     }
 
 ### Tmux will automatically open project and activate conda environment when open new section
-    conda activate $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-)
+    act $(tmux show-environment | grep ^pythonenv= | cut -d'=' -f2-)
     cd $(tmux show-environment | grep ^workdir= | cut -d'=' -f2-)
 
 ### Load tmux configuration
