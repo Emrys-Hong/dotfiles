@@ -1,38 +1,44 @@
 Host 73
     User emrys
     HostName 172.17.240.73
-    LocalForward 8888 127.0.0.1:8888
     LocalForward 8080 127.0.0.1:8080
 
 Host 107
     User emrys
     HostName 172.18.240.107
+    LocalForward 8085 127.0.0.1:8085
 
 Host 180
     User emrys
     HostName 172.18.240.180
+    LocalForward 8085 127.0.0.1:8085
 
 Host 158
     User emrys
     HostName 172.18.240.158
+    LocalForward 8085 127.0.0.1:8085
 
 Host 231
     User emrys
     HostName 172.18.240.231
+    LocalForward 8085 127.0.0.1:8085
 
 Host 195
     User emrys
     HostName 172.18.240.195
+    LocalForward 8085 127.0.0.1:8085
 
 Host 100
     User emrys
     HostName 172.18.240.100
+    LocalForward 8085 127.0.0.1:8085
 
 Host 170
     User emrys
     HostName 172.18.240.170
+    LocalForward 8085 127.0.0.1:8085
 
 Host 187
     User emrys
     HostName 172.18.240.187
-
+    LocalForward 8085 127.0.0.1:8085
