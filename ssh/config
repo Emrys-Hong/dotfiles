@@ -15,7 +15,8 @@ Host 180
 
 Host 158
     User emrys
-    HostName 172.18.240.158
+    # HostName 172.18.240.158
+    HostName 172.31.116.203
     LocalForward 8085 127.0.0.1:8085
 
 Host 231
