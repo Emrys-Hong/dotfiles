@@ -42,3 +42,7 @@ Host 187
     User emrys
     HostName 172.18.240.187
     LocalForward 8085 127.0.0.1:8085
+
+Host jumper
+    User root
+    HostName 157.230.44.85
