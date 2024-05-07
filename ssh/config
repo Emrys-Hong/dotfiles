@@ -3,46 +3,91 @@ Host 73
     HostName 172.17.240.73
     LocalForward 8080 127.0.0.1:8080
 
+Host vpn73
+    User emrys
+    HostName piphi.dev
+    Port 1773
+
 Host 107
     User emrys
     HostName 172.18.240.107
     LocalForward 8085 127.0.0.1:8085
+
+Host vpn107
+    User emrys
+    HostName piphi.dev
+    Port 17107
 
 Host 180
     User emrys
     HostName 172.18.240.180
     LocalForward 8085 127.0.0.1:8085
 
+Host vpn180
+    User emrys
+    HostName piphi.dev
+    Port 17180
+
 Host 200
     User emrys
     HostName 172.31.80.200
     LocalForward 8085 127.0.0.1:8085
+
+Host vpn200
+    User emrys
+    HostName piphi.dev
+    Port 17200
 
 Host 231
     User emrys
     HostName 172.18.240.231
     LocalForward 8085 127.0.0.1:8085
 
+Host vpn231
+    User emrys
+    HostName piphi.dev
+    Port 17231
+
 Host 195
     User emrys
     HostName 172.18.240.195
     LocalForward 8085 127.0.0.1:8085
+
+Host vpn195
+    User emrys
+    HostName piphi.dev
+    Port 17195
 
 Host 100
     User emrys
     HostName 172.18.240.100
     LocalForward 8085 127.0.0.1:8085
 
+Host vpn100
+    User emrys
+    HostName piphi.dev
+    Port 17100
+
 Host 170
     User emrys
     HostName 172.18.240.170
     LocalForward 8085 127.0.0.1:8085
+
+Host vpn170
+    User emrys
+    HostName piphi.dev
+    Port 17170
 
 Host 187
     User emrys
     HostName 172.18.240.187
     LocalForward 8085 127.0.0.1:8085
 
-Host jumper
+Host vpn187
+    User emrys
+    HostName piphi.dev
+    Port 17187
+
+Host digitalocean
     User root
     HostName 157.230.44.85
