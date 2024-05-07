@@ -10,8 +10,8 @@ SSH_OPTIONS="-N -f -R ${REMOTE_PORT}:localhost:22"
 
 LOG_FILE="/dev/null"
 
-if ! /usr/bin/pgrep -f "[a]utossh $SSH_OPTIONS $REMOTE_HOST"; then
-    /usr/bin/autossh $SSH_OPTIONS $REMOTE_HOST >> $LOG_FILE 2>&1
+if ! /usr/bin/pgrep -f "[a]utossh"; then
+    /usr/bin/autossh $SSH_OPTIONS $REMOTE_HOST > $LOG_FILE 2>&1
 fi
 
 # add the following to crontab
