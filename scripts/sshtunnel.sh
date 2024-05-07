@@ -2,7 +2,8 @@
 
 REMOTE_HOST="root@157.230.44.85"
 
-IP_PART=$(echo $REMOTE_HOST | grep -oP '\d+\.\d+\.\d+\.\K\d+')
+IP_PART=$(hostname -I | cut -d' ' -f1 | awk -F '.' '{print $4}')
+
 REMOTE_PORT="17$IP_PART"
 
 SSH_OPTIONS="-N -f -R ${REMOTE_PORT}:localhost:22"
