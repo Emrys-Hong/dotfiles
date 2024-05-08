@@ -6,7 +6,9 @@ IP_PART=$(hostname -I | cut -d' ' -f1 | awk -F '.' '{print $4}')
 
 REMOTE_PORT="17$IP_PART"
 
-SSH_OPTIONS="-N -f -R ${REMOTE_PORT}:localhost:22"
+SSH_OPTIONS="-M 0 -4 -N -f -R -o 'ServerAliveInterval 60' -o 'ServerAliveCountMax 3' -o BatchMode=yes -o StrictHostKeyChecking=no ${REMOTE_PORT}:localhost:22"
+
+export AUTOSSH_DEBUG=1
 
 LOG_FILE="/dev/null"
 
