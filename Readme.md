@@ -40,8 +40,3 @@ Explanation for those configurations are included in [docs](docs/libraries.md)
 2. `git alias` to check git alias
 3. `prefix+?` to check tmux shortcut
 
-## Update dotfiles automatically across machines every 30 mins
-Open `crontab -e`
-```
-*/30 * * * * . $HOME/.profile; cd $HOME/.dotfiles/ && /usr/bin/git rev-parse --abbrev-ref HEAD | xargs /usr/bin/git pull --no-rebase origin
-```
