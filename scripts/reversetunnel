@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
+username="emrys"
+
 service_name="reverse-tunnel"
 service_description="Maintain SSH tunnel"
-username="emrys"
-home="$HOME"
+home="/home/$username"
 ip_part=$(hostname -I | cut -d' ' -f1 | awk -F '.' '{print $4}')
 remote_port="17$ip_part"
 remote_host="root@157.230.44.85"
