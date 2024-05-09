@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+service_name="reverse-tunnel"
+service_description="Maintain SSH tunnel"
+username="emrys"
+home="$HOME"
+ip_part=$(hostname -I | cut -d' ' -f1 | awk -F '.' '{print $4}')
+remote_port="17$ip_part"
+remote_host="root@157.230.44.85"
+
+function install_service {
+    echo "Installing service '$service_name'..."
+
+    local service_content="[Unit]
+Description=$service_name
+After=network.target
+
+[Service]
+User=$username
+ExecStart=/usr/bin/ssh -i $home/.ssh/id_rsa -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -o StrictHostKeyChecking=no -gnNT -R $remote_port:localhost:22 $remote_host
+RestartSec=15
+Restart=always
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target"
+
+    local service_file_path="/etc/systemd/system/$service_name.service"
+
+    echo "$service_content" | sudo tee "$service_file_path" > /dev/null
+
+    sudo systemctl daemon-reload
+
+    sudo systemctl enable "$service_name"
+
+    sudo systemctl start "$service_name"
+
+    echo "Service '$service_name' install successfully."
+    echo "To check the status of the service, run: sudo systemctl status $service_name"
+}
+
+function uninstall_service {
+    echo "Removing service '$service_name'..."
+    sudo systemctl stop "$service_name"
+    sudo systemctl disable "$service_name"
+
+    sudo rm "/etc/systemd/system/$service_name.service"
+
+    sudo systemctl daemon-reload
+
+    echo "Service '$service_name' removed successfully."
+}
+
+if [ $# -lt 1 ]; then
+    action="usage"
+else
+    action="$1"
+fi
+
+echo "Action: $action"
+
+case "$action" in
+    usage)
+        echo "  <action> can be one of: install, uninstall"
+        ;;
+    install)
+        install_service
+        ;;
+    uninstall)
+        uninstall_service
+        ;;
+    *)
+        echo "Unknown action: $action"
+        exit 1
+        ;;
+esac

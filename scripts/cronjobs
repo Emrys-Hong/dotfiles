@@ -1,4 +1,3 @@
 # cat cronjobs | crontab -
 */5 * * * * $HOME/miniconda3/bin/python $HOME/.dotfiles/scripts/gpu-stat/log_gpu_usage.py
-*/5 * * * * $HOME/.dotfiles/scripts/sshtunnel.sh
 */30 * * * * . $HOME/.profile; cd $HOME/.dotfiles/ && /usr/bin/git rev-parse --abbrev-ref HEAD | xargs /usr/bin/git pull --no-rebase origin
