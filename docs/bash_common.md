@@ -88,13 +88,13 @@
 ### Use Neovim as vim
     if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
         als 'nvim' '$HOME/.dotfiles/nvim/nvim.appimage'
-        als 'vim' "nvim -u ~/.config/nvim/init.vim"
+        als 'vim' "nvim -u ~/.dotfiles/nvim/init.vim"
     fi
 
 ### helper function
     vi() {
         local abspath=$(realpath "$1")
-        cmd="nvim -u ~/.config/nvim/init.vim $abspath"
+        cmd="nvim -u ~/.dotfiles/nvim/init.vim $abspath"
         history -s "$cmd"
         eval $cmd
     }
