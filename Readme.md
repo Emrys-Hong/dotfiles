@@ -40,3 +40,7 @@ Explanation for those configurations are included in [docs](docs/libraries.md)
 2. `git alias` to check git alias
 3. `prefix+?` to check tmux shortcut
 
+## AutoUpdate
+```
+*/30 * * * * . $HOME/.profile; cd $HOME/.dotfiles/ && /usr/bin/git rev-parse --abbrev-ref HEAD | xargs /usr/bin/git pull --no-rebase origin
+```
