@@ -95,7 +95,7 @@
     vi() {
         local abspath=$(realpath "$1")
         cmd="nvim -u ~/.dotfiles/nvim/init.vim $abspath"
-        history -s "$cmd"
+        history -s "vi $abspath"
         eval $cmd
     }
 
