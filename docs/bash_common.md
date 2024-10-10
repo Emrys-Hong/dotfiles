@@ -333,7 +333,7 @@
         done
       fi
     }
-    alias 'cp'='copy'
+    als 'c' 'copy'
 
 
 ### Move files and folders
@@ -368,7 +368,7 @@
         fi
      done
     }
-    alias 'mv'='move'
+    als 'm' 'move'
 
 # rm for files and folders
 #### Usage: `rm <folder_or_file> path/`
@@ -398,9 +398,9 @@
         print_in_color "$cmd"; $cmd
       done
     }
-    alias 'rm'='remove'
     alias 'rm.'='current_dir=`pwd` && cd .. && rm $current_dir'
     als 'rmrf' 'rm -rf'
+    als 'r' 'remove'
 
 ### Git alias
     als 'g' 'git'
