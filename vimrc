@@ -90,7 +90,7 @@ tnoremap                  <Esc>           <C-\><C-n>
 nnoremap                  dW              vbd
 nnoremap          <Leader><CR>            :call ToggleHiddenAll()<CR>
 nnoremap          <Leader>D               obreakpoint()<Esc>
-nnoremap          <Leader>d               Oimport custom_debugger;breakpoint()<Esc>
+nnoremap          <Leader>d               Obreakpoint()<Esc>
 nnoremap                  `d              /breakpoint()<CR>
 nnoremap          <leader>q               :q!<CR>
 nnoremap          <leader>p               :pu<CR>
