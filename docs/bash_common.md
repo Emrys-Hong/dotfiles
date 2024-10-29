@@ -154,7 +154,7 @@
     als 'py' 'python'
 
 ### ipdb for breakpoint() in python
-#### `https://github.com/Emrys-Hong/custom_debugger/`
+#### `pip install git+https://github.com/Emrys-Hong/custom_debugger/`
     als 'ipdb' 'python -m ipdb -c continue'
     als 'i' 'python -m ipdb -c continue'
     export PYTHONBREAKPOINT=ipdb.set_trace

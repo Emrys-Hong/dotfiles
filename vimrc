@@ -89,7 +89,7 @@ vnoremap                  <S-Tab>         <gv
 tnoremap                  <Esc>           <C-\><C-n>
 nnoremap                  dW              vbd
 nnoremap          <Leader><CR>            :call ToggleHiddenAll()<CR>
-nnoremap          <Leader>D               obreakpoint()<Esc>
+nnoremap          <Leader>D               Ofrom custom_debugger import breakpoint<Esc>
 nnoremap          <Leader>d               Obreakpoint()<Esc>
 nnoremap                  `d              /breakpoint()<CR>
 nnoremap          <leader>q               :q!<CR>
