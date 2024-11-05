@@ -38,7 +38,7 @@
     set -ag status-justify centre
     set-option -ag status-position bottom
 
-    set -g status-left-length 30
+    set -g status-left-length 50
     set -g status-left "#[fg=black]GPU #[fg=black]--  #[fg=black]#{gpu}  #[fg=black]"
 
     set -g status-right-length 45
