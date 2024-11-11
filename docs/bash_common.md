@@ -283,8 +283,8 @@
 #### Usage: `l`
     gitls () {
       if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-        print_in_color "git ls-files"
-        ls -d1 --color=always -CF $( (git ls-files && git ls-files --exclude-standard --others) | awk -F/ '{if(NF>1){print $1}else{print}}' | sort -u )
+        print_in_color "more info: type gitls"
+        git ls-files | awk -F'/' '{print $1}' | sort -u | xargs -d '\n' ls --color=auto -d
       else
         print_in_color "ls --color=always -CF"
         ls --color=always -CF
