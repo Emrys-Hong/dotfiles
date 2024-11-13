@@ -44,7 +44,8 @@ Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python']
 let g:python_highlight_space_errors = 0
 ":UpdateRemotePlugins if semshi have problem
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-plug'] }
+Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-plug'] }
+
 
 call plug#end()
 colorscheme catppuccin-latte
