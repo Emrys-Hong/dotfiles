@@ -25,7 +25,7 @@
     set-option -ag message-style fg=brightred
 
     set-option -ag status-bg colour255
-    set-option -ag status-fg green 
+    set-option -ag status-fg green
     set-option -ag status-style dim
 
     set-window-option -g window-status-style dim,fg=brightblue
@@ -41,7 +41,7 @@
     set -g status-left-length 50
     set -g status-left "#[fg=black]GPU #[fg=black]--  #[fg=black]#{gpu}  #[fg=black]"
 
-    set -g status-right-length 45
+    set -g status-right-length 50
     set -g status-right "#[fg=black] #S#[fg=black] -- #[fg=black]#h@#[fg=black]#(hostname -I | cut -d'\'' '\'' -f1) #[fg=black]"
 
 # Monitoring for activity but do no show
