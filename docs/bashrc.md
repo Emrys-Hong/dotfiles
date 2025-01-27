@@ -116,6 +116,14 @@
     # Installation: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+### autojump using "j" without complete folder path
+#### Usage: `j <foldername>`
+    # Installation
+    if [[ ! -s $HOME/.autojump/etc/profile.d/autojump.sh ]]; then
+        cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
+    fi
+    [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+
 
 
 

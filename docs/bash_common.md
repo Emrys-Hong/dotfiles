@@ -209,14 +209,6 @@
 
 ## Directories
 
-### autojump using "j" without complete folder path
-#### Usage: `j <foldername>`
-    # Installation
-    if [[ ! -s $HOME/.autojump/etc/profile.d/autojump.sh ]]; then
-        cd ~/.dotfiles && git clone https://github.com/wting/autojump.git && cd autojump && ./install.py
-    fi
-    [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
-
 
 ### Folder shortcuts
     als 'G' 'cd ~/G'
