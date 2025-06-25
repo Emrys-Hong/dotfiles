@@ -30,8 +30,6 @@ let g:EasyMotion_smartcase = 1
 
 " Langauge "
 Plug 'Raimondi/delimitMate' | let delimitMate_expand_cr = 1
-Plug 'github/copilot.vim'
-" :Copilot setup
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle'}
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
