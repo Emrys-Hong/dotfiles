@@ -21,6 +21,7 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeWinPos = "left"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 Plug 'jistr/vim-nerdtree-tabs'
+source ~/.dotfiles/nvim/avante_plugins.vim
 
 " Navigation "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
@@ -47,6 +48,7 @@ Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 
 call plug#end()
 colorscheme catppuccin-latte
+lua require('avante_setup')
 hi Normal guibg=NONE ctermbg=NONE
 highlight semshiUnresolved cterm=underline ctermbg=Red ctermfg=White gui=underline guibg=Red guifg=White
 
