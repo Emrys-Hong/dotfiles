@@ -82,10 +82,10 @@ tnoremap          <Leader>f               <C-\><C-n>:q<CR>
 nnoremap          <S-T>                   :Tags<CR>
 
 nnoremap          <leader>pi              :PlugInstall<CR>
-nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
 nnoremap          <leader>b               :Buffers<CR>
 
 " Claude Code
-nnoremap          <leader>cc               :ClaudeCode<CR>
-nnoremap          <leader>ca               :ClaudeCodeAdd %<CR>
-xnoremap          <leader>cs               :ClaudeCodeSend<CR>
+inoremap <C-L>  <ESC>:ClaudeCodeFocus<CR>
+tnoremap <C-L>  <C-\><C-n>:ClaudeCodeFocus<CR>
+tnoremap <C-H>  <C-\><C-n>:wincmd p<CR>
+autocmd VimEnter * lua if vim.fn.exists(':ClaudeCode') == 2 then vim.cmd('silent! ClaudeCode') vim.cmd('wincmd p') end
