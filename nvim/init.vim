@@ -21,7 +21,8 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeWinPos = "left"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 Plug 'jistr/vim-nerdtree-tabs'
-source ~/.dotfiles/nvim/avante_plugins.vim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'greggh/claude-code.nvim'
 
 " Navigation "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
@@ -47,8 +48,8 @@ Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 
 
 call plug#end()
+lua require('claude-code').setup()
 colorscheme catppuccin-latte
-lua require('avante_setup')
 hi Normal guibg=NONE ctermbg=NONE
 highlight semshiUnresolved cterm=underline ctermbg=Red ctermfg=White gui=underline guibg=Red guifg=White
 
@@ -83,3 +84,6 @@ nnoremap          <S-T>                   :Tags<CR>
 nnoremap          <leader>pi              :PlugInstall<CR>
 nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
 nnoremap          <leader>b               :Buffers<CR>
+
+" Claude Code
+nnoremap          <leader>cc               :ClaudeCode<CR>
