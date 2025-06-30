@@ -21,8 +21,8 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeWinPos = "left"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'greggh/claude-code.nvim'
+Plug 'folke/snacks.nvim'
+Plug 'coder/claudecode.nvim'
 
 " Navigation "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
@@ -48,7 +48,7 @@ Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 
 
 call plug#end()
-lua require('claude-code').setup()
+lua require('claudecode').setup()
 colorscheme catppuccin-latte
 hi Normal guibg=NONE ctermbg=NONE
 highlight semshiUnresolved cterm=underline ctermbg=Red ctermfg=White gui=underline guibg=Red guifg=White
@@ -87,3 +87,11 @@ nnoremap          <leader>b               :Buffers<CR>
 
 " Claude Code
 nnoremap          <leader>cc               :ClaudeCode<CR>
+nnoremap          <leader>cf               :ClaudeCodeFocus<CR>
+nnoremap          <leader>cr               :ClaudeCode --resume<CR>
+nnoremap          <leader>cC               :ClaudeCode --continue<CR>
+nnoremap          <leader>cb               :ClaudeCodeAdd %<CR>
+xnoremap          <leader>cs               :ClaudeCodeSend<CR>
+nnoremap          <leader>cS               :ClaudeCodeTreeAdd<CR>
+nnoremap          <leader>ca               :ClaudeCodeDiffAccept<CR>
+nnoremap          <leader>cd               :ClaudeCodeDiffDeny<CR>
