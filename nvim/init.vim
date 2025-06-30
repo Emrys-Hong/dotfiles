@@ -87,11 +87,5 @@ nnoremap          <leader>b               :Buffers<CR>
 
 " Claude Code
 nnoremap          <leader>cc               :ClaudeCode<CR>
-nnoremap          <leader>cf               :ClaudeCodeFocus<CR>
-nnoremap          <leader>cr               :ClaudeCode --resume<CR>
-nnoremap          <leader>cC               :ClaudeCode --continue<CR>
-nnoremap          <leader>cb               :ClaudeCodeAdd %<CR>
+nnoremap          <leader>ca               :ClaudeCodeAdd %<CR>
 xnoremap          <leader>cs               :ClaudeCodeSend<CR>
-nnoremap          <leader>cS               :ClaudeCodeTreeAdd<CR>
-nnoremap          <leader>ca               :ClaudeCodeDiffAccept<CR>
-nnoremap          <leader>cd               :ClaudeCodeDiffDeny<CR>
