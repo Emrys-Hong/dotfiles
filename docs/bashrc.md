@@ -11,6 +11,9 @@
 
 
 ## Load regular commands
+    unset LANGUAGE
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
     # Check docs/bash_common.md
     [ -f ~/.bash_common ] && source ~/.bash_common
 
