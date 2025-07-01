@@ -88,4 +88,4 @@ nnoremap          <leader>b               :Buffers<CR>
 inoremap <C-L>  <ESC>:ClaudeCodeFocus<CR>
 tnoremap <C-L>  <C-\><C-n>:ClaudeCodeFocus<CR>
 tnoremap <C-H>  <C-\><C-n>:wincmd p<CR>
-autocmd VimEnter * lua if vim.fn.exists(':ClaudeCode') == 2 then vim.cmd('silent! ClaudeCode') vim.cmd('wincmd p') end
+autocmd VimEnter * lua if vim.fn.exists(':ClaudeCode') == 2 then vim.cmd('silent! ClaudeCode') vim.cmd('wincmd p') vim.cmd('stopinsert') end
