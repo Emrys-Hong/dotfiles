@@ -85,7 +85,8 @@ nnoremap          <leader>pi              :PlugInstall<CR>
 nnoremap          <leader>b               :Buffers<CR>
 
 " Claude Code
-inoremap <C-L>  <ESC>:ClaudeCodeFocus<CR>
-tnoremap <C-L>  <C-\><C-n>:ClaudeCodeFocus<CR>
-tnoremap <C-H>  <C-\><C-n>:wincmd p<CR>
+inoremap          <C-L>                   <ESC>:ClaudeCodeFocus<CR>
+tnoremap          <C-L>                   <C-\><C-n>:ClaudeCodeFocus<CR>
+tnoremap          <C-H>                   <C-\><C-n>:wincmd p<CR>
+nnoremap          <leader>c               :ClaudeCode --continue<CR>
 autocmd VimEnter * lua if vim.fn.exists(':ClaudeCode') == 2 then vim.cmd('silent! ClaudeCode') vim.cmd('wincmd p') vim.cmd('stopinsert') end
