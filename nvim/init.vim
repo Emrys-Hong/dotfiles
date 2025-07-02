@@ -64,6 +64,7 @@ nmap                      <CR>            za
 " zM for More fold and zR for Reduce fold
 
 nnoremap          <leader>,               :NERDTreeToggle<CR>
+autocmd BufEnter NERD_tree_* execute 'normal R'
 
 nnoremap                  /               :Lines<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
@@ -88,5 +89,6 @@ nnoremap          <leader>b               :Buffers<CR>
 inoremap          <C-L>                   <ESC>:ClaudeCodeFocus<CR>
 tnoremap          <C-L>                   <C-\><C-n>:ClaudeCodeFocus<CR>
 tnoremap          <C-H>                   <C-\><C-n>:wincmd p<CR>
-nnoremap          <leader>c               :ClaudeCode --continue<CR>
-autocmd VimEnter * lua if vim.fn.exists(':ClaudeCode') == 2 then vim.cmd('silent! ClaudeCode') vim.cmd('wincmd p') vim.cmd('stopinsert') end
+nnoremap          <leader>cc              :ClaudeCode --continue<CR>
+nnoremap          <leader>ca              :ClaudeCodeDiffAccept<CR>
+nnoremap          <leader>cd              :ClaudeCodeDiffDeny<CR>
