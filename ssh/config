@@ -2,7 +2,8 @@ Host digitalocean
     User root
     HostName piphi.dev
 
-Host work_cpu
+Host work
     HostName 10.217.219.2
     User root
-    Port 2405
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
