@@ -90,5 +90,5 @@ inoremap          <C-L>                   <ESC>:ClaudeCodeFocus<CR>
 tnoremap          <C-L>                   <C-\><C-n>:ClaudeCodeFocus<CR>
 tnoremap          <C-H>                   <C-\><C-n>:wincmd p<CR>
 nnoremap          <leader>cc              :ClaudeCode --continue<CR>
-nnoremap          <leader>ca              :ClaudeCodeDiffAccept<CR>
-nnoremap          <leader>cd              :ClaudeCodeDiffDeny<CR>
+nnoremap          <leader>ca              :ClaudeCodeDiffAccept<CR><C-W><C-L>
+nnoremap          <leader>cd              :ClaudeCodeDiffDeny<CR><C-W><C-L>
