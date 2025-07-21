@@ -11,7 +11,6 @@
     [ "\$(id -u)" -eq 0 ] || return
     export HOME="$ROOT_HOME_PATH"
     export INPUTRC="\$HOME/.inputrc"
-    [ -f "\$HOME/.bashrc" ] && . "\$HOME/.bashrc"
     EOF
 
 ### Set correct permissions for the profile script
