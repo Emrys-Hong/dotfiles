@@ -27,13 +27,6 @@ function! MonkeyTerminalOpen()
     call feedkeys('A')
   endif
 endfunction
-function! MonkeyTerminalToggle()
-  if win_gotoid(s:monkey_terminal_window)
-    call MonkeyTerminalClose()
-  else
-    call MonkeyTerminalOpen()
-  endif
-endfunction
 function! MonkeyTerminalClose()
   if win_gotoid(s:monkey_terminal_window)
     let s:monkey_terminal_window_size = winheight(s:monkey_terminal_window) 
@@ -80,9 +73,7 @@ function! MonkeyTerminalExec(cmd)
   wincmd J
 endfunction
 
-nnoremap          <S-M>   :call MonkeyTerminalToggle()<CR>
 nnoremap          <Space> :call MonkeyTerminalToggleSpace()<CR>
-tnoremap          <S-M>   <C-\><C-n>:call MonkeyTerminalToggle()<CR>
 
 augroup py
     autocmd!
