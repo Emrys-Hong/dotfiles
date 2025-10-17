@@ -38,7 +38,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'dense-analysis/ale'
 let g:ale_fixers = {'python': ['isort', 'autoimport', 'black'], 'markdown': ['prettier'], 'sh': ['shfmt']} "requires pip packages, check scripts/requirements.txt
 let g:ale_linters = {'python': ['pylsp', 'pyls'], 'sh': ['shellcheck']} " Check :ALEInfo
-let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1 | let g:ale_lint_on_save = 1
+let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1 | let g:ale_lint_on_save = 0
 let g:ale_set_highlights = 0 | let g:ale_set_signs = 0
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python']
@@ -57,10 +57,10 @@ highlight semshiUnresolved cterm=underline ctermbg=Red ctermfg=White gui=underli
 map                       f               <Plug>(easymotion-bd-f)
 map                       gw              <Plug>(easymotion-bd-w)
 map                       gj              <Plug>(easymotion-bd-jk)
-nmap                      f               <Plug>(easymotion-overwin-f)
-nmap                      gw              <Plug>(easymotion-overwin-w)
-nmap                      gj              <Plug>(easymotion-overwin-line)
-nmap                      <CR>            za
+nnoremap                  f               <Plug>(easymotion-overwin-f)
+nnoremap                  gw              <Plug>(easymotion-overwin-w)
+nnoremap                  gj              <Plug>(easymotion-overwin-line)
+nnoremap                  <CR>            za
 " zM for More fold and zR for Reduce fold
 
 nnoremap          <leader>,               :NERDTreeToggle<CR>

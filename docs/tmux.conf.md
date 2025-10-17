@@ -14,7 +14,7 @@
     unbind m
     bind m set -gF mouse "#{?mouse,off,on}"
     # Control K to scroll up
-    bind -n C-k copy-mode -u
+    bind -n C-u copy-mode -u
 
 # Appearance
 ## Status Bar UI

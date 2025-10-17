@@ -13,7 +13,7 @@ done
 [ -e ~/.config/nvim ] && rm ~/.config/nvim
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 
-ln -s ~/.dotfiles/settings/default.json ~/.config/karabiner/assets/complex_modifications/default.json
+ln -s ~/.dotfiles/settings/karabiner-settings.json ~/.config/karabiner/assets/complex_modifications/default.json
 
 if [ -d ~/.ssh ]; then
     mv ~/.ssh/* ~/.dotfiles/ssh/
