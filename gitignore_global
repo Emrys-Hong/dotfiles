@@ -119,3 +119,4 @@ desktop.ini
 node_modules/
 delete*
 .mypy_cache/
+.claude

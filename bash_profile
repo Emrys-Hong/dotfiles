@@ -17,3 +17,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     source "$HOME/.bashrc"
 
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+

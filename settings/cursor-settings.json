@@ -1,0 +1,442 @@
+{
+    // Layout
+    "workbench.panel.defaultLocation": "bottom",
+    "terminal.integrated.tabs.enabled": false,
+    "breadcrumbs.enabled": false,
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.defaultProfile.osx": "iTerm.app",
+    "files.exclude": {
+        "**/.*": true,
+        "**/__pycache__": true,
+    },
+    // Language specific
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.sortImports.args": [
+        "--profile",
+        "black"
+    ],
+    // ---------- CORE (VSCodeVim + editor) ----------
+    "vim.leader": ",",
+    // "vim.useSystemClipboard": true,
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.handleKeys": {
+        "<C-h>": false,
+        "<C-l>": false,
+        "<C-k>": false,
+        "<C-j>": false,
+    },
+    "vim.easymotion": true,
+    "vim.easymotionDimBackground": true,
+    "vim.easymotionMarkerBackgroundColor": "#FFD700",
+    "vim.sneak": false,
+    "search.smartCase": true,
+    "editor.lineNumbers": "interval",
+    "editor.wordWrap": "on",
+    "editor.renderControlCharacters": true,
+    "workbench.editor.openSideBySideDirection": "right",
+    "workbench.editor.restoreViewState": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Catppuccin Latte",
+    // ---------- NORMAL mode mappings (merged from your vimrc + init.vim) ----------
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // x -> black-hole delete (nnoremap x "_x)
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "]"
+            ],
+            "after": [
+                "]",
+                "m"
+            ]
+        },
+        {
+            "before": [
+                "["
+            ],
+            "after": [
+                "[",
+                "m"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "x"
+            ]
+        },
+        {
+            "before": [
+                "q",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "<S-j>"
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ]
+        },
+        {
+            "before": [
+                "<S-k>"
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ]
+        },
+        // dW -> v b d
+        {
+            "before": [
+                "d",
+                "W"
+            ],
+            "after": [
+                "v",
+                "b",
+                "d"
+            ]
+        },
+        // <Leader>d -> insert a line above with breakpoint()
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "O",
+                "b",
+                "r",
+                "e",
+                "a",
+                "k",
+                "p",
+                "o",
+                "i",
+                "n",
+                "t",
+                "(",
+                ")",
+                "<Esc>"
+            ]
+        },
+        // `d -> search for breakpoint()
+        {
+            "before": [
+                "`",
+                "d"
+            ],
+            "after": [
+                "/",
+                "b",
+                "r",
+                "e",
+                "a",
+                "k",
+                "p",
+                "o",
+                "i",
+                "n",
+                "t",
+                "(",
+                ")",
+                "<CR>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.toggleAuxiliaryBar"
+            ],
+            "when": "vim.mode == 'Normal'"
+        },
+        {
+            "before": [
+                "<leader>",
+                ","
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ],
+            "when": "vim.mode == 'Normal'"
+        },
+        {
+            "before": [
+                " "
+            ],
+            "commands": [
+                "workbench.action.togglePanel"
+            ]
+        },
+        // Folding and Unfolding
+        {
+            "before": [
+                "z",
+                "r"
+            ],
+            "commands": [
+                "editor.unfoldAll"
+            ],
+            "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+        },
+        {
+            "before": [
+                "z",
+                "m"
+            ],
+            "commands": [
+                "editor.foldAll"
+            ],
+            "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+        },
+        // <leader>q -> quit
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        // <leader>p -> emulate (new line below + paste)
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "after": [
+                "o",
+                "<Esc>",
+                "p"
+            ]
+        },
+        // <leader>w -> write/save
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        // <leader>j -> J (join lines)
+        {
+            "before": [
+                "<leader>",
+                "j"
+            ],
+            "after": [
+                "J"
+            ]
+        },
+        // Toggle folds with <CR> (nmap <CR> za)
+        {
+            "before": [
+                "<CR>"
+            ],
+            "commands": [
+                "editor.toggleFold"
+            ]
+        },
+        // :Commands -> <leader>:
+        {
+            "before": [
+                "<leader>", ":"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        // :Ag (global search) -> <leader>/
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        // :Files -> <leader>f
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        // :Buffers -> <leader>b
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "workbench.action.showAllEditorsByMostRecentlyUsed"
+            ]
+        },
+        // Easymotion on 'f' (mirrors map f <Plug>(easymotion-bd-f))
+        {
+            "before": [
+                "f"
+            ],
+            "after": [
+                ",",
+                ",",
+                "f"
+            ]
+        },
+        {
+            "before": [
+                "F"
+            ],
+            "after": [
+                ",",
+                ",",
+                "F"
+            ]
+        },
+        // ALE equivalents:
+        // gd/go to definition
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        // gr/find references
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "references-view.findReferences"
+            ]
+        },
+        // <Leader>i :ALEFix -> format document
+        {
+            "before": [
+                "<leader>",
+                "i"
+            ],
+            "commands": [
+                "cursorpyright.organizeimports",
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+    ],
+    // ---------- VISUAL mode mappings ----------
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "a",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "s"
+            ],
+            "after": [
+                "\"",
+                "a",
+                "s"
+            ]
+        },
+        // Visual indent / outdent (keep selection)
+        {
+            "before": [
+                "\\"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "|"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        // Visual '/' -> toggle comment (your vimrc had `vnoremap / gc`)
+    ],
+    "chatgpt.cliExecutable": "",
+    "workbench.editor.enablePreview": false,
+    "cursor.composer.shouldAllowCustomModes": true,
+    "workbench.layoutControl.enabled": false,
+}

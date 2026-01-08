@@ -78,7 +78,7 @@
     export VISUAL=vim
     export EDITOR="$VISUAL"
 
-### Install neovim
+### Install neovim, may need `nvim.appimage --appimage-extract`
     if [ ! -f ~/.dotfiles/nvim/nvim.appimage ]; then
         curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o ~/.dotfiles/nvim/nvim.appimage
         chmod u+x ~/.dotfiles/nvim/nvim.appimage
@@ -86,9 +86,12 @@
     fi
 
 ### Use Neovim as vim
-    if [ -f $HOME/.dotfiles/nvim/nvim.appimage ]; then
-        als 'nvim' '$HOME/.dotfiles/nvim/nvim.appimage'
-        als 'vim' "nvim -u ~/.dotfiles/nvim/init.vim"
+    if [ -x "$HOME/.dotfiles/nvim/squashfs-root/AppRun" ]; then
+        als nvim "$HOME/.dotfiles/nvim/squashfs-root/AppRun"
+        als vim  "nvim -u ~/.dotfiles/nvim/init.vim"
+    elif [ -f "$HOME/.dotfiles/nvim/nvim.appimage" ]; then
+        als nvim "$HOME/.dotfiles/nvim/nvim.appimage"
+        als vim  "nvim -u ~/.dotfiles/nvim/init.vim"
     fi
 
 ### helper function

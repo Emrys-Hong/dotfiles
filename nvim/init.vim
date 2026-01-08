@@ -21,6 +21,8 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeWinPos = "left"
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'folke/snacks.nvim'
+Plug 'coder/claudecode.nvim'
 
 " Navigation "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
@@ -30,15 +32,13 @@ let g:EasyMotion_smartcase = 1
 
 " Langauge "
 Plug 'Raimondi/delimitMate' | let delimitMate_expand_cr = 1
-Plug 'github/copilot.vim'
-" :Copilot setup
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle'}
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'dense-analysis/ale'
 let g:ale_fixers = {'python': ['isort', 'autoimport', 'black'], 'markdown': ['prettier'], 'sh': ['shfmt']} "requires pip packages, check scripts/requirements.txt
 let g:ale_linters = {'python': ['pylsp', 'pyls'], 'sh': ['shellcheck']} " Check :ALEInfo
-let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1 | let g:ale_lint_on_save = 1
+let g:ale_completion_enabled = 1 | let g:ale_completion_autoimport = 1 | let g:ale_lint_on_save = 0
 let g:ale_set_highlights = 0 | let g:ale_set_signs = 0
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python']
@@ -48,6 +48,7 @@ Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins', 'for': ['python', 'vim-p
 
 
 call plug#end()
+lua require('claudecode').setup()
 colorscheme catppuccin-latte
 hi Normal guibg=NONE ctermbg=NONE
 highlight semshiUnresolved cterm=underline ctermbg=Red ctermfg=White gui=underline guibg=Red guifg=White
@@ -56,13 +57,14 @@ highlight semshiUnresolved cterm=underline ctermbg=Red ctermfg=White gui=underli
 map                       f               <Plug>(easymotion-bd-f)
 map                       gw              <Plug>(easymotion-bd-w)
 map                       gj              <Plug>(easymotion-bd-jk)
-nmap                      f               <Plug>(easymotion-overwin-f)
-nmap                      gw              <Plug>(easymotion-overwin-w)
-nmap                      gj              <Plug>(easymotion-overwin-line)
-nmap                      <CR>            za
+nnoremap                  f               <Plug>(easymotion-overwin-f)
+nnoremap                  gw              <Plug>(easymotion-overwin-w)
+nnoremap                  gj              <Plug>(easymotion-overwin-line)
+nnoremap                  <CR>            za
 " zM for More fold and zR for Reduce fold
 
 nnoremap          <leader>,               :NERDTreeToggle<CR>
+autocmd BufEnter NERD_tree_* execute 'normal R'
 
 nnoremap                  /               :Lines<CR>
 nnoremap                  gd              :w<CR>:ALEGoToDefinition<CR>
@@ -81,5 +83,12 @@ tnoremap          <Leader>f               <C-\><C-n>:q<CR>
 nnoremap          <S-T>                   :Tags<CR>
 
 nnoremap          <leader>pi              :PlugInstall<CR>
-nnoremap          <leader>t               :TagbarOpenAutoClose<CR>
 nnoremap          <leader>b               :Buffers<CR>
+
+" Claude Code
+inoremap          <C-L>                   <ESC>:ClaudeCodeFocus<CR>
+tnoremap          <C-L>                   <C-\><C-n>:ClaudeCodeFocus<CR>
+tnoremap          <C-H>                   <C-\><C-n>:wincmd p<CR>
+nnoremap          <leader>cc              :ClaudeCode --continue<CR>
+nnoremap          <leader>ca              :ClaudeCodeDiffAccept<CR><C-W><C-L>
+nnoremap          <leader>cd              :ClaudeCodeDiffDeny<CR><C-W><C-L>

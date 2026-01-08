@@ -10,7 +10,7 @@ file=$1
 
 # Check the operating system and set the editor accordingly
 if [[ "$(uname)" == "Linux" ]]; then
-  editor="$HOME/.dotfiles/nvim/nvim.appimage"
+  editor="/usr/bin/vim"
 elif [[ "$(uname)" == "Darwin" ]]; then
   editor="/usr/bin/vim"
 else

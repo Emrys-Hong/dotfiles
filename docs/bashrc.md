@@ -11,6 +11,9 @@
 
 
 ## Load regular commands
+    unset LANGUAGE
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
     # Check docs/bash_common.md
     [ -f ~/.bash_common ] && source ~/.bash_common
 
@@ -158,14 +161,21 @@
 
 
 
-## Nodejs
-    # Installation:
-    # mkdir ~/nodejs-latest && cd ~/nodejs-latest
-    # wget -c https://nodejs.org/dist/latest/node-v21.2.0-linux-x64.tar.xz -O node-latest.tar.xz
-    # tar -xvf node-latest.tar.xz --strip-components=1 
-    export NODE_HOME=~/nodejs-latest
-    export PATH=$NODE_HOME/bin:$PATH
+## Node and nvm
+    export NVM_DIR="$HOME/.nvm"
+    if [ ! -s "$NVM_DIR/nvm.sh" ]; then
+      printf "[nvm] Installing the latest nvm …\n"
+      curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
+    fi
 
+    [ -s "$NVM_DIR/nvm.sh" ]          && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    if ! command -v node >/dev/null 2>&1; then
+      printf "[nvm] Installing current LTS of Node …\n"
+      nvm install --lts --latest-npm --no-progress
+      nvm alias   default lts/*          # remember it for next time
+      nvm use     --silent  default
+    fi
 
 
 
@@ -214,3 +224,5 @@
     als 't' 'tmux'
     als 'ta' 'tmux a'
     als 'tl' 'tmux ls'
+
+
