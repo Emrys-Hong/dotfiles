@@ -37,7 +37,7 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
     {
-        "key": " z m",
+        "key": ",",
         "command": "workbench.files.action.collapseExplorerFolders",
         "when": "explorerViewletVisible && filesExplorerFocus"
     },

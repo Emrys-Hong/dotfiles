@@ -28,6 +28,7 @@
         "<C-l>": false,
         "<C-k>": false,
         "<C-j>": false,
+        "<CR>": false,
     },
     "vim.easymotion": true,
     "vim.easymotionDimBackground": true,
@@ -223,6 +224,22 @@
             ],
             "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
         },
+        {
+            "before": [
+                "]"
+            ],
+            "commands": [
+                "editor.unfoldRecursively"
+            ]
+        },
+        {
+            "before": [
+                "["
+            ],
+            "commands": [
+                "editor.foldRecursively"
+            ]
+        },
         // <leader>q -> quit
         {
             "before": [
@@ -263,15 +280,6 @@
             ],
             "after": [
                 "J"
-            ]
-        },
-        // Toggle folds with <CR> (nmap <CR> za)
-        {
-            "before": [
-                "<CR>"
-            ],
-            "commands": [
-                "editor.toggleFold"
             ]
         },
         // :Commands -> <leader>:
@@ -438,5 +446,4 @@
     "chatgpt.cliExecutable": "",
     "workbench.editor.enablePreview": false,
     "cursor.composer.shouldAllowCustomModes": true,
-    "workbench.layoutControl.enabled": false,
 }
