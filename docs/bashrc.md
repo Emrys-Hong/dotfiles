@@ -16,6 +16,9 @@
     export LANG=C.UTF-8
     # Check docs/bash_common.md
     [ -f ~/.bash_common ] && source ~/.bash_common
+    # ---- Local user binaries ----
+    export PATH="$HOME/.local/bin:$PATH"
+
 
 
 

@@ -1,6 +1,6 @@
 [user]
-        name = Emrys-Hong
-        email = hongpengfei.emrys@gmail.com
+        name = hongpengfei
+        email = hongpengfei@myhexin.com
 [alias]
         ac = "!git add . ; git commit "
         a = add
