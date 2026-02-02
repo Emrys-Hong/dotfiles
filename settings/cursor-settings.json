@@ -5,7 +5,6 @@
     "breadcrumbs.enabled": false,
     "terminal.integrated.gpuAcceleration": "on",
     "terminal.external.osxExec": "iTerm.app",
-    "terminal.integrated.defaultProfile.osx": "iTerm.app",
     "files.exclude": {
         "**/.*": true,
         "**/__pycache__": true,
@@ -14,10 +13,6 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "python.sortImports.args": [
-        "--profile",
-        "black"
-    ],
     // ---------- CORE (VSCodeVim + editor) ----------
     "vim.leader": ",",
     // "vim.useSystemClipboard": true,
@@ -285,7 +280,8 @@
         // :Commands -> <leader>:
         {
             "before": [
-                "<leader>", ":"
+                "<leader>",
+                ":"
             ],
             "commands": [
                 "workbench.action.showCommands"
@@ -445,5 +441,6 @@
     ],
     "chatgpt.cliExecutable": "",
     "workbench.editor.enablePreview": false,
-    "cursor.composer.shouldAllowCustomModes": true,
+    "workbench.activityBar.location": "top",
+    "editor.minimap.enabled": false,
 }
