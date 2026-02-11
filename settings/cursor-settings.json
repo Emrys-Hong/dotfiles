@@ -5,6 +5,7 @@
     "breadcrumbs.enabled": false,
     "terminal.integrated.gpuAcceleration": "on",
     "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.defaultProfile.osx": "iTerm.app",
     "files.exclude": {
         "**/.*": true,
         "**/__pycache__": true,
@@ -366,7 +367,6 @@
                 "i"
             ],
             "commands": [
-                "cursorpyright.organizeimports",
                 "editor.action.formatDocument"
             ]
         },
@@ -440,7 +440,8 @@
         // Visual '/' -> toggle comment (your vimrc had `vnoremap / gc`)
     ],
     "chatgpt.cliExecutable": "",
-    "workbench.editor.enablePreview": false,
     "workbench.activityBar.location": "top",
     "editor.minimap.enabled": false,
+    "python.languageServer": "Default",
+    "remote.autoForwardPortsSource": "hybrid",
 }
